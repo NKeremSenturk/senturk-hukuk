@@ -1,0 +1,26 @@
+# İşletim sistemi
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editör / IDE
+.vscode/
+.idea/
+*.swp
+*~
+
+# Bağımlılıklar (ileride eklenirse)
+node_modules/
+package-lock.json
+
+# Log & geçici
+*.log
+.cache/
+.tmp/
+
+# Ortam değişkenleri
+.env
+.env.local
+
+# Claude Code lokal ayarlar
+.claude/settings.local.json
