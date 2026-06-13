@@ -24,3 +24,7 @@ package-lock.json
 
 # Claude Code lokal ayarlar
 .claude/settings.local.json
+
+# İç çalışma / müvekkil dosyaları (yayına ve repoya girmesin)
+Sinem-Bilgi-Formu.xlsx
+*.xlsx

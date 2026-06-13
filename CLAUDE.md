@@ -118,3 +118,38 @@ python -m http.server 8000
 
 `main` dalına push yeterli — `.github/workflows/pages.yml` otomatik yayınlar.
 İlk kurulum ve GitHub bağlantısı için **README.md → "Kurulum"** bölümüne bak.
+
+**Repo:** https://github.com/NKeremSenturk/senturk-hukuk.git (origin/main)
+
+> **Push yalnızca kullanıcının kendi terminalinden yapılır.** GitHub kimlik bilgileri
+> (credential) kullanıcının makinesindedir; Cowork/sandbox ortamından push edilemez.
+> Commit hazırlanabilir, ancak gönderimi (`git push`) kullanıcı terminalden yapar.
+
+> **Stale lock uyarısı:** Bir git işlemi yarıda kesilirse `.git/index.lock` kalıp
+> "another git process is running" hatası verebilir. Çözüm: kilidi sil
+> (PowerShell: `del .git\index.lock`), sonra işlemi tekrarla.
+
+---
+
+## 10. Alınan Kararlar (Haziran 2026 — proje sohbeti)
+
+Bu kararlar bağlayıcıdır; aksini kullanıcı açıkça istemedikçe uyulur.
+
+1. **Hafiflik önceliği (değişmez ilke).** Siteye ağır JavaScript kütüphanesi eklenmez.
+   - **GSAP kullanılmıyor** (saf CSS easing karşılıkları `:root`'ta tanımlı).
+   - **Three.js denendi ve bilinçli olarak reddedildi** (~150KB+ gzip + sürekli WebGL
+     render maliyeti; "hızlı açılma" ilkesiyle çelişiyor).
+   - Tüm animasyonlar **saf CSS** ile yapılır.
+
+2. **Hero terazisi SADE kalır.** Av. Sinem sade terazi görselini tercih etti.
+   `index.html`'deki hero `.hero-ornament` SVG'si olduğu gibi bırakılır; 3B / gösterişli /
+   scroll-etkileşimli versiyon **yapılmayacak** (talep edilmedikçe).
+
+3. **Bilgi toplama formu.** Proje kökündeki `Sinem-Bilgi-Formu.xlsx`, Sinem'den bilgi ve
+   tercih toplamak içindir (büro adı, iletişim, çalışma alanları, istatistik sayıları,
+   ön yüz renk/stil tercihleri vb.). Sinem doldurup gönderince, **Bölüm 5'teki yer
+   tutucular** bu cevaplarla doldurulur. Dosya `.gitignore`'da — **yayına/repoya girmez.**
+
+4. **Ajan notu.** Bir ajana (subagent) iş verirken yarıda **Esc** ile kesmek, dosya
+   yazımını yarıda bırakıp bozabilir. Kesilirse `git status` ve dosya sonunu kontrol et;
+   gerekiyorsa `git restore <dosya>` ile son sağlam sürüme dön.
