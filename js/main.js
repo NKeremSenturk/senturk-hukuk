@@ -179,7 +179,7 @@
     if (slides.length > 1) {
       let idx = 0;
       let timer = null;
-      const INTERVAL = 6500;
+      const INTERVAL = 3500;
 
       const show = (n) => {
         idx = (n + slides.length) % slides.length;

@@ -456,7 +456,7 @@ p:last-child { margin-bottom: 0; }
   background: var(--accent-300);
   border-radius: 4px;
 }
-.hero-dot.is-active .hero-dot-fill { animation: dotProgress 6.5s linear forwards; }
+.hero-dot.is-active .hero-dot-fill { animation: dotProgress 3.5s linear forwards; }
 .hero:hover .hero-dot.is-active .hero-dot-fill { animation-play-state: paused; }
 @keyframes dotProgress { from { width: 0; } to { width: 100%; } }
 
