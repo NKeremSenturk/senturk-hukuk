@@ -7,9 +7,14 @@ Hangi ortamda çalışırsan çalış, önce bu dosyayı oku; proje yapısı, ku
 
 ## 1. Proje Nedir?
 
-**Şentürk Hukuk Bürosu** — Av. Sinem Şentürk için hazırlanmış, çok sayfalı, iki dilli (TR/EN),
-tamamen **statik** (HTML + CSS + JavaScript) bir avukat tanıtım web sitesi.
+**Şentürk Marka ve Hukuk Bürosu** (EN: **Şentürk Law & IP**) — Av. & Marka Vekili Sinem Şentürk
+ve kurucu ortağı Av. Yasin Emre Özbaş için hazırlanmış; çok sayfalı, iki dilli (TR/EN),
+tamamen **statik** (HTML + CSS + JavaScript) bir hukuk bürosu tanıtım web sitesi.
 Çerçeve (framework) yok, derleme (build) adımı yok. Dosyalar doğrudan sitenin kendisidir.
+
+**Konumlandırma:** Fikri ve sınai haklar / marka tescili öne çıkar; ancak büro yabancılar, aile,
+iş, ceza, gayrimenkul, icra-iflas ve sözleşmeler hukuku alanlarında da hizmet verir. SEO için
+İstanbul (adres) ve Balıkesir vurgulanır; hizmet Türkiye geneli.
 
 **Hosting:** GitHub Pages (ücretsiz). `main` dalına push → otomatik yayın.
 
@@ -19,11 +24,13 @@ tamamen **statik** (HTML + CSS + JavaScript) bir avukat tanıtım web sitesi.
 
 ```
 .
-├── index.html              # Ana sayfa (hero, hizmetler, istatistik, neden biz, CTA)
-├── hakkinda.html           # Hakkında (profil, değerler, özgeçmiş)
-├── calisma-alanlari.html   # Çalışma alanları (9 alan, akordeon)
-├── makaleler.html          # Makaleler / blog (örnek kartlar)
-├── iletisim.html           # İletişim (form + bilgiler + harita alanı)
+├── index.html              # Ana sayfa (hero, hizmetler, marka şeridi, neden biz, CTA) — istatistik YOK
+├── hakkinda.html           # Hakkında (Sinem profili, eğitim, değerler, kurucu ortaklar/ekip)
+├── calisma-alanlari.html   # Çalışma alanları (8 alan akordeon + marka tescili vurgusu)
+├── marka-tescili.html      # Marka/tasarım/coğrafi işaret: aşamalar, alt hizmetler, bilgi notları, başvuru formu
+├── makaleler.html          # Makaleler / blog (marka & IP odaklı örnek kartlar)
+├── iletisim.html           # İletişim (form + talep türü + bilgiler + Google Maps embed)
+├── kvkk.html               # KVKK aydınlatma + gizlilik politikası (taslak; noindex)
 ├── css/
 │   └── style.css           # TÜM stiller + tasarım sistemi (tek dosya)
 ├── js/
@@ -42,10 +49,18 @@ tamamen **statik** (HTML + CSS + JavaScript) bir avukat tanıtım web sitesi.
 Tüm renk, font ve ölçüler dosyanın başındaki `:root` değişkenlerinde tanımlı. **Asla** sabit
 renk kodu (#hex) gömme; mevcut değişkenleri kullan.
 
-- **Renkler:** `--navy-900` (ana koyu), `--gold-500` (altın vurgu), `--bordeaux` (bordo), `--cream` (zemin)
-- **Fontlar:** `--font-display` (Playfair Display, başlıklar), `--font-body` (Inter, metin)
-- **Animasyon:** `.reveal` sınıfı + `is-visible` (scroll ile belirme). Gecikme: `.reveal-delay-1..4`
-- **Bileşenler:** `.btn`, `.card`, `.section`, `.accordion`, `.stat`, `.frame` — yeniden kullan.
+- **Palet (Haziran 2026 güncellemesi): Lacivert + Beyaz.** Altın ve bordo **kaldırıldı.**
+  - `--navy-900..600` (lacivert ölçeği), `--accent` (çelik mavisi vurgu, `#2f6f9f`), `--white`,
+    `--bg` (beyaz), `--bg-alt` (çok açık gri-mavi zemin).
+  - **Geriye dönük takma adlar:** `--gold-*`, `--bordeaux`, `--cream` hâlâ tanımlı ama hepsi
+    yeni lacivert/accent/beyaz değişkenlere işaret eder. Yeni kod yazarken `--accent`/`--navy-*`/`--bg*` kullan.
+- **Fontlar (modern sans-serif):** `--font-display` = **Plus Jakarta Sans** (başlıklar),
+  `--font-body` = **Inter** (metin). Playfair/Cormorant (serif) **kullanılmıyor.**
+- **Butonlar:** `.btn-primary` (accent dolgu — açık zemin), `.btn-light` (beyaz dolgu — koyu zemin),
+  `.btn-outline`, `.btn-dark`. Eski `.btn-gold` = `.btn-primary` ile aynı (alias).
+- **Animasyon:** `.reveal` + `is-visible` (scroll ile belirme). Gecikme: `.reveal-delay-1..4`. Hero girişi saf CSS.
+- **Bileşenler:** `.btn`, `.card`, `.section`, `.accordion`, `.team-card`, `.steps/.step`, `.chip`,
+  `.info-card`, `.frame`, `.wa-float` — yeniden kullan.
 
 ---
 
@@ -65,21 +80,24 @@ Site, JS sözlüğü yerine **çift eleman** yöntemiyle çalışır. Her metin 
 
 ---
 
-## 5. Doldurulması Gereken Yer Tutucular
+## 5. Yer Tutucular (Sinem'in bilgi formu ile DOLDURULDU — Haziran 2026)
 
-Aşağıdakiler tüm sayfalarda köşeli parantezle işaretli. Gerçek bilgilerle değiştirilmeli:
+Form cevaplarıyla işlenenler (artık placeholder değil): büro adı, slogan, ad-unvan
+(Av. & Marka Vekili Sinem Şentürk), eğitim (İstanbul Üniversitesi Hukuk Fakültesi),
+marka vekilliği, biyografi, değerler, adres (Canan Business Plaza, Ataşehir/İstanbul),
+telefon/WhatsApp (+90 534 242 80 81), e-posta (info@senturklawfirm.com), çalışma saatleri
+(hafta içi 08:30–17:00), çalışma alanları (8 + marka tescili), kurucu ortak Av. Yasin Emre Özbaş.
 
-- `[Büro adresi], [İl / İlçe]` → gerçek adres
-- `+90 (000) 000 00 00` → gerçek telefon
-- `info@senturkhukuk.com` → gerçek e-posta
-- `[Baro] Barosu` / `[Bar Association]` → kayıtlı olunan baro
-- `[Üniversite adı]`, `20XX` (hakkinda.html) → eğitim/deneyim bilgileri
-- Sosyal medya `href="#"` → gerçek LinkedIn / Instagram bağlantıları
-- `assets/` içine: portre fotoğrafı + büro fotoğrafı (HTML'deki `.frame-placeholder` yerine `<img>`)
-- İstatistik sayıları (index.html `data-target`) → gerçek rakamlar
+**Hâlâ Sinem'den beklenenler (geldiğinde işlenecek):**
+- **Logo dosyası** → `assets/` içine; header/footer `.logo` yazı tabanlı logoyla değiştirilebilir.
+- **Kesin renk/stil tercihi** → Sinem net renk/logoyu iletince `:root` ince ayarı yapılır.
+- **Portre fotoğrafı** (Sinem) → `.frame-placeholder` / `.team-photo` yerine `<img>`.
+- Sosyal medya `href="#"` (LinkedIn / Instagram) → gerçek bağlantılar.
+- Gerçek makale metinleri → `makaleler.html` (şu an örnek başlıklar).
+- KVKK metni → `kvkk.html` taslağı büro tarafından onaylanmalı.
 
-> **Soyadı notu:** "Şentürk" varsayılan olarak kullanıldı. Gerçek soyadı farklıysa
-> tüm dosyalarda toplu değiştir (`Şentürk` → gerçek soyadı).
+> **Soyadı notu:** "Şentürk" doğrulandı (form Q2). İstatistik bölümü Sinem'in talebiyle
+> **kaldırıldı** (form Q29 = Hayır) — `data-target` sayaçları artık kullanılmıyor.
 
 ---
 
@@ -96,7 +114,9 @@ Aşağıdakiler tüm sayfalarda köşeli parantezle işaretli. Gerçek bilgilerl
 ## 7. Kurallar / Konvansiyonlar
 
 1. **Tek CSS, tek JS dosyası** — yeni dosya açma, mevcutları genişlet.
-2. **Header ve footer her sayfada aynıdır.** Birinde değişiklik yaparsan **5 sayfada da** uygula.
+2. **Header ve footer her sayfada aynıdır.** Birinde değişiklik yaparsan **7 sayfada da** uygula
+   (index, hakkinda, calisma-alanlari, marka-tescili, makaleler, iletisim, kvkk). Header nav 6 öğelidir.
+   Her sayfada `.wa-float` (WhatsApp) + `.to-top` butonları bulunur.
 3. Her yeni metin **iki dilli** olmalı (Bölüm 4).
 4. İnline SVG ikonlar kullanılıyor (harici ikon kütüphanesi yok).
 5. Erişilebilirlik: `aria-label`, anlamlı `alt` metinleri, yeterli kontrast korunmalı.
@@ -153,3 +173,20 @@ Bu kararlar bağlayıcıdır; aksini kullanıcı açıkça istemedikçe uyulur.
 4. **Ajan notu.** Bir ajana (subagent) iş verirken yarıda **Esc** ile kesmek, dosya
    yazımını yarıda bırakıp bozabilir. Kesilirse `git status` ve dosya sonunu kontrol et;
    gerekiyorsa `git restore <dosya>` ile son sağlam sürüme dön.
+
+5. **Sinem'in bilgi formu işlendi (Haziran 2026).** Form cevaplarına göre alınan kararlar:
+   - **Palet lacivert + beyaz** oldu; **altın ve bordo kaldırıldı** (Sinem: sade, şık, göz yormayan;
+     lacivert = ciddiyet/profesyonellik, beyaz = güven/şeffaflık). Stil: **modern & sade**, his:
+     güvenilir/ciddi/şeffaf. Kesin renk/logo Sinem'den gelince `:root` ince ayarı yapılacak.
+   - **Yazı tipi modern sans-serif** (Plus Jakarta Sans + Inter); serif kaldırıldı.
+   - **İstatistik bölümü kaldırıldı** (form Q29 = Hayır).
+   - **Marka tescili ayrı sayfa** (`marka-tescili.html`): aşamalar, alt hizmetler, "Marka nedir?" bilgi
+     notları, marka/tasarım/coğrafi işaret başvuru formu. İlham: mukellef.co/tr/marka-tescil.
+   - **Kurucu ortak Av. Yasin Emre Özbaş** eklendi (hakkinda.html ekip bölümü + footer imza).
+   - **SEO:** İstanbul (adres) + Balıkesir vurgusu; index.html'de LegalService JSON-LD.
+   - **WhatsApp** yüzen butonu tüm sayfalarda (`wa.me/905342428081`).
+   - **Marka önde ama tek alan değil:** fikri-sınai/marka öne çıkar; diğer 7 alan da görünür.
+
+6. **Marka kimliği.** Görünen ad: TR "Şentürk Marka ve Hukuk Bürosu" / EN "Şentürk Law & IP".
+   Logo alt yazısı: TR "Marka & Hukuk Bürosu" / EN "Law & IP". İmza: "Av. & Marka Vekili Sinem Şentürk
+   • Av. Yasin Emre Özbaş". Baro bilgisi **gösterilmiyor** (form: gerek yok).

@@ -1,22 +1,24 @@
-# Şentürk Hukuk Bürosu — Web Sitesi
+# Şentürk Marka ve Hukuk Bürosu — Web Sitesi
 
-Av. Sinem Şentürk için hazırlanmış, çok sayfalı, **iki dilli (TR/EN)**, prestijli ve modern
-bir avukat tanıtım web sitesi. Saf HTML + CSS + JavaScript ile geliştirilmiştir — çerçeve yok,
-derleme yok, GitHub Pages'te ücretsiz yayınlanır.
+Av. & Marka Vekili Sinem Şentürk ve kurucu ortağı Av. Yasin Emre Özbaş için hazırlanmış;
+çok sayfalı, **iki dilli (TR/EN)**, modern ve sade bir hukuk bürosu tanıtım web sitesi.
+Saf HTML + CSS + JavaScript ile geliştirilmiştir — çerçeve yok, derleme yok,
+GitHub Pages'te ücretsiz yayınlanır. Fikri ve sınai haklar / marka tescili öne çıkar.
 
-> İçerik (isim, iletişim, deneyim) yer tutucudur ve kolayca güncellenebilir.
-> Ayrıntılar için **[CLAUDE.md](CLAUDE.md)** dosyasına bakın.
+> İçerik Sinem'in bilgi formuyla dolduruldu. Logo, portre ve sosyal medya bağlantıları
+> geldiğinde işlenecektir. Ayrıntılar için **[CLAUDE.md](CLAUDE.md)** dosyasına bakın.
 
 ---
 
 ## Özellikler
 
-- **5 sayfa:** Ana Sayfa · Hakkında · Çalışma Alanları · Makaleler · İletişim
+- **7 sayfa:** Ana Sayfa · Hakkında · Çalışma Alanları · Marka Tescili · Makaleler · İletişim · KVKK
 - **İki dil:** Tek tıkla TR/EN geçişi (tercih hatırlanır)
-- **Klasik & prestijli tasarım:** Lacivert + altın + bordo paleti, serif tipografi
-- **Dinamik:** Scroll animasyonları, sayaçlar, akordeon, yapışkan menü, mobil uyumlu
-- **9 çalışma alanı:** Aile, ceza, iş, ticaret, gayrimenkul, miras, icra-iflas, tazminat, tüketici
-- **SEO dostu** meta etiketleri ve erişilebilir işaretleme
+- **Modern & sade tasarım:** Lacivert + beyaz paleti, çelik mavisi vurgu, sans-serif tipografi
+- **Dinamik:** Saf-CSS scroll animasyonları, akordeon, yapışkan menü, WhatsApp butonu, mobil uyumlu
+- **8 çalışma alanı + marka tescili:** Fikri/sınai haklar, yabancılar, aile, iş, ceza, gayrimenkul,
+  icra-iflas, sözleşmeler; ayrı marka/tasarım/coğrafi işaret tescili sayfası ve başvuru formu
+- **SEO dostu:** İstanbul/Balıkesir vurgusu, LegalService JSON-LD, erişilebilir işaretleme
 
 ---
 
@@ -84,10 +86,11 @@ Detaylı kurallar ve "yapılacaklar" listesi: **[CLAUDE.md](CLAUDE.md)**
 ## Yapı
 
 ```
-index.html · hakkinda.html · calisma-alanlari.html · makaleler.html · iletisim.html
+index.html · hakkinda.html · calisma-alanlari.html · marka-tescili.html
+makaleler.html · iletisim.html · kvkk.html
 css/style.css        → tüm stiller (tasarım sistemi :root değişkenlerinde)
 js/main.js           → tüm etkileşimler
-assets/              → görseller (portre, büro fotoğrafı, logo)
+assets/              → görseller (portre, logo)
 .github/workflows/   → GitHub Pages otomatik yayın
 ```
 
