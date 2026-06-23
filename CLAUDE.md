@@ -24,7 +24,7 @@ iş, ceza, gayrimenkul, icra-iflas ve sözleşmeler hukuku alanlarında da hizme
 
 ```
 .
-├── index.html              # Ana sayfa (hero, hizmetler, marka şeridi, neden biz, CTA) — istatistik YOK
+├── index.html              # Ana sayfa (4 slaytlı hero slider, intro+Sinem imzası, hizmetler, marka şeridi, neden biz, makale önizleme, alıntı, inline iletişim formu) — istatistik YOK
 ├── hakkinda.html           # Hakkında (Sinem profili, eğitim, değerler, kurucu ortaklar/ekip)
 ├── calisma-alanlari.html   # Çalışma alanları (8 alan akordeon + marka tescili vurgusu)
 ├── marka-tescili.html      # Marka/tasarım/coğrafi işaret: aşamalar, alt hizmetler, bilgi notları, başvuru formu
@@ -163,7 +163,12 @@ Bu kararlar bağlayıcıdır; aksini kullanıcı açıkça istemedikçe uyulur.
 
 2. **Hero terazisi SADE kalır.** Av. Sinem sade terazi görselini tercih etti.
    `index.html`'deki hero `.hero-ornament` SVG'si olduğu gibi bırakılır; 3B / gösterişli /
-   scroll-etkileşimli versiyon **yapılmayacak** (talep edilmedikçe).
+   scroll-etkileşimli (WebGL/particle) versiyon **yapılmayacak**.
+   - **GÜNCELLEME (Haziran 2026, Kerem talebiyle):** Hero artık **4 slaytlı, saf-CSS
+     fade geçişli bir slider** (mesaj rotasyonu: Marka → Fikri-Sınai → Yabancılar →
+     Genel danışmanlık). Bu, "sade kalır" kararıyla çelişmez: ağır JS yok (sadece birkaç
+     satır kontrol JS'i), otomatik geçiş hover'da durur ve `prefers-reduced-motion`'da kapanır.
+     `.hero-slide` / `.hero-dots` sınıfları + `main.js` §11. Terazi `.hero-ornament` korundu.
 
 3. **Bilgi toplama formu.** Proje kökündeki `Sinem-Bilgi-Formu.xlsx`, Sinem'den bilgi ve
    tercih toplamak içindir (büro adı, iletişim, çalışma alanları, istatistik sayıları,
@@ -190,3 +195,14 @@ Bu kararlar bağlayıcıdır; aksini kullanıcı açıkça istemedikçe uyulur.
 6. **Marka kimliği.** Görünen ad: TR "Şentürk Marka ve Hukuk Bürosu" / EN "Şentürk Law & IP".
    Logo alt yazısı: TR "Marka & Hukuk Bürosu" / EN "Law & IP". İmza: "Av. & Marka Vekili Sinem Şentürk
    • Av. Yasin Emre Özbaş". Baro bilgisi **gösterilmiyor** (form: gerek yok).
+
+7. **Ana sayfa geliştirmeleri (Haziran 2026 — zenlawpartners.com kıyaslaması sonrası).**
+   Referans site bölüm bölüm incelendi; öneriler "ekle değil kıyasla" gözüyle süzüldü.
+   Eklenenler: (a) 4 slaytlı hero slider (bkz. karar #2 güncellemesi); (b) ana sayfada
+   **makale önizleme** bölümü (makaleler.html'den 3 kart + "Tüm Makaleler"); (c) ana sayfada
+   **inline iletişim formu** (`#iletisim`: Ad, E-posta, Telefon, Konu select, Mesaj — eski
+   `cta-band` bununla **değiştirildi**); (d) intro'da **Sinem imzalı** kısa misyon dokunuşu
+   (`.intro-signature`).
+   - **Bilinçli olarak EKLENMEDİ (avukatlık reklam yasağı / TBB meslek kuralları gereği):**
+     müvekkil yorumları/testimonials, başarı oranı/istatistik sayaçları, "ücretsiz değerlendirme",
+     "X dakikada dönüş" gibi aciliyet/pazarlama dili. Dil ölçülü ve kurumsal tutulur.

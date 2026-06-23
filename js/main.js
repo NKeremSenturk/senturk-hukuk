@@ -167,4 +167,47 @@
 
   /* ---------- 10. Yıl ---------- */
   document.querySelectorAll(".js-year").forEach((el) => (el.textContent = new Date().getFullYear()));
+
+  /* ---------- 11. Hero slider (saf CSS + kontrol) ---------- */
+  const hero = document.querySelector(".hero");
+  if (hero) {
+    const slides = Array.prototype.slice.call(hero.querySelectorAll(".hero-slide"));
+    const media = Array.prototype.slice.call(hero.querySelectorAll(".hero-media-slide"));
+    const dots = Array.prototype.slice.call(hero.querySelectorAll(".hero-dot"));
+    const prevBtn = hero.querySelector(".hero-arrow--prev");
+    const nextBtn = hero.querySelector(".hero-arrow--next");
+    if (slides.length > 1) {
+      let idx = 0;
+      let timer = null;
+      const INTERVAL = 6500;
+
+      const show = (n) => {
+        idx = (n + slides.length) % slides.length;
+        slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
+        media.forEach((m, i) => m.classList.toggle("is-active", i === idx));
+        dots.forEach((d, i) => {
+          d.classList.toggle("is-active", i === idx);
+          d.setAttribute("aria-selected", i === idx ? "true" : "false");
+        });
+      };
+      // Aktif noktanın ilerleme çubuğunu sıfırdan başlat
+      const restartFill = () => {
+        const dot = dots[idx];
+        const fill = dot && dot.querySelector(".hero-dot-fill");
+        if (fill) { fill.style.animation = "none"; void fill.offsetWidth; fill.style.animation = ""; }
+      };
+      const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+      const start = () => { stop(); restartFill(); timer = setInterval(() => show(idx + 1), INTERVAL); };
+      const go = (n) => { show(n); start(); };
+
+      dots.forEach((d, i) => d.addEventListener("click", () => go(i)));
+      if (prevBtn) prevBtn.addEventListener("click", () => go(idx - 1));
+      if (nextBtn) nextBtn.addEventListener("click", () => go(idx + 1));
+      hero.addEventListener("mouseenter", stop);
+      hero.addEventListener("mouseleave", start);
+      document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+
+      start();
+    }
+  }
 })();

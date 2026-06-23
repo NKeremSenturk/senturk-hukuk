@@ -368,6 +368,98 @@ p:last-child { margin-bottom: 0; }
 }
 .hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
 
+/* ===== Hero slider (saf CSS + minimal JS) ===== */
+/* Slayt arka plan katmanları (full-bleed) */
+.hero-media { position: absolute; inset: 0; z-index: 0; overflow: hidden; }
+.hero-media-slide {
+  position: absolute; inset: 0;
+  opacity: 0;
+  background-size: cover;
+  background-position: center;
+  transition: opacity 1.1s var(--ease-soft);
+}
+.hero-media-slide::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(120deg, rgba(8,20,38,0.88) 0%, rgba(11,31,58,0.66) 55%, rgba(16,42,76,0.58) 100%),
+    linear-gradient(0deg, rgba(8,20,38,0.45) 0%, transparent 45%);
+}
+.hero-media-slide.is-active { opacity: 1; animation: kenburns 12s ease-out both; }
+@keyframes kenburns { from { transform: scale(1.001); } to { transform: scale(1.09); } }
+/* Hero arka plan fotoğrafları (JuggernautXL ile üretildi, assets/ içinde) */
+.hero-media-1 { background-image: url('../assets/hero-1.jpg'); }
+.hero-media-2 { background-image: url('../assets/hero-2.jpg'); }
+.hero-media-3 { background-image: url('../assets/hero-3.jpg'); }
+.hero-media-4 { background-image: url('../assets/hero-4.jpg'); }
+
+.hero-ornament { z-index: 1; }
+
+.hero-slides { display: grid; }
+.hero-slide {
+  grid-area: 1 / 1;
+  max-width: 780px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(16px);
+  transition: opacity 0.8s var(--ease-soft), visibility 0.8s var(--ease-soft), transform 0.8s var(--ease-soft);
+}
+.hero-slide.is-active { opacity: 1; visibility: visible; transform: none; }
+
+/* Ortalanmış hero düzeni (.hero--centered) */
+.hero--centered .hero-slides { justify-items: center; }
+.hero--centered .hero-slide { margin: 0 auto; text-align: center; }
+.hero--centered .hero-slide .eyebrow { justify-content: center; }
+.hero--centered .hero-slide .eyebrow::after {
+  content: ""; width: 34px; height: 2px; background: var(--accent-300);
+}
+.hero--centered .hero-desc { margin-left: auto; margin-right: auto; }
+.hero--centered .hero-actions { justify-content: center; }
+.hero--centered .hero-dots { justify-content: center; }
+
+/* İleri / geri ok düğmeleri */
+.hero-arrow {
+  position: absolute; top: 50%; transform: translateY(-50%);
+  z-index: 3;
+  width: 52px; height: 52px; border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  color: #fff;
+  backdrop-filter: blur(3px);
+  transition: all var(--transition);
+}
+.hero-arrow:hover { background: var(--accent); border-color: var(--accent); transform: translateY(-50%) scale(1.06); }
+.hero-arrow svg { width: 22px; height: 22px; }
+.hero-arrow--prev { left: clamp(12px, 3vw, 36px); }
+.hero-arrow--next { right: clamp(12px, 3vw, 36px); }
+
+.hero-dots {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 2.2rem;
+  margin-bottom: clamp(60px, 10vw, 110px);
+  position: relative;
+  z-index: 3;
+}
+.hero-dot {
+  width: 46px; height: 4px;
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.24);
+  overflow: hidden;
+  position: relative;
+  transition: background var(--transition);
+}
+.hero-dot:hover { background: rgba(255, 255, 255, 0.45); }
+.hero-dot-fill {
+  position: absolute; inset: 0;
+  width: 0;
+  background: var(--accent-300);
+  border-radius: 4px;
+}
+.hero-dot.is-active .hero-dot-fill { animation: dotProgress 6.5s linear forwards; }
+.hero:hover .hero-dot.is-active .hero-dot-fill { animation-play-state: paused; }
+@keyframes dotProgress { from { width: 0; } to { width: 100%; } }
+
 /* Hero alt şerit: güven göstergeleri */
 .hero-trust {
   position: absolute;
@@ -506,6 +598,11 @@ p:last-child { margin-bottom: 0; }
 .feature-item-icon svg { width: 22px; height: 22px; }
 .feature-item h4 { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: var(--navy-900); margin-bottom: 0.3rem; }
 .feature-item p { font-size: 0.95rem; color: var(--muted); margin: 0; }
+
+/* Misyon imzası (intro) */
+.intro-signature { margin-top: 1.8rem; padding-left: 1.4rem; border-left: 3px solid var(--accent); }
+.intro-signature-line { font-family: var(--font-serif); font-size: 1.12rem; font-weight: 600; color: var(--navy-800); line-height: 1.5; margin-bottom: 0.6rem; }
+.intro-signature-name { display: block; font-size: 0.82rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: var(--accent); }
 
 /* Görsel çerçeve (portre / büro / İstanbul) */
 .frame-wrap {
@@ -867,6 +964,9 @@ p:last-child { margin-bottom: 0; }
   .hero-reveal .scroll-cue { opacity: 1; animation: none; transform: none; }
   .hero-reveal .hero-ornament { opacity: 0.08; }
   .hero-reveal .scroll-cue { transform: translateX(-50%); }
+  .hero-slide { transition: none; transform: none; }
+  .hero-media-slide.is-active { animation: none; }
+  .hero-dot.is-active .hero-dot-fill { animation: none; width: 100%; }
 }
 
 /* Dil görünürlüğü */
@@ -903,6 +1003,11 @@ html[lang="en"] [data-lang-en] { display: revert; }
   .nav { gap: 1rem; }
   .header .lang-switch { margin-right: 50px; }
   .hero-trust { position: static; backdrop-filter: none; margin-top: 2.5rem; }
+  .hero-dots { margin-bottom: 1.5rem; }
+  .hero-arrow { width: 40px; height: 40px; }
+  .hero-arrow svg { width: 18px; height: 18px; }
+  .hero-arrow--prev { left: 6px; }
+  .hero-arrow--next { right: 6px; }
   .hero { min-height: auto; padding-top: calc(var(--header-h) + 40px); padding-bottom: 60px; }
   .scroll-cue { display: none; }
   .form-row { grid-template-columns: 1fr; }
