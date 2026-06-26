@@ -43,6 +43,10 @@
     document.querySelectorAll("[data-ph-tr]").forEach((el) => {
       el.setAttribute("placeholder", lang === "en" ? el.dataset.phEn : el.dataset.phTr);
     });
+    // Görsel alt metinlerini güncelle (iki dilli)
+    document.querySelectorAll("img[data-alt-tr]").forEach((el) => {
+      el.setAttribute("alt", lang === "en" ? el.dataset.altEn : el.dataset.altTr);
+    });
   }
   document.querySelectorAll(".lang-switch button").forEach((b) => {
     b.addEventListener("click", () => setLang(b.dataset.lang));
@@ -210,4 +214,48 @@
       start();
     }
   }
+
+  // ----- Çerçeve slider (ana sayfa "Büromuz Hakkında": İstanbul & global akan görseller) -----
+  document.querySelectorAll("[data-slider]").forEach((slider) => {
+    const track = slider.querySelector(".frame-track");
+    const slides = Array.prototype.slice.call(slider.querySelectorAll(".frame-slide"));
+    const dotsWrap = slider.querySelector(".frame-dots");
+    if (!track || slides.length < 2) return;
+
+    const INTERVAL = parseInt(slider.dataset.sliderInterval, 10) || 5000;
+    const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    let idx = 0;
+    let timer = null;
+
+    // Noktaları oluştur
+    const dots = slides.map((_, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-label", "Görsel " + (i + 1));
+      b.addEventListener("click", () => go(i));
+      if (dotsWrap) dotsWrap.appendChild(b);
+      return b;
+    });
+
+    function show(n) {
+      idx = (n + slides.length) % slides.length;
+      track.style.transform = "translateX(" + (-idx * 100) + "%)";
+      slides.forEach((s, i) => s.classList.toggle("is-active", i === idx));
+      dots.forEach((d, i) => {
+        d.classList.toggle("is-active", i === idx);
+        d.setAttribute("aria-selected", i === idx ? "true" : "false");
+      });
+    }
+    const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
+    const start = () => { if (reduce) return; stop(); timer = setInterval(() => show(idx + 1), INTERVAL); };
+    function go(n) { show(n); start(); }
+
+    slider.addEventListener("mouseenter", stop);
+    slider.addEventListener("mouseleave", start);
+    document.addEventListener("visibilitychange", () => (document.hidden ? stop() : start()));
+
+    show(0);
+    start();
+  });
 })();

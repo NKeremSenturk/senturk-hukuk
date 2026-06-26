@@ -642,6 +642,69 @@ p:last-child { margin-bottom: 0; }
 .frame-placeholder svg { width: 60px; height: 60px; opacity: 0.55; }
 .frame-placeholder p { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
 
+/* ---------- 10b. Çerçeve slider (ana sayfa: İstanbul & global akan görseller) ---------- */
+.frame-slider { display: block; }
+.frame-track {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.9s cubic-bezier(0.65, 0, 0.35, 1);
+  will-change: transform;
+}
+.frame-slide {
+  flex: 0 0 100%;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  position: relative;
+  overflow: hidden;
+}
+.frame-slide img {
+  position: static;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transform: scale(1.06);
+  transition: transform 6s ease-out;
+}
+.frame-slide.is-active img { transform: scale(1); }
+/* Lacivert palet uyumu için hafif soğuk ton örtüsü */
+.frame-slider::before {
+  content: "";
+  position: absolute; inset: 0;
+  background: linear-gradient(160deg, rgba(11, 30, 58, 0.30), rgba(11, 30, 58, 0.10));
+  mix-blend-mode: multiply;
+  pointer-events: none;
+  z-index: 2;
+}
+.frame-dots {
+  position: absolute;
+  left: 0; right: 0; bottom: 22px;
+  z-index: 3;
+  display: flex;
+  justify-content: center;
+  gap: 9px;
+}
+.frame-dots button {
+  width: 8px; height: 8px;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.45);
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.frame-dots button:hover { background: rgba(255, 255, 255, 0.7); }
+.frame-dots button.is-active {
+  background: var(--white);
+  transform: scale(1.35);
+}
+@media (prefers-reduced-motion: reduce) {
+  .frame-track { transition: none; }
+  .frame-slide img { transition: none; transform: scale(1); }
+}
+
 /* ---------- 11. Akordeon (Çalışma alanları detay) ---------- */
 .accordion { border-top: 1px solid var(--line); }
 .acc-item { border-bottom: 1px solid var(--line); }
