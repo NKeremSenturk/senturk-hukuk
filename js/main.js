@@ -118,7 +118,7 @@
           lang === "en"
             ? "Thank you. This is a demo form — connect it to an email service or backend to receive messages."
             : "Teşekkürler. Bu bir demo formdur — mesaj alabilmek için bir e-posta servisine veya backend'e bağlanması gerekir.";
-        status.style.color = "#1b7a45";
+        status.style.color = "var(--success)";
       }
       form.reset();
     });
