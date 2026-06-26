@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://nkeremsenturk.github.io/senturk-hukuk/sitemap.xml
