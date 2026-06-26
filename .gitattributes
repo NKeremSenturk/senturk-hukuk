@@ -1,0 +1,12 @@
+# Tüm metin dosyalarını depoda LF olarak normalize et (git "LF will be replaced by CRLF" uyarısını susturur).
+# Statik site GitHub Pages'te LF ile sunulur; satır sonu farkı görsel/işlevsel etki yapmaz.
+* text=auto eol=lf
+
+# İkili (binary) varlıklar — dönüştürme yapma
+*.jpg   binary
+*.jpeg  binary
+*.png   binary
+*.webp  binary
+*.ico   binary
+*.svg   text eol=lf
+*.xlsx  binary
