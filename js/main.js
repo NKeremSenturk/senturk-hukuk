@@ -94,14 +94,18 @@
           other.classList.remove("open");
           const ob = other.querySelector(".acc-body");
           if (ob) ob.style.maxHeight = null;
+          const oh = other.querySelector(".acc-head");
+          if (oh) oh.setAttribute("aria-expanded", "false");
         }
       });
       if (isOpen) {
         item.classList.remove("open");
         body.style.maxHeight = null;
+        head.setAttribute("aria-expanded", "false");
       } else {
         item.classList.add("open");
         body.style.maxHeight = body.scrollHeight + "px";
+        head.setAttribute("aria-expanded", "true");
       }
     });
   });
