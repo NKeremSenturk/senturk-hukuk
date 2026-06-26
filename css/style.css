@@ -127,8 +127,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 }
 
 /* ---------- 3. Tipografi ---------- */
-h1, h2, h3, h4 { font-family: var(--font-display); font-weight: 700; line-height: 1.18; color: var(--navy-900); letter-spacing: -0.01em; }
-h1 { font-size: clamp(2.5rem, 5.6vw, 4.1rem); letter-spacing: -0.02em; }
+h1, h2, h3, h4, .hero .hero-title { font-family: var(--font-display); font-weight: 700; line-height: 1.18; color: var(--navy-900); letter-spacing: -0.01em; }
+h1, .hero .hero-title { font-size: clamp(2.5rem, 5.6vw, 4.1rem); letter-spacing: -0.02em; }
 h2 { font-size: clamp(1.9rem, 4vw, 2.8rem); }
 h3 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); }
 p { margin-bottom: 1rem; }
@@ -396,8 +396,8 @@ p:last-child { margin-bottom: 0; }
 .hero-content { max-width: 780px; padding-bottom: clamp(80px, 14vw, 140px); }
 .hero .eyebrow { color: var(--accent-300); }
 .hero .eyebrow::before { background: var(--accent-300); }
-.hero h1 { color: var(--white); margin-bottom: 1.5rem; }
-.hero h1 .accent { color: var(--accent-300); }
+.hero h1, .hero .hero-title { color: var(--white); margin-bottom: 1.5rem; }
+.hero h1 .accent, .hero .hero-title .accent { color: var(--accent-300); }
 .hero-desc {
   font-size: 1.2rem;
   color: rgba(255, 255, 255, 0.78);
@@ -1042,7 +1042,8 @@ p:last-child { margin-bottom: 0; }
 
 .hero-reveal .hero-ornament { animation: heroOrnIn 1.4s var(--ease-soft) both; }
 .hero-reveal .eyebrow       { opacity: 0; animation: heroUpSm 0.7s var(--ease-soft) 0.15s forwards; }
-.hero-reveal h1             { opacity: 0; animation: heroUp   1.0s var(--ease-soft) 0.30s forwards; }
+.hero-reveal h1,
+.hero-reveal .hero-title    { opacity: 0; animation: heroUp   1.0s var(--ease-soft) 0.30s forwards; }
 .hero-reveal .hero-desc     { opacity: 0; animation: heroUp   0.8s var(--ease-soft) 0.55s forwards; }
 .hero-reveal .btn-gold,
 .hero-reveal .btn-light     { opacity: 0; animation: heroPop  0.6s var(--ease-back) 0.80s forwards; }
@@ -1057,6 +1058,7 @@ p:last-child { margin-bottom: 0; }
   .hero-reveal .hero-ornament,
   .hero-reveal .eyebrow,
   .hero-reveal h1,
+  .hero-reveal .hero-title,
   .hero-reveal .hero-desc,
   .hero-reveal .btn-gold,
   .hero-reveal .btn-light,

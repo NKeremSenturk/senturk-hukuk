@@ -100,7 +100,7 @@
       <div class="hero-slides">
 
         <!-- Slayt 1: Marka & Fikri Mülkiyet (amiral gemisi) -->
-        <div class="hero-slide is-active">
+        <div class="hero-slide is-active" id="hero-slide-1" role="tabpanel" aria-labelledby="hero-tab-1">
           <span class="eyebrow" data-lang-tr>Marka &amp; Fikri Mülkiyet</span>
           <span class="eyebrow" data-lang-en>Trademark &amp; IP</span>
           <h1>
@@ -123,13 +123,13 @@
         </div>
 
         <!-- Slayt 2: Fikri ve Sınai Haklar -->
-        <div class="hero-slide">
+        <div class="hero-slide" id="hero-slide-2" role="tabpanel" aria-labelledby="hero-tab-2">
           <span class="eyebrow" data-lang-tr>Fikri ve Sınai Haklar</span>
           <span class="eyebrow" data-lang-en>Intellectual Property</span>
-          <h1>
+          <p class="hero-title">
             <span data-lang-tr>Haklarınızı tescilden <span class="accent">korumaya</span> kadar yönetiyoruz</span>
             <span data-lang-en>Managing your rights from <span class="accent">registration</span> to enforcement</span>
-          </h1>
+          </p>
           <p class="hero-desc">
             <span data-lang-tr>Marka ihlali, iptal ve hükümsüzlük davaları; telif hakları ve FSEK uyuşmazlıkları. Markanızın ve fikrinizin değerini hukukla güvence altına alıyoruz.</span>
             <span data-lang-en>Infringement, cancellation and invalidity actions; copyright and IP disputes. We secure the value of your brand and your ideas through law.</span>
@@ -146,13 +146,13 @@
         </div>
 
         <!-- Slayt 3: Yabancılar / uluslararası müvekkil -->
-        <div class="hero-slide">
+        <div class="hero-slide" id="hero-slide-3" role="tabpanel" aria-labelledby="hero-tab-3">
           <span class="eyebrow" data-lang-tr>Yabancılar Hukuku</span>
           <span class="eyebrow" data-lang-en>Immigration Law</span>
-          <h1>
+          <p class="hero-title">
             <span data-lang-tr>Türkiye'de ikamet, çalışma ve <span class="accent">vatandaşlıkta</span> yanınızda</span>
             <span data-lang-en>By your side for residence, work and <span class="accent">citizenship</span> in Türkiye</span>
-          </h1>
+          </p>
           <p class="hero-desc">
             <span data-lang-tr>İkamet ve çalışma izni, vatandaşlık ve gayrimenkul süreçlerinde; yerli ve yabancı müvekkillere iki dilli, şeffaf ve güven esaslı danışmanlık.</span>
             <span data-lang-en>Bilingual, transparent and trust-based counsel for residence and work permits, citizenship and real estate processes — for local and international clients.</span>
@@ -169,13 +169,13 @@
         </div>
 
         <!-- Slayt 4: Genel hukuki danışmanlık & güven -->
-        <div class="hero-slide">
+        <div class="hero-slide" id="hero-slide-4" role="tabpanel" aria-labelledby="hero-tab-4">
           <span class="eyebrow" data-lang-tr>Hukuki Danışmanlık</span>
           <span class="eyebrow" data-lang-en>Legal Counsel</span>
-          <h1>
+          <p class="hero-title">
             <span data-lang-tr>Aile, iş, ceza ve gayrimenkulde <span class="accent">güvenilir</span> temsil</span>
             <span data-lang-en><span class="accent">Trusted</span> representation in family, labor, criminal &amp; real estate</span>
-          </h1>
+          </p>
           <p class="hero-desc">
             <span data-lang-tr>Her dosyayı kendi dinamikleri içinde değerlendirir, size özel bir yol haritası çıkarırız. Süreç boyunca anlaşılır bir dille, düzenli olarak bilgilendirilirsiniz.</span>
             <span data-lang-en>We evaluate each file on its own dynamics and build a roadmap specific to you, keeping you informed regularly in clear language throughout the process.</span>
@@ -194,10 +194,10 @@
       </div>
 
       <div class="hero-dots" role="tablist" aria-label="Hero slaytları">
-        <button class="hero-dot is-active" type="button" role="tab" aria-selected="true" aria-label="Slayt 1 — Marka & Fikri Mülkiyet"><span class="hero-dot-fill"></span></button>
-        <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slayt 2 — Fikri ve Sınai Haklar"><span class="hero-dot-fill"></span></button>
-        <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slayt 3 — Yabancılar Hukuku"><span class="hero-dot-fill"></span></button>
-        <button class="hero-dot" type="button" role="tab" aria-selected="false" aria-label="Slayt 4 — Hukuki Danışmanlık"><span class="hero-dot-fill"></span></button>
+        <button class="hero-dot is-active" type="button" role="tab" id="hero-tab-1" aria-controls="hero-slide-1" aria-selected="true" aria-label="Slayt 1 — Marka & Fikri Mülkiyet"><span class="hero-dot-fill"></span></button>
+        <button class="hero-dot" type="button" role="tab" id="hero-tab-2" aria-controls="hero-slide-2" aria-selected="false" aria-label="Slayt 2 — Fikri ve Sınai Haklar"><span class="hero-dot-fill"></span></button>
+        <button class="hero-dot" type="button" role="tab" id="hero-tab-3" aria-controls="hero-slide-3" aria-selected="false" aria-label="Slayt 3 — Yabancılar Hukuku"><span class="hero-dot-fill"></span></button>
+        <button class="hero-dot" type="button" role="tab" id="hero-tab-4" aria-controls="hero-slide-4" aria-selected="false" aria-label="Slayt 4 — Hukuki Danışmanlık"><span class="hero-dot-fill"></span></button>
       </div>
     </div>
 
@@ -566,10 +566,10 @@
             <div class="field">
               <label for="cf-konu"><span data-lang-tr>Konu</span><span data-lang-en>Subject</span></label>
               <select id="cf-konu" name="konu">
-                <option value="marka">Marka Tescili / Trademark</option>
-                <option value="fikri">Fikri &amp; Sınai Haklar / IP</option>
-                <option value="yabancilar">Yabancılar / Immigration</option>
-                <option value="diger">Diğer / Other</option>
+                <option value="marka" data-lang-tr>Marka Tescili</option><option value="marka" data-lang-en>Trademark</option>
+                <option value="fikri" data-lang-tr>Fikri &amp; Sınai Haklar</option><option value="fikri" data-lang-en>Intellectual Property</option>
+                <option value="yabancilar" data-lang-tr>Yabancılar Hukuku</option><option value="yabancilar" data-lang-en>Immigration</option>
+                <option value="diger" data-lang-tr>Diğer</option><option value="diger" data-lang-en>Other</option>
               </select>
             </div>
             <div class="field">
