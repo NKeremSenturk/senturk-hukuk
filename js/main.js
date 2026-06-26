@@ -8,8 +8,10 @@
   /* ---------- 1. Yapışkan header ---------- */
   const header = document.querySelector(".header");
   const onScroll = () => {
-    if (window.scrollY > 40) header.classList.add("scrolled");
-    else header.classList.remove("scrolled");
+    if (header) {
+      if (window.scrollY > 40) header.classList.add("scrolled");
+      else header.classList.remove("scrolled");
+    }
 
     const toTop = document.querySelector(".to-top");
     if (toTop) {
@@ -74,48 +76,24 @@
     revealEls.forEach((el) => el.classList.add("is-visible"));
   }
 
-  /* ---------- 5. İstatistik sayaçları ---------- */
-  const counters = document.querySelectorAll(".stat-num[data-target]");
-  if (counters.length && "IntersectionObserver" in window) {
-    const animate = (el) => {
-      const target = parseFloat(el.dataset.target);
-      const suffix = el.dataset.suffix || "";
-      const dur = 1800;
-      const start = performance.now();
-      const tick = (now) => {
-        const p = Math.min((now - start) / dur, 1);
-        const eased = 1 - Math.pow(1 - p, 3);
-        const val = Math.floor(eased * target);
-        el.innerHTML = val.toLocaleString("tr-TR") + (suffix ? '<span class="suffix">' + suffix + "</span>" : "");
-        if (p < 1) requestAnimationFrame(tick);
-      };
-      requestAnimationFrame(tick);
-    };
-    const cio = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            animate(entry.target);
-            cio.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.5 }
-    );
-    counters.forEach((c) => cio.observe(c));
-  }
+  /* ---------- 5. (Kaldırıldı) İstatistik sayaçları — Sinem talebiyle istatistik
+     bölümü siteden çıkarıldı (CLAUDE.md §10.5); .stat-num[data-target] artık
+     hiçbir sayfada yok, sayaç JS'i ölü koddu ve temizlendi. ---------- */
 
   /* ---------- 6. Akordeon ---------- */
   document.querySelectorAll(".acc-head").forEach((head) => {
     head.addEventListener("click", () => {
       const item = head.closest(".acc-item");
+      if (!item) return;
       const body = item.querySelector(".acc-body");
+      if (!body) return;
       const isOpen = item.classList.contains("open");
       // Tek seferde tek açık (isteğe bağlı: tümünü kapat)
       item.parentElement.querySelectorAll(".acc-item.open").forEach((other) => {
         if (other !== item) {
           other.classList.remove("open");
-          other.querySelector(".acc-body").style.maxHeight = null;
+          const ob = other.querySelector(".acc-body");
+          if (ob) ob.style.maxHeight = null;
         }
       });
       if (isOpen) {
@@ -184,6 +162,8 @@
       let idx = 0;
       let timer = null;
       const INTERVAL = 3500;
+      // Hareketi azalt tercihine saygı: otomatik geçişi kapat (manuel ok/nokta çalışır)
+      const reduce = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
       const show = (n) => {
         idx = (n + slides.length) % slides.length;
@@ -201,7 +181,7 @@
         if (fill) { fill.style.animation = "none"; void fill.offsetWidth; fill.style.animation = ""; }
       };
       const stop = () => { if (timer) { clearInterval(timer); timer = null; } };
-      const start = () => { stop(); restartFill(); timer = setInterval(() => show(idx + 1), INTERVAL); };
+      const start = () => { if (reduce) return; stop(); restartFill(); timer = setInterval(() => show(idx + 1), INTERVAL); };
       const go = (n) => { show(n); start(); };
 
       dots.forEach((d, i) => d.addEventListener("click", () => go(i)));

@@ -358,6 +358,7 @@ p:last-child { margin-bottom: 0; }
   opacity: 0.08;
   color: var(--accent-300);
   pointer-events: none;
+  z-index: 1;
 }
 .hero .container { position: relative; z-index: 2; }
 .hero-content { max-width: 780px; padding-bottom: clamp(80px, 14vw, 140px); }
@@ -397,8 +398,6 @@ p:last-child { margin-bottom: 0; }
 .hero-media-2 { background-image: url('../assets/hero-2.jpg'); }
 .hero-media-3 { background-image: url('../assets/hero-3.jpg'); }
 .hero-media-4 { background-image: url('../assets/hero-4.jpg'); }
-
-.hero-ornament { z-index: 1; }
 
 .hero-slides { display: grid; }
 .hero-slide {
