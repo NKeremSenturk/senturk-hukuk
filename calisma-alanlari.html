@@ -13,6 +13,8 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;"><span data-lang-tr>İçeriğe geç</span><span data-lang-en>Skip to content</span></a>
+
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -31,16 +33,16 @@
           <li><a href="makaleler.html"><span data-lang-tr>Makaleler</span><span data-lang-en>Articles</span></a></li>
           <li><a href="iletisim.html"><span data-lang-tr>İletişim</span><span data-lang-en>Contact</span></a></li>
         </ul>
-        <div class="lang-switch">
-          <button data-lang="tr" class="active">TR</button>
-          <button data-lang="en">EN</button>
+        <div class="lang-switch" role="group" aria-label="Dil seçimi / Language">
+          <button type="button" data-lang="tr" class="active" aria-label="Türkçe">TR</button>
+          <button type="button" data-lang="en" aria-label="English">EN</button>
         </div>
         <button class="nav-toggle" aria-label="Menü"><span></span><span></span><span></span></button>
       </nav>
     </div>
   </header>
 
-  <section class="page-hero">
+  <section class="page-hero" id="main-content" tabindex="-1">
     <div class="hero-bg"></div>
     <div class="container">
       <div class="breadcrumb">
@@ -223,7 +225,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a href="index.html" class="logo">
-        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><clipPath id="lmk"><rect x="0" y="0" width="100" height="31"/><rect x="0" y="69" width="100" height="31"/></clipPath></defs><g clip-path="url(#lmk)" fill="none" stroke="#fff" stroke-opacity="0.78" stroke-width="2"><circle cx="50" cy="50" r="46"/><ellipse cx="50" cy="50" rx="15" ry="46"/><ellipse cx="50" cy="50" rx="31" ry="46"/><line x1="50" y1="4" x2="50" y2="96"/><ellipse cx="50" cy="50" rx="46" ry="15"/><ellipse cx="50" cy="50" rx="46" ry="31"/></g><text x="50" y="64" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="40" fill="#fff">Ş</text></svg></span>
+        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><clipPath id="lmk-f"><rect x="0" y="0" width="100" height="31"/><rect x="0" y="69" width="100" height="31"/></clipPath></defs><g clip-path="url(#lmk-f)" fill="none" stroke="#fff" stroke-opacity="0.78" stroke-width="2"><circle cx="50" cy="50" r="46"/><ellipse cx="50" cy="50" rx="15" ry="46"/><ellipse cx="50" cy="50" rx="31" ry="46"/><line x1="50" y1="4" x2="50" y2="96"/><ellipse cx="50" cy="50" rx="46" ry="15"/><ellipse cx="50" cy="50" rx="46" ry="31"/></g><text x="50" y="64" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="40" fill="#fff">Ş</text></svg></span>
         <span class="logo-text">
           <span class="logo-name">Şentürk</span>
           <span class="logo-sub" data-lang-tr>Marka &amp; Hukuk Bürosu</span><span class="logo-sub" data-lang-en>Law &amp; IP</span>

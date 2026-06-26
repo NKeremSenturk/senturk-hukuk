@@ -14,6 +14,8 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;"><span data-lang-tr>İçeriğe geç</span><span data-lang-en>Skip to content</span></a>
+
   <header class="header">
     <div class="container">
       <a href="index.html" class="logo">
@@ -32,16 +34,16 @@
           <li><a href="makaleler.html"><span data-lang-tr>Makaleler</span><span data-lang-en>Articles</span></a></li>
           <li><a href="iletisim.html"><span data-lang-tr>İletişim</span><span data-lang-en>Contact</span></a></li>
         </ul>
-        <div class="lang-switch">
-          <button data-lang="tr" class="active">TR</button>
-          <button data-lang="en">EN</button>
+        <div class="lang-switch" role="group" aria-label="Dil seçimi / Language">
+          <button type="button" data-lang="tr" class="active" aria-label="Türkçe">TR</button>
+          <button type="button" data-lang="en" aria-label="English">EN</button>
         </div>
         <button class="nav-toggle" aria-label="Menü"><span></span><span></span><span></span></button>
       </nav>
     </div>
   </header>
 
-  <section class="page-hero">
+  <section class="page-hero" id="main-content" tabindex="-1">
     <div class="hero-bg"></div>
     <div class="container">
       <div class="breadcrumb">
@@ -186,28 +188,28 @@
         <form class="form" id="contact-form" style="max-width:760px;margin:0 auto">
           <div class="form-row">
             <div class="field">
-              <label data-lang-tr>Ad Soyad</label><label data-lang-en>Full Name</label>
-              <input type="text" name="name" required data-ph-tr="Adınız Soyadınız" data-ph-en="Your full name" placeholder="Adınız Soyadınız" />
+              <label for="mt-name" data-lang-tr>Ad Soyad</label><label for="mt-name" data-lang-en>Full Name</label>
+              <input id="mt-name" type="text" name="name" required data-ph-tr="Adınız Soyadınız" data-ph-en="Your full name" placeholder="Adınız Soyadınız" />
             </div>
             <div class="field">
-              <label data-lang-tr>Firma / Kurum (varsa)</label><label data-lang-en>Company (if any)</label>
-              <input type="text" name="company" data-ph-tr="Firma adı" data-ph-en="Company name" placeholder="Firma adı" />
-            </div>
-          </div>
-          <div class="form-row">
-            <div class="field">
-              <label data-lang-tr>Telefon</label><label data-lang-en>Phone</label>
-              <input type="tel" name="phone" data-ph-tr="05xx xxx xx xx" data-ph-en="Your phone number" placeholder="05xx xxx xx xx" />
-            </div>
-            <div class="field">
-              <label data-lang-tr>E-posta</label><label data-lang-en>Email</label>
-              <input type="email" name="email" required data-ph-tr="ornek@eposta.com" data-ph-en="you@example.com" placeholder="ornek@eposta.com" />
+              <label for="mt-company" data-lang-tr>Firma / Kurum (varsa)</label><label for="mt-company" data-lang-en>Company (if any)</label>
+              <input id="mt-company" type="text" name="company" data-ph-tr="Firma adı" data-ph-en="Company name" placeholder="Firma adı" />
             </div>
           </div>
           <div class="form-row">
             <div class="field">
-              <label data-lang-tr>Başvuru Türü</label><label data-lang-en>Application Type</label>
-              <select name="type">
+              <label for="mt-phone" data-lang-tr>Telefon</label><label for="mt-phone" data-lang-en>Phone</label>
+              <input id="mt-phone" type="tel" name="phone" data-ph-tr="05xx xxx xx xx" data-ph-en="Your phone number" placeholder="05xx xxx xx xx" />
+            </div>
+            <div class="field">
+              <label for="mt-email" data-lang-tr>E-posta</label><label for="mt-email" data-lang-en>Email</label>
+              <input id="mt-email" type="email" name="email" required data-ph-tr="ornek@eposta.com" data-ph-en="you@example.com" placeholder="ornek@eposta.com" />
+            </div>
+          </div>
+          <div class="form-row">
+            <div class="field">
+              <label for="mt-type" data-lang-tr>Başvuru Türü</label><label for="mt-type" data-lang-en>Application Type</label>
+              <select id="mt-type" name="type">
                 <option data-lang-tr>Marka Tescili</option><option data-lang-en>Trademark</option>
                 <option data-lang-tr>Tasarım Tescili</option><option data-lang-en>Design</option>
                 <option data-lang-tr>Coğrafi İşaret Tescili</option><option data-lang-en>Geographical Indication</option>
@@ -217,13 +219,13 @@
               </select>
             </div>
             <div class="field">
-              <label data-lang-tr>Marka / Tasarım Adı</label><label data-lang-en>Brand / Design Name</label>
-              <input type="text" name="brand" data-ph-tr="Tescil ettirmek istediğiniz ad" data-ph-en="Name to register" placeholder="Tescil ettirmek istediğiniz ad" />
+              <label for="mt-brand" data-lang-tr>Marka / Tasarım Adı</label><label for="mt-brand" data-lang-en>Brand / Design Name</label>
+              <input id="mt-brand" type="text" name="brand" data-ph-tr="Tescil ettirmek istediğiniz ad" data-ph-en="Name to register" placeholder="Tescil ettirmek istediğiniz ad" />
             </div>
           </div>
           <div class="field">
-            <label data-lang-tr>Açıklama / Mal-Hizmet Sınıfı</label><label data-lang-en>Description / Goods-Services Class</label>
-            <textarea name="message" data-ph-tr="Faaliyet alanınızı ve markanızı kısaca açıklayın..." data-ph-en="Briefly describe your field of activity and your brand..." placeholder="Faaliyet alanınızı ve markanızı kısaca açıklayın..."></textarea>
+            <label for="mt-message" data-lang-tr>Açıklama / Mal-Hizmet Sınıfı</label><label for="mt-message" data-lang-en>Description / Goods-Services Class</label>
+            <textarea id="mt-message" name="message" data-ph-tr="Faaliyet alanınızı ve markanızı kısaca açıklayın..." data-ph-en="Briefly describe your field of activity and your brand..." placeholder="Faaliyet alanınızı ve markanızı kısaca açıklayın..."></textarea>
           </div>
           <button type="submit" class="btn btn-primary">
             <span data-lang-tr>Başvuruyu Gönder</span><span data-lang-en>Submit Application</span>
@@ -255,7 +257,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a href="index.html" class="logo">
-        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><clipPath id="lmk"><rect x="0" y="0" width="100" height="31"/><rect x="0" y="69" width="100" height="31"/></clipPath></defs><g clip-path="url(#lmk)" fill="none" stroke="#fff" stroke-opacity="0.78" stroke-width="2"><circle cx="50" cy="50" r="46"/><ellipse cx="50" cy="50" rx="15" ry="46"/><ellipse cx="50" cy="50" rx="31" ry="46"/><line x1="50" y1="4" x2="50" y2="96"/><ellipse cx="50" cy="50" rx="46" ry="15"/><ellipse cx="50" cy="50" rx="46" ry="31"/></g><text x="50" y="64" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="40" fill="#fff">Ş</text></svg></span>
+        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><clipPath id="lmk-f"><rect x="0" y="0" width="100" height="31"/><rect x="0" y="69" width="100" height="31"/></clipPath></defs><g clip-path="url(#lmk-f)" fill="none" stroke="#fff" stroke-opacity="0.78" stroke-width="2"><circle cx="50" cy="50" r="46"/><ellipse cx="50" cy="50" rx="15" ry="46"/><ellipse cx="50" cy="50" rx="31" ry="46"/><line x1="50" y1="4" x2="50" y2="96"/><ellipse cx="50" cy="50" rx="46" ry="15"/><ellipse cx="50" cy="50" rx="46" ry="31"/></g><text x="50" y="64" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="40" fill="#fff">Ş</text></svg></span>
         <span class="logo-text">
           <span class="logo-name">Şentürk</span>
           <span class="logo-sub" data-lang-tr>Marka &amp; Hukuk Bürosu</span><span class="logo-sub" data-lang-en>Law &amp; IP</span>

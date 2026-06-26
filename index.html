@@ -38,6 +38,8 @@
 </head>
 <body>
 
+  <a href="#main-content" class="skip-link" style="position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);border:0;"><span data-lang-tr>İçeriğe geç</span><span data-lang-en>Skip to content</span></a>
+
   <!-- ============ HEADER ============ -->
   <header class="header">
     <div class="container">
@@ -57,9 +59,9 @@
           <li><a href="makaleler.html"><span data-lang-tr>Makaleler</span><span data-lang-en>Articles</span></a></li>
           <li><a href="iletisim.html"><span data-lang-tr>İletişim</span><span data-lang-en>Contact</span></a></li>
         </ul>
-        <div class="lang-switch">
-          <button data-lang="tr" class="active">TR</button>
-          <button data-lang="en">EN</button>
+        <div class="lang-switch" role="group" aria-label="Dil seçimi / Language">
+          <button type="button" data-lang="tr" class="active" aria-label="Türkçe">TR</button>
+          <button type="button" data-lang="en" aria-label="English">EN</button>
         </div>
         <button class="nav-toggle" aria-label="Menü"><span></span><span></span><span></span></button>
       </nav>
@@ -67,7 +69,7 @@
   </header>
 
   <!-- ============ HERO ============ -->
-  <section class="hero hero-reveal hero--centered">
+  <section class="hero hero-reveal hero--centered" id="main-content" tabindex="-1">
     <div class="hero-bg"></div>
     <div class="hero-media" aria-hidden="true">
       <div class="hero-media-slide hero-media-1 is-active"></div>
@@ -532,22 +534,22 @@
         <div class="reveal reveal-delay-1">
           <form class="form" id="contact-form" novalidate>
             <div class="field">
-              <label><span data-lang-tr>Ad Soyad</span><span data-lang-en>Full Name</span></label>
-              <input type="text" name="ad" data-ph-tr="Adınız ve soyadınız" data-ph-en="Your full name" required />
+              <label for="cf-ad"><span data-lang-tr>Ad Soyad</span><span data-lang-en>Full Name</span></label>
+              <input id="cf-ad" type="text" name="ad" data-ph-tr="Adınız ve soyadınız" data-ph-en="Your full name" required />
             </div>
             <div class="form-row">
               <div class="field">
-                <label><span data-lang-tr>E-posta</span><span data-lang-en>E-mail</span></label>
-                <input type="email" name="email" data-ph-tr="ornek@eposta.com" data-ph-en="you@email.com" required />
+                <label for="cf-email"><span data-lang-tr>E-posta</span><span data-lang-en>E-mail</span></label>
+                <input id="cf-email" type="email" name="email" data-ph-tr="ornek@eposta.com" data-ph-en="you@email.com" required />
               </div>
               <div class="field">
-                <label><span data-lang-tr>Telefon</span><span data-lang-en>Phone</span></label>
-                <input type="tel" name="telefon" data-ph-tr="+90 5xx xxx xx xx" data-ph-en="+90 5xx xxx xx xx" />
+                <label for="cf-telefon"><span data-lang-tr>Telefon</span><span data-lang-en>Phone</span></label>
+                <input id="cf-telefon" type="tel" name="telefon" data-ph-tr="+90 5xx xxx xx xx" data-ph-en="+90 5xx xxx xx xx" />
               </div>
             </div>
             <div class="field">
-              <label><span data-lang-tr>Konu</span><span data-lang-en>Subject</span></label>
-              <select name="konu">
+              <label for="cf-konu"><span data-lang-tr>Konu</span><span data-lang-en>Subject</span></label>
+              <select id="cf-konu" name="konu">
                 <option value="marka">Marka Tescili / Trademark</option>
                 <option value="fikri">Fikri &amp; Sınai Haklar / IP</option>
                 <option value="yabancilar">Yabancılar / Immigration</option>
@@ -555,8 +557,8 @@
               </select>
             </div>
             <div class="field">
-              <label><span data-lang-tr>Mesajınız</span><span data-lang-en>Your Message</span></label>
-              <textarea name="mesaj" data-ph-tr="Kısaca konunuzdan bahsedin..." data-ph-en="Briefly describe your matter..."></textarea>
+              <label for="cf-mesaj"><span data-lang-tr>Mesajınız</span><span data-lang-en>Your Message</span></label>
+              <textarea id="cf-mesaj" name="mesaj" data-ph-tr="Kısaca konunuzdan bahsedin..." data-ph-en="Briefly describe your matter..."></textarea>
             </div>
             <button type="submit" class="btn btn-primary">
               <span data-lang-tr>Mesajı Gönder</span><span data-lang-en>Send Message</span>
@@ -577,7 +579,7 @@
       <div class="footer-grid">
         <div class="footer-about">
           <a href="index.html" class="logo">
-        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><clipPath id="lmk"><rect x="0" y="0" width="100" height="31"/><rect x="0" y="69" width="100" height="31"/></clipPath></defs><g clip-path="url(#lmk)" fill="none" stroke="#fff" stroke-opacity="0.78" stroke-width="2"><circle cx="50" cy="50" r="46"/><ellipse cx="50" cy="50" rx="15" ry="46"/><ellipse cx="50" cy="50" rx="31" ry="46"/><line x1="50" y1="4" x2="50" y2="96"/><ellipse cx="50" cy="50" rx="46" ry="15"/><ellipse cx="50" cy="50" rx="46" ry="31"/></g><text x="50" y="64" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="40" fill="#fff">Ş</text></svg></span>
+        <span class="logo-mark" aria-hidden="true"><svg viewBox="0 0 100 100"><defs><clipPath id="lmk-f"><rect x="0" y="0" width="100" height="31"/><rect x="0" y="69" width="100" height="31"/></clipPath></defs><g clip-path="url(#lmk-f)" fill="none" stroke="#fff" stroke-opacity="0.78" stroke-width="2"><circle cx="50" cy="50" r="46"/><ellipse cx="50" cy="50" rx="15" ry="46"/><ellipse cx="50" cy="50" rx="31" ry="46"/><line x1="50" y1="4" x2="50" y2="96"/><ellipse cx="50" cy="50" rx="46" ry="15"/><ellipse cx="50" cy="50" rx="46" ry="31"/></g><text x="50" y="64" text-anchor="middle" font-family="'Cormorant Garamond',Georgia,serif" font-weight="600" font-size="40" fill="#fff">Ş</text></svg></span>
         <span class="logo-text">
           <span class="logo-name">Şentürk</span>
           <span class="logo-sub" data-lang-tr>Marka &amp; Hukuk Bürosu</span><span class="logo-sub" data-lang-en>Law &amp; IP</span>
