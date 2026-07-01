@@ -104,12 +104,23 @@ Header'da dikey E5 yerine **ikon+wordmark** kullanıldı (slim header + mobil uy
 Serif yalnız logoda; gövde metni hâlâ sans (Plus Jakarta + Inter). Sans logo dosyaları
 (`e5-*-sans.svg`) envanterde duruyor; font kararı değişirse `--font-logo` tek satırda döner.
 
+**Portre fotoğrafları EKLENDİ (Haziran 2026, Kerem):** Sinem ve Yasin'in gerçek
+portreleri geldi. Kaynaklar kök dizinde (`Sinem.jpg`, `Yasin.jpeg` — repoya GİRMEZ);
+işlenmiş web sürümleri `assets/team/sinem.jpg` ve `assets/team/yasin.jpg` (siyah bant
+kırpıldı, 4/5'e yakın portre, ~760px, ~60KB). `hakkinda.html`'de: (a) Sinem spotlight
+`.frame-placeholder` → gerçek `<img>`; (b) eski küçük avatarlı **"Kurucu Ortaklar"**
+bölümü, solda Sinem / sağda Yasin, **büyük portre üstte + bilgi altta** olan 50/50
+`.founders-grid`/`.founder-card` düzenine çevrildi (760px altında tek sütun, hover zoom).
+Eski `.team-grid/.team-card/.team-photo` CSS'i kaldırıldı. Yasin'in adı (Kerem onayı) tam
+hâliyle "Av. Yasin Emre Özbaş" korundu.
+
 **Hâlâ Sinem'den beklenenler (geldiğinde işlenecek):**
 - **Kesin renk/stil tercihi** → Sinem net renk/logoyu iletince `:root` ince ayarı yapılır.
-- **Portre fotoğrafı** (Sinem) → `.frame-placeholder` / `.team-photo` yerine `<img>`.
 - Sosyal medya `href="#"` (LinkedIn / Instagram) → gerçek bağlantılar.
 - Gerçek makale metinleri → `makaleler.html` (şu an örnek başlıklar).
 - KVKK metni → `kvkk.html` taslağı büro tarafından onaylanmalı.
+- **Sinem'in el yazısı imzası (SVG)** → hero/intro'da kalemle çizilme animasyonu
+  (`stroke-dashoffset`, saf CSS). İmza gelince `.intro-signature`'a gömülecek. (İMZA HAREKETİ)
 
 > **Soyadı notu:** "Şentürk" doğrulandı (form Q2). İstatistik bölümü Sinem'in talebiyle
 > **kaldırıldı** (form Q29 = Hayır) — `data-target` sayaçları artık kullanılmıyor.
@@ -221,3 +232,71 @@ Bu kararlar bağlayıcıdır; aksini kullanıcı açıkça istemedikçe uyulur.
    - **Bilinçli olarak EKLENMEDİ (avukatlık reklam yasağı / TBB meslek kuralları gereği):**
      müvekkil yorumları/testimonials, başarı oranı/istatistik sayaçları, "ücretsiz değerlendirme",
      "X dakikada dönüş" gibi aciliyet/pazarlama dili. Dil ölçülü ve kurumsal tutulur.
+
+---
+
+## 11. Temmuz 2026 — "İmza hareketi" / altyapı geliştirme kararları (Kerem sohbeti)
+
+Bu kararlar bağlayıcıdır. Kerem tek tek onayladı; sıra ve gerekçeler aşağıda.
+
+**A. İletişim formu artık gerçekten çalışacak (EN YÜKSEK ÖNCELİK — "kanayan yara").**
+   - Şu an 3 form da (`index.html`, `iletisim.html`, `marka-tescili.html`) demo; mesaj yok oluyor
+     (`js/main.js` §7). Düzeltilecek.
+   - **Kanal 1 — WhatsApp/e-posta derin bağlantısı:** form içeriği düzenli metne dönüşüp
+     `wa.me/905342428081`'e ve/veya `mailto:`'ya hazır açılır (backendsiz, %100 çalışır).
+   - **Kanal 2 — Ücretsiz form servisi (Web3Forms/Formspree):** mesaj gerçek bir gelen kutusuna
+     düşer + KVKK onay kutusu eklenir.
+   - ⚠️ **GEÇİCİ ADRES NOTU (sonra değişecek):** Sinem'in henüz kurumsal maili YOK. Form ve
+     tüm bağlantılar **şimdilik kişisel adrese** gider: **e-posta `17ssenturk@gmail.com`**,
+     **telefon/WhatsApp `+90 534 242 80 81` (905342428081)**. Kurumsal mail + kurumsal telefon
+     alınınca bu iki değer TEK yerden güncellenecek (mümkünse bir sabit/`:root` benzeri tek kaynak).
+
+**B. Gizli, çerezsiz analytics eklenecek (Kerem: "işin hacmini ölçmek istiyoruz").**
+   - Ekranda GÖSTERİLMEZ (istatistik yasağı + Sinem tercihi korunur). Sadece büro görür.
+   - Öneri: **Cloudflare Web Analytics** (bedava, çerezsiz, cookie-banner gerektirmez, GitHub
+     Pages uyumlu) veya GoatCounter. Tek `<script>` satırı, 7 sayfaya eklenir.
+
+**C. Fontlar kendine host edilecek ("yazılımcı imzası" — Lighthouse 100 hedefi).**
+   - KVKK gerekçesi doğrulandı (Temmuz 2026 araştırma): TR'de IP kişisel veri; Google Fonts =
+     yurt dışına aktarım. TR'de Almanya gibi emsal dava yok + Google'ın KVKK aktarım izni var,
+     yani risk düşük AMA host etmek bedava + siteyi hızlandırıyor → tartışmayı sıfırlar. Karar: HOST ET.
+   - Plus Jakarta Sans + Inter + Cormorant Garamond (logo) `assets/fonts/`'a indirilecek,
+     `@font-face` ile tanımlanacak, `index.html:21-23` Google Fonts `<link>`'leri kaldırılacak (7 sayfada).
+
+**D. vCard + QR "Kişilerime Ekle" (iletişim sayfası) — imza hareketine yakın pratik özellik.**
+   - `.vcf` indirme + önceden üretilmiş QR (SVG). Şimdilik mevcut numara `905342428081` ve
+     `17ssenturk@gmail.com` ile; kurumsal bilgiler gelince güncellenecek (bkz. A notu).
+
+**E. "Markanız tescile uygun mu?" 5 soruluk mini sihirbaz (saf JS) + TÜRKPATENT sorgu bağlantısı.**
+   - `marka-tescili.html`'e; söz/garanti vermeden bilgilendirici, sonunda iletişime yönlendirir
+     (avukatlık reklam yasağına dikkat: vaat YOK).
+
+**F. Zarif karanlık mod.** Lacivert palet uygun; dil geçişi gibi `localStorage` ile hatırlanır, ağırlıksız.
+
+**G. İmza hareketinin kalbi — el yazısı imza animasyonu:** Sinem'in gerçek imzası gelince
+   yapılacak (bkz. Bölüm 5 "beklenenler"). Şimdilik beklemede.
+
+### Uygulama durumu (Temmuz 2026 — tarayıcıda test edildi)
+
+- **A. Form ✅ ÇALIŞIYOR.** `js/main.js` §7 forma-bağımsız handler (etiket okur, 3 formun farklı
+  alan adlarına rağmen çalışır). Her formda KVKK onay kutusu + "WhatsApp'tan Gönder" butonu
+  (`iletisim/index/marka-tescili`). Anahtar yoksa mailto ile açılır (mesaj kaybolmaz).
+  → **BEKLEYEN (Kerem):** web3forms.com'dan `17ssenturk@gmail.com` ile Access Key al →
+  `main.js` `CONTACT.web3formsKey` satırına yapıştır. `CONTACT` = tek kaynak (mail+telefon).
+- **C. Fontlar ✅ HOST EDİLDİ.** `assets/fonts/` içinde 6 variable woff2 (latin+latin-ext, 247KB).
+  `style.css` başında `@font-face`. 7 HTML'den Google Fonts `<link>`'leri kaldırıldı. Türkçe tam.
+- **D. vCard + QR ✅.** `assets/sinem-senturk.vcf` + `assets/qr-site.svg` (segno, lacivert).
+  `iletisim.html`'de "Kişilerime Ekle" + QR bloğu. QR site URL'ini kodlar (github.io — domain
+  değişince yeniden üret).
+- **E. Marka sihirbazı ✅.** `marka-tescili.html` #on-degerlendirme, `main.js` §12 (veri-güdümlü,
+  5 soru, dil değişince yeniden çizer). TÜRKPATENT linki + #basvuru CTA. Reklam yasağına uygun (vaat yok).
+- **F. Karanlık mod ✅.** `data-theme="dark"`, header'da tema butonu (7 sayfa), `<head>`'de
+  FOUC-önleyen satır-içi script, `localStorage 'ssh-theme'`. Yeni semantik token `--surface`
+  (yüzeyler); dark'ta başlıklar/metin aydınlatılır, navy-900 zeminler koyu kalır.
+- **B. Analytics ⏳ PLACEHOLDER.** 7 sayfada `</body>` öncesi Cloudflare Web Analytics snippet'i
+  **yorum içinde** (konsol hatası yok). → **BEKLEYEN (Kerem):** dash.cloudflare.com → Web Analytics
+  → token al → snippet'e yapıştır + yorum işaretlerini kaldır.
+
+**Ayrıca gözden geçirilecek:** İletişim sayfasında **görünen** e-posta hâlâ `info@senturklawfirm.com`
+(vCard'da da bu). Bu kutu aktif değilse gelen mail'ler kaybolur — Sinem bu adresi açacak mı, yoksa
+şimdilik `17ssenturk@gmail.com` mı gösterilsin, karara bağlı.

@@ -17,9 +17,7 @@
   <meta name="twitter:title" content="İletişim — Randevu &amp; Online Danışmanlık" />
   <meta name="twitter:description" content="Şentürk Marka ve Hukuk Bürosu ile iletişime geçin. Randevu, online danışmanlık ve marka başvurusu için form, telefon, WhatsApp ve e-posta. Ataşehir / İstanbul." />
   <meta name="twitter:image" content="https://nkeremsenturk.github.io/senturk-hukuk/assets/hero-1.jpg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com" />
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>try{var t=localStorage.getItem('ssh-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/logo/e5-icon-dark.svg" />
 </head>
@@ -49,6 +47,10 @@
           <button type="button" data-lang="tr" class="active" aria-label="Türkçe">TR</button>
           <button type="button" data-lang="en" aria-label="English">EN</button>
         </div>
+        <button type="button" class="theme-toggle" aria-label="Koyu / açık tema" aria-pressed="false" title="Koyu / açık tema">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M21 12.8A9 9 0 1111.2 3a7 7 0 009.8 9.8z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4 12H2M22 12h-2M5 5l1.4 1.4M17.6 17.6L19 19M19 5l-1.4 1.4M6.4 17.6L5 19" stroke-linecap="round"/></svg>
+        </button>
         <button class="nav-toggle" aria-label="Menü"><span></span><span></span><span></span></button>
       </nav>
     </div>
@@ -120,6 +122,23 @@
             </div>
           </div>
 
+          <!-- Kişilerime Ekle (vCard) + QR (Temmuz 2026) -->
+          <div class="vcard-block">
+            <div class="vcard-text">
+              <h4 data-lang-tr>Rehberinize ekleyin</h4><h4 data-lang-en>Save our contact</h4>
+              <p data-lang-tr>Tek dokunuşla iletişim bilgilerimizi telefonunuza kaydedin ya da kodu okutup siteyi açın.</p>
+              <p data-lang-en>Save our details to your phone with one tap, or scan the code to open the site.</p>
+              <a class="btn btn-primary" href="assets/sinem-senturk.vcf" download>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M16 21v-2a4 4 0 00-4-4H6a4 4 0 00-4 4v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="9" cy="7" r="4"/><path d="M19 8v6M22 11h-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                <span data-lang-tr>Kişilerime Ekle</span><span data-lang-en>Add to Contacts</span>
+              </a>
+            </div>
+            <figure class="vcard-qr">
+              <img src="assets/qr-site.svg" width="120" height="120" alt="" aria-hidden="true" />
+              <figcaption data-lang-tr>Kodu okutun</figcaption><figcaption data-lang-en>Scan the code</figcaption>
+            </figure>
+          </div>
+
           <div class="map-frame">
             <iframe
               title="Şentürk Marka ve Hukuk Bürosu — Harita / Map"
@@ -175,10 +194,23 @@
               <label for="il-message" data-lang-tr>Mesajınız</label><label for="il-message" data-lang-en>Your Message</label>
               <textarea id="il-message" name="message" required data-ph-tr="Konunuzu kısaca açıklayın..." data-ph-en="Briefly describe your matter..." placeholder="Konunuzu kısaca açıklayın..."></textarea>
             </div>
-            <button type="submit" class="btn btn-primary">
-              <span data-lang-tr>Gönder</span><span data-lang-en>Send</span>
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
-            </button>
+            <div class="field field-consent">
+              <label class="consent">
+                <input type="checkbox" name="consent" required />
+                <span data-lang-tr>Kişisel verilerimin, talebimin değerlendirilmesi amacıyla işlenmesine ve <a href="kvkk.html">KVKK Aydınlatma Metni</a>'ne uygun olarak saklanmasına onay veriyorum.</span>
+                <span data-lang-en>I consent to the processing of my personal data to evaluate my request, in accordance with the <a href="kvkk.html">Privacy Notice</a>.</span>
+              </label>
+            </div>
+            <div class="form-actions">
+              <button type="submit" class="btn btn-primary">
+                <span data-lang-tr>Gönder</span><span data-lang-en>Send</span>
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 2L11 13M22 2l-7 20-4-9-9-4 20-7z" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </button>
+              <button type="button" class="btn btn-outline form-wa">
+                <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.2-4.6-.1-.2-1.2-1.6-1.2-3 0-1.5.8-2.2 1-2.5.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2 1c.3.1.4.2.5.3.1.2.1.7-.1 1.4z"/></svg>
+                <span data-lang-tr>WhatsApp'tan Gönder</span><span data-lang-en>Send via WhatsApp</span>
+              </button>
+            </div>
             <p class="form-status" style="margin-top:1rem;font-size:0.9rem;text-align:center"></p>
             <p class="form-note" data-lang-tr>Bilgileriniz gizlilik ilkesiyle korunur ve üçüncü kişilerle paylaşılmaz.</p>
             <p class="form-note" data-lang-en>Your information is protected by confidentiality and never shared with third parties.</p>
@@ -263,5 +295,11 @@
   <a href="https://wa.me/905342428081" target="_blank" rel="noopener" class="wa-float" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a10 10 0 00-8.6 15l-1.3 4.7 4.8-1.3A10 10 0 1012 2zm5.8 14.2c-.2.7-1.4 1.3-2 1.4-.5.1-1.2.1-1.9-.1-.4-.1-1-.3-1.8-.6-3-1.3-5-4.4-5.2-4.6-.1-.2-1.2-1.6-1.2-3 0-1.5.8-2.2 1-2.5.3-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5l.8 2c.1.2.1.4 0 .5l-.4.6c-.2.2-.3.4-.1.7.2.3.9 1.4 1.9 2.3 1.3 1.1 2.3 1.5 2.6 1.6.3.1.5.1.7-.1l.8-1c.2-.2.4-.2.6-.1l2 1c.3.1.4.2.5.3.1.2.1.7-.1 1.4z"/></svg></a>
   <a href="#" class="to-top" aria-label="Yukarı çık"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 19V5M5 12l7-7 7 7" stroke-linecap="round" stroke-linejoin="round"/></svg></a>
   <script src="js/main.js"></script>
+  <!-- Cerezsiz ziyaretci analizi (Cloudflare Web Analytics) - Temmuz 2026
+       KURULUM: dash.cloudflare.com -> Web Analytics -> site ekle -> verilen token'i
+       asagiya yapistirip bu yorum isaretlerini kaldirin. Cerez yok, KVKK/GDPR dostu.
+  <script defer src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon="{&quot;token&quot;: &quot;BURAYA_CLOUDFLARE_TOKEN&quot;}"></script>
+  -->
 </body>
 </html>

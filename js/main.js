@@ -57,6 +57,24 @@
   try { saved = localStorage.getItem(STORAGE_KEY) || "tr"; } catch (e) {}
   setLang(saved);
 
+  /* ---------- 3b. Tema (açık / koyu) ----------
+     İlk tema <head>'deki satır-içi script ile FOUC olmadan uygulanır;
+     burada yalnızca değiştirme butonu ve kalıcılık yönetilir. */
+  const THEME_KEY = "ssh-theme";
+  function setTheme(t) {
+    document.documentElement.setAttribute("data-theme", t);
+    try { localStorage.setItem(THEME_KEY, t); } catch (e) {}
+    document.querySelectorAll(".theme-toggle").forEach((b) =>
+      b.setAttribute("aria-pressed", t === "dark" ? "true" : "false")
+    );
+  }
+  if (!document.documentElement.getAttribute("data-theme")) setTheme("light");
+  document.querySelectorAll(".theme-toggle").forEach((b) =>
+    b.addEventListener("click", () =>
+      setTheme(document.documentElement.getAttribute("data-theme") === "dark" ? "light" : "dark")
+    )
+  );
+
   /* ---------- 4. Scroll-reveal ---------- */
   const revealEls = document.querySelectorAll(".reveal");
   if ("IntersectionObserver" in window && revealEls.length) {
@@ -110,22 +128,152 @@
     });
   });
 
-  /* ---------- 7. İletişim formu (backend yok — mailto/uyarı) ---------- */
-  const form = document.querySelector("#contact-form");
-  if (form) {
-    form.addEventListener("submit", (e) => {
-      e.preventDefault();
-      const status = form.querySelector(".form-status");
-      const lang = document.documentElement.getAttribute("lang");
-      if (status) {
-        status.textContent =
-          lang === "en"
-            ? "Thank you. This is a demo form — connect it to an email service or backend to receive messages."
-            : "Teşekkürler. Bu bir demo formdur — mesaj alabilmek için bir e-posta servisine veya backend'e bağlanması gerekir.";
-        status.style.color = "var(--success)";
+  /* ---------- 7. İletişim formu — Web3Forms + WhatsApp + mailto (Temmuz 2026) ----------
+     GEÇİCİ iletişim hedefleri: kurumsal mail/telefon gelince TEK yerden güncellenecek
+     (bkz. CLAUDE.md §11-A). Web3Forms anahtarı henüz yoksa mailto ile açılır, mesaj kaybolmaz. */
+  const CONTACT = {
+    email: "17ssenturk@gmail.com",
+    whatsapp: "905342428081",
+    // web3forms.com'dan 17ssenturk@gmail.com ile alınan ücretsiz anahtar buraya yapıştırılır:
+    web3formsKey: "WEB3FORMS_ACCESS_KEY"
+  };
+
+  const contactForm = document.querySelector("#contact-form");
+  if (contactForm) {
+    const isEN = () => document.documentElement.getAttribute("lang") === "en";
+    const T = (tr, en) => (isEN() ? en : tr);
+
+    // Bir alanın o anki dildeki görünür etiketini bulur (iki farklı etiket düzenini de destekler)
+    function labelFor(el) {
+      const suf = isEN() ? "en" : "tr";
+      const labels = contactForm.querySelectorAll('label[for="' + el.id + '"]');
+      for (const lb of labels) {
+        if (lb.hasAttribute("data-lang-" + suf)) return lb.textContent.trim();
+        const span = lb.querySelector("[data-lang-" + suf + "]");
+        if (span) return span.textContent.trim();
       }
-      form.reset();
+      if (labels[0]) return labels[0].textContent.trim();
+      return el.name || el.id || "";
+    }
+
+    // Formu "Etiket: değer" satırlarına çevirir; ayrıca ad/e-posta yakalar
+    function collect() {
+      const lines = [];
+      let name = "", email = "";
+      contactForm.querySelectorAll("input, select, textarea").forEach((el) => {
+        if (["hidden", "submit", "button", "checkbox"].indexOf(el.type) !== -1) return;
+        let val;
+        if (el.tagName === "SELECT") {
+          const opt = el.options[el.selectedIndex];
+          val = opt ? opt.textContent.trim() : (el.value || "").trim();
+        } else {
+          val = (el.value || "").trim();
+        }
+        if (!val) return;
+        if (el.type === "email" && !email) email = val;
+        if (!name && /^(ad|name)$/i.test(el.name || "")) name = val;
+        lines.push(labelFor(el) + ": " + val);
+      });
+      return { name: name, email: email, text: lines.join("\n") };
+    }
+
+    function setStatus(msg, ok) {
+      const s = contactForm.querySelector(".form-status");
+      if (!s) return;
+      s.textContent = msg;
+      s.style.color = ok ? "var(--success)" : "var(--accent)";
+    }
+
+    // Zorunlu alan + KVKK onayı kontrolü (index formunda novalidate var → elle kontrol)
+    function validate() {
+      const need = contactForm.querySelectorAll("[required]");
+      for (const el of need) {
+        const empty = el.type === "checkbox" ? !el.checked : !(el.value || "").trim();
+        if (empty) {
+          setStatus(
+            T("Lütfen zorunlu alanları doldurun ve KVKK onay kutusunu işaretleyin.",
+              "Please fill in the required fields and tick the consent box."),
+            false
+          );
+          if (el.focus) el.focus();
+          return false;
+        }
+      }
+      return true;
+    }
+
+    // WhatsApp'a hazır mesajla yönlendir
+    function toWhatsApp() {
+      if (!validate()) return;
+      const data = collect();
+      const intro = T("Merhaba, web sitesi üzerinden iletişime geçmek istiyorum.",
+                      "Hello, I would like to get in touch via your website.");
+      const url = "https://wa.me/" + CONTACT.whatsapp +
+                  "?text=" + encodeURIComponent(intro + "\n\n" + data.text);
+      window.open(url, "_blank", "noopener");
+    }
+
+    contactForm.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      if (!validate()) return;
+      const data = collect();
+      const subject = T("Web sitesi — Yeni iletişim talebi", "Website — New contact request");
+      const submitBtn = contactForm.querySelector('button[type="submit"]');
+
+      // Anahtar henüz konmadıysa: mailto ile aç (mesaj kaybolmaz)
+      if (!CONTACT.web3formsKey || CONTACT.web3formsKey === "WEB3FORMS_ACCESS_KEY") {
+        window.location.href = "mailto:" + CONTACT.email +
+          "?subject=" + encodeURIComponent(subject) +
+          "&body=" + encodeURIComponent(data.text);
+        setStatus(
+          T("E-posta uygulamanız hazır mesajla açıldı. Dilerseniz WhatsApp'tan da gönderebilirsiniz.",
+            "Your email app opened with a prepared message. You can also send via WhatsApp."),
+          true
+        );
+        return;
+      }
+
+      // Web3Forms'a gönder
+      try {
+        if (submitBtn) submitBtn.disabled = true;
+        setStatus(T("Gönderiliyor…", "Sending…"), true);
+        const res = await fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          headers: { "Content-Type": "application/json", Accept: "application/json" },
+          body: JSON.stringify({
+            access_key: CONTACT.web3formsKey,
+            subject: subject,
+            from_name: data.name || T("Web sitesi ziyaretçisi", "Website visitor"),
+            email: data.email || CONTACT.email,
+            message: data.text
+          })
+        });
+        const out = await res.json();
+        if (out.success) {
+          setStatus(
+            T("Teşekkürler. Mesajınız iletildi; en kısa sürede dönüş yapacağız.",
+              "Thank you. Your message has been sent; we will get back to you shortly."),
+            true
+          );
+          contactForm.reset();
+        } else {
+          throw new Error(out.message || "error");
+        }
+      } catch (err) {
+        setStatus(
+          T("Gönderim sırasında bir sorun oldu. WhatsApp ile veya doğrudan e-posta ile ulaşabilirsiniz.",
+            "Something went wrong. Please reach us via WhatsApp or email directly."),
+          false
+        );
+      } finally {
+        if (submitBtn) submitBtn.disabled = false;
+      }
     });
+
+    // WhatsApp butonu/butonları
+    contactForm.querySelectorAll(".form-wa").forEach((b) =>
+      b.addEventListener("click", toWhatsApp)
+    );
   }
 
   /* ---------- 8. Aktif menü bağlantısı ---------- */
@@ -242,4 +390,115 @@
     show(0);
     start();
   });
+
+  /* ---------- 12. Marka uygunluk sihirbazı (marka-tescili.html) ----------
+     Bilgilendiricidir; hukuki görüş/garanti değildir (avukatlık reklam yasağı).
+     Veri-güdümlü; dil değişince otomatik yeniden çizilir. */
+  const wiz = document.querySelector("#mt-wizard");
+  if (wiz) {
+    const EN = () => document.documentElement.getAttribute("lang") === "en";
+    const TURKPATENT = "https://www.turkpatent.gov.tr/arastirma-yap";
+    const Q = [
+      {
+        tr: "Marka adınız, sattığınız ürün ya da hizmetin cinsini doğrudan anlatan genel bir kelime mi?",
+        en: "Is your brand name a generic word that directly describes the product or service you sell?",
+        opts: [
+          { tr: "Hayır, özgün ve ayırt edici", en: "No, it is original and distinctive", s: 0 },
+          { tr: "Kısmen", en: "Partly", s: 1 },
+          { tr: "Evet, tanımlayıcı bir kelime", en: "Yes, it is descriptive", s: 2 }
+        ]
+      },
+      {
+        tr: "Aynı ya da benzer bir markanın tescilli olup olmadığını araştırdınız mı?",
+        en: "Have you checked whether an identical or similar mark is already registered?",
+        opts: [
+          { tr: "Evet, benzerine rastlamadım", en: "Yes, and found nothing similar", s: 0 },
+          { tr: "Hayır, henüz bakmadım", en: "No, not yet", s: 1 },
+          { tr: "Benzer bir marka var gibi", en: "There seems to be a similar mark", s: 2 }
+        ]
+      },
+      {
+        tr: "Markayı hangi mal ve hizmet sınıflarında kullanacağınızı biliyor musunuz?",
+        en: "Do you know in which goods and services classes you will use the mark?",
+        opts: [
+          { tr: "Evet, netleştirdim", en: "Yes, clearly", s: 0 },
+          { tr: "Kısmen", en: "Partly", s: 1 },
+          { tr: "Hayır, emin değilim", en: "No, not sure", s: 2 }
+        ]
+      },
+      {
+        tr: "Marka; bayrak, resmî amblem, coğrafi yer adı veya yanıltıcı bir ifade içeriyor mu?",
+        en: "Does the mark include a flag, official emblem, geographical name or a misleading term?",
+        opts: [
+          { tr: "Hayır, içermiyor", en: "No, it does not", s: 0 },
+          { tr: "Emin değilim", en: "I'm not sure", s: 1 },
+          { tr: "Evet, içeriyor", en: "Yes, it does", s: 2 }
+        ]
+      },
+      {
+        tr: "Markayı ticari olarak kullanıyor ya da yakında kullanmayı planlıyor musunuz?",
+        en: "Are you using the mark commercially, or planning to soon?",
+        opts: [
+          { tr: "Evet, kullanıyorum/planlıyorum", en: "Yes, I use it / plan to", s: 0 },
+          { tr: "Henüz kararsızım", en: "Still undecided", s: 1 }
+        ]
+      }
+    ];
+    const OUT = [
+      {
+        max: 2,
+        tr: { t: "Markanız tesciline uygun bir aday görünüyor.", d: "Yanıtlarınız olumlu. Yine de doğru sınıflandırma ve resmî sicilde ayrıntılı araştırma, başvurunun sağlıklı ilerlemesi için önemlidir." },
+        en: { t: "Your brand looks like a good candidate for registration.", d: "Your answers are encouraging. Even so, correct classification and a detailed official search matter for a smooth application." }
+      },
+      {
+        max: 5,
+        tr: { t: "Genel olarak umut verici; birkaç nokta netleştirilmeli.", d: "Bazı başlıklarda belirsizlik var. Başvuru öncesi araştırma ve doğru sınıf seçimi, olası ret ve itiraz risklerini azaltır." },
+        en: { t: "Promising overall — a few points need clarifying.", d: "Some areas are uncertain. Pre-filing research and correct class selection reduce the risk of refusal or opposition." }
+      },
+      {
+        max: 99,
+        tr: { t: "Başvuru öncesi uzman değerlendirmesi özellikle önemli.", d: "Yanıtlarınız, dikkat gerektiren noktalara işaret ediyor. Bir marka vekiliyle ön görüşme, sürecinizi güvenle planlamanıza yardımcı olur." },
+        en: { t: "A professional assessment before filing is especially important.", d: "Your answers point to areas that need attention. A preliminary talk with a trademark attorney helps you plan the process with confidence." }
+      }
+    ];
+
+    let i = 0;
+    const ans = [];
+    function render() {
+      const en = EN();
+      if (i < Q.length) {
+        const q = Q[i];
+        wiz.innerHTML =
+          '<div class="wiz-progress">' + (en ? "Question " : "Soru ") + (i + 1) + " / " + Q.length + "</div>" +
+          '<h3 class="wiz-q">' + (en ? q.en : q.tr) + "</h3>" +
+          '<div class="wiz-opts">' +
+          q.opts.map((o, k) => '<button type="button" class="wiz-opt" data-k="' + k + '">' + (en ? o.en : o.tr) + "</button>").join("") +
+          "</div>" +
+          (i > 0 ? '<button type="button" class="wiz-back">' + (en ? "← Back" : "← Geri") + "</button>" : "");
+        wiz.querySelectorAll(".wiz-opt").forEach((b) =>
+          b.addEventListener("click", () => { ans[i] = q.opts[+b.dataset.k].s; i++; render(); })
+        );
+        const bk = wiz.querySelector(".wiz-back");
+        if (bk) bk.addEventListener("click", () => { i--; render(); });
+      } else {
+        const total = ans.reduce((a, b) => a + b, 0);
+        const out = OUT.find((o) => total <= o.max);
+        const c = en ? out.en : out.tr;
+        wiz.innerHTML =
+          '<div class="wiz-result">' +
+          "<h3>" + c.t + "</h3><p>" + c.d + "</p>" +
+          '<div class="wiz-actions">' +
+          '<a class="btn btn-primary" href="#basvuru">' + (en ? "Get a detailed assessment" : "Detaylı değerlendirme alın") + "</a>" +
+          '<a class="btn btn-outline" href="' + TURKPATENT + '" target="_blank" rel="noopener">' + (en ? "Search on TÜRKPATENT" : "TÜRKPATENT’te sorgula") + "</a>" +
+          "</div>" +
+          '<button type="button" class="wiz-restart">' + (en ? "Start over" : "Baştan başla") + "</button>" +
+          '<p class="wiz-note">' + (en ? "This informational result is not legal advice." : "Bu bilgilendirici sonuç hukuki görüş niteliği taşımaz.") + "</p>" +
+          "</div>";
+        wiz.querySelector(".wiz-restart").addEventListener("click", () => { i = 0; ans.length = 0; render(); });
+      }
+    }
+    render();
+    // Dil değişince mevcut adımı yeni dilde yeniden çiz
+    new MutationObserver(() => render()).observe(document.documentElement, { attributes: true, attributeFilter: ["lang"] });
+  }
 })();

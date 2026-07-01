@@ -1,0 +1,13 @@
+BEGIN:VCARD
+VERSION:3.0
+N:Şentürk;Sinem;;Av. & Marka Vekili;
+FN:Av. Sinem Şentürk
+ORG:Şentürk Marka ve Hukuk Bürosu
+TITLE:Avukat & Marka Vekili
+TEL;TYPE=CELL,VOICE:+905342428081
+TEL;TYPE=WORK,VOICE:+905342428081
+EMAIL;TYPE=WORK,INTERNET:info@senturklawfirm.com
+URL:https://nkeremsenturk.github.io/senturk-hukuk/
+ADR;TYPE=WORK:;;Canan Business Plaza Küçükbakkalköy Selvili Sok. No:4 Kat:3;Ataşehir;İstanbul;34750;Türkiye
+NOTE:Fikri ve Sınai Haklar / Marka Tescili başta olmak üzere hukuki danışmanlık.
+END:VCARD

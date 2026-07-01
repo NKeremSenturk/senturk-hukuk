@@ -24,7 +24,12 @@ package-lock.json
 
 # Claude Code lokal ayarlar
 .claude/settings.local.json
+.claude/launch.json
 
 # İç çalışma / müvekkil dosyaları (yayına ve repoya girmesin)
 Sinem-Bilgi-Formu.xlsx
 *.xlsx
+
+# Portre ham kaynakları (işlenmiş sürümler assets/team/ içinde; ham dosyalar repoya girmez)
+Sinem.jpg
+Yasin.jpeg
