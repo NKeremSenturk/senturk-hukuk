@@ -1225,6 +1225,51 @@ html[lang="en"] [data-lang-en] { display: revert; }
 }
 
 
+/* ---------- Makale detay sayfası (Temmuz 2026 — gerçek makaleler) ---------- */
+.article-page .article-meta-row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: 0.9rem;
+  margin-bottom: 2.4rem; padding-bottom: 1.4rem;
+  border-bottom: 1px solid var(--line);
+  font-size: 0.82rem; letter-spacing: 0.04em; text-transform: uppercase;
+  color: var(--muted-light);
+}
+.article-page .article-meta-row .article-tag { position: static; }
+/* display:flex, genel [data-lang-*] gizleme kuralından (tek sınıf) daha yüksek
+   özgüllükte — dil gizlemesini burada yeniden kurmak gerekiyor. */
+html[lang="tr"] .article-page .article-meta-row[data-lang-en],
+html[lang="en"] .article-page .article-meta-row[data-lang-tr] { display: none; }
+html[lang="en"] .article-page .article-meta-row[data-lang-en] { display: flex; }
+.article-page h2 {
+  font-size: clamp(1.35rem, 2.6vw, 1.75rem);
+  margin: 2.6rem 0 1rem;
+}
+.article-page h2:first-child { margin-top: 0; }
+.article-page h3 { font-size: 1.12rem; margin: 1.8rem 0 0.6rem; color: var(--navy-700); }
+html[data-theme="dark"] .article-page h3 { color: var(--ink); }
+.article-page p { color: var(--muted); line-height: 1.85; margin-bottom: 1.2rem; }
+.article-page p.article-intro { font-size: 1.12rem; color: var(--ink); }
+.article-page ul { margin: 0 0 1.4rem 1.3rem; }
+.article-page ul li { color: var(--muted); line-height: 1.8; margin-bottom: 0.55rem; padding-left: 0.3rem; }
+.article-page ul li::marker { color: var(--accent); }
+.article-closing {
+  margin-top: 2.8rem; padding: 1.8rem 2rem;
+  background: var(--bg-alt); border-left: 3px solid var(--accent);
+  border-radius: var(--radius);
+}
+.article-closing p { margin-bottom: 0.9rem; }
+.article-closing p:last-child { margin-bottom: 0; font-weight: 600; color: var(--ink); }
+.article-nav-bottom {
+  display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; align-items: center;
+  margin-top: 3rem; padding-top: 1.8rem; border-top: 1px solid var(--line);
+}
+.article-back {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  font-weight: 600; color: var(--accent); font-size: 0.95rem;
+  transition: color var(--transition);
+}
+.article-back:hover { color: var(--accent-600); }
+.article-back svg { width: 18px; height: 18px; }
+
 /* ============================================================
    Koyu Tema (data-theme="dark") — Temmuz 2026
    Yaklasim: yuzeyler --surface, metin --ink/--muted (dark'ta aydinlik);

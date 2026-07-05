@@ -28,7 +28,10 @@ iş, ceza, gayrimenkul, icra-iflas ve sözleşmeler hukuku alanlarında da hizme
 ├── hakkinda.html           # Hakkında (Sinem profili, eğitim, değerler, kurucu ortaklar/ekip)
 ├── calisma-alanlari.html   # Çalışma alanları (8 alan akordeon + marka tescili vurgusu)
 ├── marka-tescili.html      # Marka/tasarım/coğrafi işaret: aşamalar, alt hizmetler, bilgi notları, başvuru formu
-├── makaleler.html          # Makaleler / blog (marka & IP odaklı örnek kartlar)
+├── makaleler.html          # Makaleler / blog (3 GERÇEK makale kartı — Temmuz 2026)
+├── makale-marka-tescili-neden-onemlidir.html        # Makale 1 (Sinem'in metni, TR+EN)
+├── makale-neden-marka-vekili-ile-calismalisiniz.html # Makale 2 (Sinem'in metni, TR+EN)
+├── makale-cografi-isaret-ve-tasarim-tescili.html    # Makale 3 (Sinem'in metni, TR+EN)
 ├── iletisim.html           # İletişim (form + talep türü + bilgiler + Google Maps embed)
 ├── kvkk.html               # KVKK aydınlatma + gizlilik politikası (taslak; noindex)
 ├── css/
@@ -117,7 +120,12 @@ hâliyle "Av. Yasin Emre Özbaş" korundu.
 **Hâlâ Sinem'den beklenenler (geldiğinde işlenecek):**
 - **Kesin renk/stil tercihi** → Sinem net renk/logoyu iletince `:root` ince ayarı yapılır.
 - Sosyal medya `href="#"` (LinkedIn / Instagram) → gerçek bağlantılar.
-- Gerçek makale metinleri → `makaleler.html` (şu an örnek başlıklar).
+- ~~Gerçek makale metinleri~~ ✅ **İŞLENDİ (Temmuz 2026):** Sinem 3 makale gönderdi (Word);
+  her biri kendi sayfasına kondu (`makale-*.html`, TR + EN çeviri, BlogPosting JSON-LD,
+  sitemap'e eklendi). `makaleler.html` ve ana sayfa kartları bu sayfalara bağlanıyor;
+  kalan 3 örnek kart ve "örnek başlıklardır" notları kaldırıldı. Ham `.docx`'ler `.gitignore`'da.
+  Yeni makale geldiğinde: mevcut bir `makale-*.html` kopyalanır, içerik değiştirilir,
+  `makaleler.html`'e kart + `sitemap.xml`'e URL eklenir.
 - KVKK metni → `kvkk.html` taslağı büro tarafından onaylanmalı.
 - **Sinem'in el yazısı imzası (SVG)** → hero/intro'da kalemle çizilme animasyonu
   (`stroke-dashoffset`, saf CSS). İmza gelince `.intro-signature`'a gömülecek. (İMZA HAREKETİ)
@@ -140,8 +148,9 @@ hâliyle "Av. Yasin Emre Özbaş" korundu.
 ## 7. Kurallar / Konvansiyonlar
 
 1. **Tek CSS, tek JS dosyası** — yeni dosya açma, mevcutları genişlet.
-2. **Header ve footer her sayfada aynıdır.** Birinde değişiklik yaparsan **7 sayfada da** uygula
-   (index, hakkinda, calisma-alanlari, marka-tescili, makaleler, iletisim, kvkk). Header nav 6 öğelidir.
+2. **Header ve footer her sayfada aynıdır.** Birinde değişiklik yaparsan **10 sayfada da** uygula
+   (index, hakkinda, calisma-alanlari, marka-tescili, makaleler, iletisim, kvkk + 3 makale-*.html).
+   Header nav 6 öğelidir.
    Her sayfada `.wa-float` (WhatsApp) + `.to-top` butonları bulunur.
 3. Her yeni metin **iki dilli** olmalı (Bölüm 4).
 4. İnline SVG ikonlar kullanılıyor (harici ikon kütüphanesi yok).

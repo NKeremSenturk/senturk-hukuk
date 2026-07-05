@@ -29,6 +29,8 @@ package-lock.json
 # İç çalışma / müvekkil dosyaları (yayına ve repoya girmesin)
 Sinem-Bilgi-Formu.xlsx
 *.xlsx
+# Makale ham kaynakları (Word) — içerikleri makale HTML sayfalarına işlendi (Temmuz 2026)
+*.docx
 
 # Portre ham kaynakları (işlenmiş sürümler assets/team/ içinde; ham dosyalar repoya girmez)
 Sinem.jpg
