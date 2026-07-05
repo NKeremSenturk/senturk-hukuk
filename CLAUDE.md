@@ -117,7 +117,10 @@ bölümü, solda Sinem / sağda Yasin, **büyük portre üstte + bilgi altta** o
 Eski `.team-grid/.team-card/.team-photo` CSS'i kaldırıldı. Yasin'in adı (Kerem onayı) tam
 hâliyle "Av. Yasin Emre Özbaş" korundu.
 
-**Hâlâ Sinem'den beklenenler (geldiğinde işlenecek):**
+**Bilgi formu sonrası eksikler — durum arşivi (güncel bekleyenler Bölüm 12'de):**
+<!-- DİKKAT: Bu bölümde bot anahtar ifadesini (Sinem + apostrof + den + beklenenler, bitişik)
+     KULLANMA — WhatsApp hatırlatma botu (sinem-whatsapp-hatirlatma/mesaj-uret.js) dosyadaki
+     İLK eşleşmeyi okur; doğru kaynak Bölüm 12'deki temiz listedir. -->
 - ~~Kesin renk/stil tercihi~~ ✅ **TAMAMLANDI (5 Tem 2026):** Sinem "koyu şık lacivert-beyaz"
   paletini kesin onayladı; mevcut `:root` değerleri korunuyor, ince ayar gerekmedi.
 - Sosyal medya `href="#"` (LinkedIn / Instagram) → gerçek bağlantılar. **(5 Tem 2026 notu:
@@ -329,7 +332,24 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 2. ✅ **KVKK metni** hazırlandı, sitede yayında + Word kontrol kopyası (bkz. Bölüm 5).
 3. ✅ Renk/stil kesinleşti, imza SVG iptal (bkz. Bölüm 5).
 
-**Sinem'den/Kerem'den beklenenler (geldiğinde işlenecek):**
+**Sinem'den beklenenler (WhatsApp hatırlatma botu BU listeyi okur — temiz tut!):**
+- Yasin hakkında tanıtım yazısı (Hakkımızda sayfası için)
+- "Genel değişiklikler" Word dosyası
+- Ofis adresinin doğrulanması
+- Yeni telefon hattı bilgisi
+- Domain ve kurumsal e-posta bilgisi
+- Bu haftaki 3 makale: Türk vatandaşlığı, anlaşmalı boşanma, telif hakları
+- Çalışma alanlarına uygun görsellerin tekrar iletilmesi (bize ulaşmadı)
+- KVKK metninin kontrolü (Word dosyası Kerem'de, iletilecek)
+- Çalışma alanları listesinin gözden geçirilmesi (ekleme olacak mı?)
+
+> **Bot sözleşmesi:** `sinem-whatsapp-hatirlatma/mesaj-uret.js`, "Sinem'den beklenenler"
+> ifadesini içeren İLK satırdan sonraki `- ` maddelerini ilk boş satıra kadar okur ve hafta içi
+> 10:00'da WhatsApp mesajına çevirir. **Tamamlanan maddeyi bu listeden SİL** (üstünü çizme;
+> bot ✅/❌/~~ içeren maddeleri atlar ama liste temiz kalsın). Yukarıdaki maddelerin insan-okur
+> ifadeler olması gerekir — teknik detaylar aşağıdaki bölümde.
+
+**Teknik bekleyenler — geldiğinde ne güncellenecek (Claude için):**
 4. ⏳ **Yasin hakkında tanıtım yazısı** — Sinem hazırlayacak → gelince `hakkinda.html`
    founder kartındaki kısa bio genişletilir/değiştirilir.
 5. ⏳ **"Genel değişiklikler" Word dosyası** — Sinem ayrı bir Word'de belirtti, Kerem'e anlatacak.
