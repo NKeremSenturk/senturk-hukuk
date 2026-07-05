@@ -998,14 +998,16 @@ p:last-child { margin-bottom: 0; }
 .credential .det p { font-size: 0.9rem; color: var(--muted); margin: 0; }
 
 /* Ekip / Kurucu ortaklar */
-/* Kurucu ortaklar 50/50 split — büyük portre üstte, bilgi altta */
-.founders-grid { display: grid; grid-template-columns: 1fr 1fr; gap: clamp(1.5rem, 4vw, 2.5rem); align-items: stretch; }
+/* Kurucu ortaklar ALT ALTA satırlar — foto solda, bilgi sağda (Temmuz 2026, Sinem talebi:
+   50/50 yan yana düzen "çift" gibi okunuyordu). Mobilde foto üste geçer. */
+.founders-grid { display: flex; flex-direction: column; gap: clamp(1.5rem, 4vw, 2.5rem); max-width: 960px; margin-inline: auto; }
 .founder-card {
   background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius-lg);
-  box-shadow: var(--shadow-sm); overflow: hidden; display: flex; flex-direction: column;
+  box-shadow: var(--shadow-sm); overflow: hidden;
+  display: grid; grid-template-columns: minmax(230px, 300px) 1fr; align-items: stretch;
 }
 .founder-photo {
-  position: relative; aspect-ratio: 4 / 5; overflow: hidden;
+  position: relative; aspect-ratio: 4 / 5; height: 100%; overflow: hidden;
   background: linear-gradient(160deg, var(--navy-800), var(--navy-600));
 }
 .founder-photo img {
@@ -1013,7 +1015,7 @@ p:last-child { margin-bottom: 0; }
   display: block; transition: transform 0.6s var(--ease, ease);
 }
 .founder-card:hover .founder-photo img { transform: scale(1.04); }
-.founder-body { padding: 1.8rem 1.8rem 2rem; display: flex; flex-direction: column; gap: 0.45rem; }
+.founder-body { padding: 1.8rem 1.8rem 2rem; display: flex; flex-direction: column; gap: 0.45rem; justify-content: center; }
 .founder-body h3 { font-size: 1.35rem; line-height: 1.25; }
 .founder-body .role { color: var(--accent); font-weight: 600; font-size: 0.88rem; letter-spacing: 0.02em; margin-bottom: 0.5rem; }
 .founder-body p { color: var(--muted); font-size: 0.95rem; }
@@ -1195,7 +1197,8 @@ html[lang="en"] [data-lang-en] { display: revert; }
 }
 @media (max-width: 760px) {
   body { font-size: 16px; }
-  .founders-grid { grid-template-columns: 1fr; max-width: 460px; margin-inline: auto; }
+  .founders-grid { max-width: 460px; }
+  .founder-card { grid-template-columns: 1fr; }
   .nav-toggle { display: block; }
   .nav-links {
     position: fixed; inset: 0;

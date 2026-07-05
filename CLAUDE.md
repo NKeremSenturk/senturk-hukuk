@@ -118,17 +118,23 @@ Eski `.team-grid/.team-card/.team-photo` CSS'i kaldırıldı. Yasin'in adı (Ker
 hâliyle "Av. Yasin Emre Özbaş" korundu.
 
 **Hâlâ Sinem'den beklenenler (geldiğinde işlenecek):**
-- **Kesin renk/stil tercihi** → Sinem net renk/logoyu iletince `:root` ince ayarı yapılır.
-- Sosyal medya `href="#"` (LinkedIn / Instagram) → gerçek bağlantılar.
+- ~~Kesin renk/stil tercihi~~ ✅ **TAMAMLANDI (5 Tem 2026):** Sinem "koyu şık lacivert-beyaz"
+  paletini kesin onayladı; mevcut `:root` değerleri korunuyor, ince ayar gerekmedi.
+- Sosyal medya `href="#"` (LinkedIn / Instagram) → gerçek bağlantılar. **(5 Tem 2026 notu:
+  hesaplar `av.sinemsenturk@gmail.com` ile açılacak; giriş Kerem'in bilgisayarından yapılacak,
+  doğrulama kodu Sinem'in mailine gelecek — Kerem+Sinem birlikte yapacak.)**
 - ~~Gerçek makale metinleri~~ ✅ **İŞLENDİ (Temmuz 2026):** Sinem 3 makale gönderdi (Word);
   her biri kendi sayfasına kondu (`makale-*.html`, TR + EN çeviri, BlogPosting JSON-LD,
   sitemap'e eklendi). `makaleler.html` ve ana sayfa kartları bu sayfalara bağlanıyor;
   kalan 3 örnek kart ve "örnek başlıklardır" notları kaldırıldı. Ham `.docx`'ler `.gitignore`'da.
   Yeni makale geldiğinde: mevcut bir `makale-*.html` kopyalanır, içerik değiştirilir,
   `makaleler.html`'e kart + `sitemap.xml`'e URL eklenir.
-- KVKK metni → `kvkk.html` taslağı büro tarafından onaylanmalı.
-- **Sinem'in el yazısı imzası (SVG)** → hero/intro'da kalemle çizilme animasyonu
-  (`stroke-dashoffset`, saf CSS). İmza gelince `.intro-signature`'a gömülecek. (İMZA HAREKETİ)
+- KVKK metni → ✅ **HAZIRLANDI (5 Tem 2026, Sinem'in talebiyle biz yazdık):** `kvkk.html`
+  genişletildi ve yayında ("taslak" uyarısı kaldırıldı); kontrol kopyası
+  `KVKK-Aydinlatma-Metni.docx` (repo dışı, kökte) Sinem'e iletilecek → **onayı bekleniyor**,
+  düzeltme isterse ikinci tur yapılır.
+- ~~Sinem'in el yazısı imzası (SVG)~~ ❌ **İPTAL (5 Tem 2026):** Sinem "gerek yok" dedi.
+  İmza çizim animasyonu yapılmayacak; intro'daki mevcut metin imza (`.intro-signature`) kalıyor.
 
 > **Soyadı notu:** "Şentürk" doğrulandı (form Q2). İstatistik bölümü Sinem'in talebiyle
 > **kaldırıldı** (form Q29 = Hayır) — `data-target` sayaçları artık kullanılmıyor.
@@ -282,8 +288,8 @@ Bu kararlar bağlayıcıdır. Kerem tek tek onayladı; sıra ve gerekçeler aşa
 
 **F. Zarif karanlık mod.** Lacivert palet uygun; dil geçişi gibi `localStorage` ile hatırlanır, ağırlıksız.
 
-**G. İmza hareketinin kalbi — el yazısı imza animasyonu:** Sinem'in gerçek imzası gelince
-   yapılacak (bkz. Bölüm 5 "beklenenler"). Şimdilik beklemede.
+**G. ~~İmza hareketinin kalbi — el yazısı imza animasyonu~~ ❌ İPTAL (5 Tem 2026):**
+   Sinem gerek görmedi; yapılmayacak.
 
 ### Uygulama durumu (Temmuz 2026 — tarayıcıda test edildi)
 
@@ -309,3 +315,37 @@ Bu kararlar bağlayıcıdır. Kerem tek tek onayladı; sıra ve gerekçeler aşa
 **Ayrıca gözden geçirilecek:** İletişim sayfasında **görünen** e-posta hâlâ `info@senturklawfirm.com`
 (vCard'da da bu). Bu kutu aktif değilse gelen mail'ler kaybolur — Sinem bu adresi açacak mı, yoksa
 şimdilik `17ssenturk@gmail.com` mı gösterilsin, karara bağlı.
+
+---
+
+## 12. Sinem'in 5 Temmuz 2026 güncellemeleri (WhatsApp) — durum listesi
+
+Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
+
+**Yapıldı (5 Tem 2026):**
+1. ✅ **Hakkımızda kurucu ortaklar ALT ALTA.** Sinem: yan yana 50/50 düzen "çiftmişiz gibi
+   anlaşılıyor" → her kurucu tam genişlik satır (foto solda ~300px, bilgi sağda; Sinem üstte,
+   Yasin altta; 760px altında foto üste geçer). CSS: `.founders-grid`/`.founder-card`.
+2. ✅ **KVKK metni** hazırlandı, sitede yayında + Word kontrol kopyası (bkz. Bölüm 5).
+3. ✅ Renk/stil kesinleşti, imza SVG iptal (bkz. Bölüm 5).
+
+**Sinem'den/Kerem'den beklenenler (geldiğinde işlenecek):**
+4. ⏳ **Yasin hakkında tanıtım yazısı** — Sinem hazırlayacak → gelince `hakkinda.html`
+   founder kartındaki kısa bio genişletilir/değiştirilir.
+5. ⏳ **"Genel değişiklikler" Word dosyası** — Sinem ayrı bir Word'de belirtti, Kerem'e anlatacak.
+6. ⏳ **Ofis adresi doğrulaması** — değişirse: footer (10 sayfa), kvkk.html, iletisim.html
+   (harita embed!), vCard, JSON-LD (index).
+7. ⏳ **Yeni telefon hattı** — gelince: `main.js CONTACT` + görünen tüm tel/wa.me linkleri
+   (10 sayfa), vCard, QR, JSON-LD, KVKK.
+8. ⏳ **Domain + kurumsal e-posta** — alınınca: canonical/OG/sitemap/robots URL'leri,
+   QR yeniden üret, vCard, form mailto, footer e-postaları, `main.js CONTACT`.
+9. ⏳ **Çalışma alanları gözden geçirme** — ekleme olabilir (akordeon + index kartı + footer).
+10. ⏳ **LOGO DEĞİŞECEK — HATIRLATMA:** bu konuda daha önce ilerlenen bir çalışma vardı
+    (`assets/logo/` envanteri + amblemsinem.jpeg süreci). Zamanı gelince Kerem'le tekrar
+    konuşulacak; şimdilik dokunma.
+11. ⏳ **3 yeni makale bu hafta:** Türk vatandaşlığının kazanılması · Anlaşmalı boşanma süreci ·
+    Telif hakları ve eser sahibinin korunması. (Not: bunlar Temmuz'da kaldırılan 3 örnek kartın
+    konuları — geldiklerinde mevcut `makale-*.html` şablonuyla eklenir, kartlar geri gelir.)
+12. ⏳ **Hukuk alanlarına uygun görseller** — Sinem ilettiğini söylüyor ama proje klasöründe ve
+    Downloads'ta bulunamadı (5 Tem 2026 arandı). Dosyalar ulaşınca `calisma-alanlari.html`/
+    kartlara işlenecek.
