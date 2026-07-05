@@ -343,11 +343,28 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 - KVKK metninin kontrolü (Word dosyası Kerem'de, iletilecek)
 - Çalışma alanları listesinin gözden geçirilmesi (ekleme olacak mı?)
 
-> **Bot sözleşmesi:** `sinem-whatsapp-hatirlatma/mesaj-uret.js`, "Sinem'den beklenenler"
-> ifadesini içeren İLK satırdan sonraki `- ` maddelerini ilk boş satıra kadar okur ve hafta içi
-> 10:00'da WhatsApp mesajına çevirir. **Tamamlanan maddeyi bu listeden SİL** (üstünü çizme;
-> bot ✅/❌/~~ içeren maddeleri atlar ama liste temiz kalsın). Yukarıdaki maddelerin insan-okur
-> ifadeler olması gerekir — teknik detaylar aşağıdaki bölümde.
+**Kerem'den beklenenler (WhatsApp hatırlatma botu BU listeyi de okur — temiz tut!):**
+- Web3Forms anahtarını alıp iletişim formuna bağlamak (mesajlar e-postaya düşecek)
+- Cloudflare Analytics kurulumu (gizli ziyaretçi sayacı)
+- KVKK Word dosyasını Sinem'e iletmek
+- Sosyal medya hesap açılışı (Sinem'le birlikte, doğrulama kodu adımı)
+- Logo görüşmesi (zamanı gelince birlikte)
+
+**Yeni eklenenler (bot okur — Sinem'e vitrin; en fazla ~6 madde tut, eskiyenleri sil):**
+- 3 makalen yayında: her biri kendi sayfasında, İngilizce çevirisiyle
+- Hakkımızda: fotoğraflar yeni düzende alt alta (foto solda, bilgi sağda)
+- KVKK & Gizlilik sayfası tam metniyle yayında (kontrolünü bekliyoruz)
+- İletişim formları artık çalışıyor: WhatsApp'tan Gönder + KVKK onay kutusu
+- Koyu tema ve "Kişilerime Ekle" (vCard + QR kod) eklendi
+- "Markanız tescile uygun mu?" mini testi marka sayfasında
+
+> **Bot sözleşmesi:** `sinem-whatsapp-hatirlatma/mesaj-uret.js`, `config.json`'daki üç anahtar
+> ifadeyi ("Sinem'den beklenenler", "Kerem'den beklenenler", "Yeni eklenenler") CLAUDE.md'de
+> arar; her biri için İLK eşleşen satırdan sonraki `- ` maddelerini ilk boş satıra kadar okur ve
+> hafta içi 10:00'da tek gruplu WhatsApp mesajına çevirir. **Biten maddeyi listeden SİL**
+> (üstünü çizme; bot ✅/❌/⏳/~~ içeren maddeleri atlar ama listeler temiz kalsın). Boş kalan grup
+> mesaja girmez. Maddeler insan-okur olmalı; teknik detaylar aşağıdaki bölümde. Bu anahtar
+> ifadeleri CLAUDE.md'nin daha üst kısımlarında KULLANMA (ilk eşleşme kazanır).
 
 **Teknik bekleyenler — geldiğinde ne güncellenecek (Claude için):**
 4. ⏳ **Yasin hakkında tanıtım yazısı** — Sinem hazırlayacak → gelince `hakkinda.html`
