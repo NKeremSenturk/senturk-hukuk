@@ -333,30 +333,28 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 3. ✅ Renk/stil kesinleşti, imza SVG iptal (bkz. Bölüm 5).
 
 **Sinem'den beklenenler (WhatsApp hatırlatma botu BU listeyi okur — temiz tut!):**
-- Yasin hakkında tanıtım yazısı (Hakkımızda sayfası için)
-- "Genel değişiklikler" Word dosyası
-- Ofis adresinin doğrulanması
+- Ana sayfadaki "Av. & Marka Vekili Sinem Şentürk" imza satırı kalsın mı? (Kerem sordu, cevap bekleniyor)
 - Yeni telefon hattı bilgisi
 - Domain ve kurumsal e-posta bilgisi
 - Bu haftaki 3 makale: Türk vatandaşlığı, anlaşmalı boşanma, telif hakları
-- Çalışma alanlarına uygun görsellerin tekrar iletilmesi (bize ulaşmadı)
 - KVKK metninin kontrolü (Word dosyası Kerem'de, iletilecek)
 - Çalışma alanları listesinin gözden geçirilmesi (ekleme olacak mı?)
 
 **Kerem'den beklenenler (WhatsApp hatırlatma botu BU listeyi de okur — temiz tut!):**
+- Görsel üretimini çalıştırmak: gorsel-uretim\uret-alan-gorselleri.bat (6 alan görseli, ~1-1.5 saat)
+- Değişiklikleri commit'leyip terminalden push etmek (yayına almak)
 - Web3Forms anahtarını alıp iletişim formuna bağlamak (mesajlar e-postaya düşecek)
 - Cloudflare Analytics kurulumu (gizli ziyaretçi sayacı)
 - KVKK Word dosyasını Sinem'e iletmek
 - Sosyal medya hesap açılışı (Sinem'le birlikte, doğrulama kodu adımı)
-- Logo görüşmesi (zamanı gelince birlikte)
 
 **Yeni eklenenler (bot okur — Sinem'e vitrin; en fazla ~6 madde tut, eskiyenleri sil):**
-- 3 makalen yayında: her biri kendi sayfasında, İngilizce çevirisiyle
-- Hakkımızda: fotoğraflar yeni düzende alt alta (foto solda, bilgi sağda)
-- KVKK & Gizlilik sayfası tam metniyle yayında (kontrolünü bekliyoruz)
-- İletişim formları artık çalışıyor: WhatsApp'tan Gönder + KVKK onay kutusu
-- Koyu tema ve "Kişilerime Ekle" (vCard + QR kod) eklendi
-- "Markanız tescile uygun mu?" mini testi marka sayfasında
+- Notlar dokümanındaki TÜM metin değişiklikleri işlendi (hero, ana sayfa, çalışma alanları, yazım düzeltmeleri)
+- Yasin'in tanıtım yazısı Hakkımızda sayfasında (İngilizce çevirisiyle)
+- Yeni yasal adres (No:4/20) sitede ve kartvizit dosyasında güncellendi
+- "Hakkında" her yerde "Hakkımızda" oldu
+- "Neden Biz" bölümüne Ulaşılabilirlik (İstanbul & Balıkesir, Türkiye geneli) eklendi
+- Alan görselleri onayladığın stile göre üretilecek; sonra kartlara eklenecek
 
 > **Bot sözleşmesi:** `sinem-whatsapp-hatirlatma/mesaj-uret.js`, `config.json`'daki üç anahtar
 > ifadeyi ("Sinem'den beklenenler", "Kerem'den beklenenler", "Yeni eklenenler") CLAUDE.md'de
@@ -367,11 +365,15 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 > ifadeleri CLAUDE.md'nin daha üst kısımlarında KULLANMA (ilk eşleşme kazanır).
 
 **Teknik bekleyenler — geldiğinde ne güncellenecek (Claude için):**
-4. ⏳ **Yasin hakkında tanıtım yazısı** — Sinem hazırlayacak → gelince `hakkinda.html`
-   founder kartındaki kısa bio genişletilir/değiştirilir.
-5. ⏳ **"Genel değişiklikler" Word dosyası** — Sinem ayrı bir Word'de belirtti, Kerem'e anlatacak.
-6. ⏳ **Ofis adresi doğrulaması** — değişirse: footer (10 sayfa), kvkk.html, iletisim.html
-   (harita embed!), vCard, JSON-LD (index).
+4. ✅ **Yasin tanıtım yazısı İŞLENDİ (11 Tem 2026):** "WEB SAYFAM İÇİN NOTLARIM.docx" ile geldi;
+   `hakkinda.html` founder kartına 3 paragraf TR+EN eklendi.
+5. ✅ **"Genel değişiklikler" dosyası GELDİ ve İŞLENDİ (11 Tem 2026):** "WEB SAYFAM İÇİN
+   NOTLARIM.docx" (kökte, .gitignore'da). Tüm metin/yazım değişiklikleri uygulandı; analiz
+   `SINEM-NOTLAR-ANALIZ-11-TEM-2026.md`. ⚠️ İmza adı satırı (`.intro-signature-name`) Sinem'in
+   cevabına göre kalacak/kaldırılacak (alıntı cümlesi kaldırıldı).
+6. ✅ **Adres güncellendi (11 Tem 2026):** "Küçükbakkalköy Mahallesi Selvili Sokak No:4/20,
+   Ataşehir/İstanbul" — index (JSON-LD+footer), iletisim, kvkk, vCard. Harita embed'i bina
+   düzeyinde (No:4) bırakıldı, geocoding bozulmasın diye.
 7. ⏳ **Yeni telefon hattı** — gelince: `main.js CONTACT` + görünen tüm tel/wa.me linkleri
    (10 sayfa), vCard, QR, JSON-LD, KVKK.
 8. ⏳ **Domain + kurumsal e-posta** — alınınca: canonical/OG/sitemap/robots URL'leri,
@@ -383,6 +385,11 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 11. ⏳ **3 yeni makale bu hafta:** Türk vatandaşlığının kazanılması · Anlaşmalı boşanma süreci ·
     Telif hakları ve eser sahibinin korunması. (Not: bunlar Temmuz'da kaldırılan 3 örnek kartın
     konuları — geldiklerinde mevcut `makale-*.html` şablonuyla eklenir, kartlar geri gelir.)
-12. ⏳ **Hukuk alanlarına uygun görseller** — Sinem ilettiğini söylüyor ama proje klasöründe ve
-    Downloads'ta bulunamadı (5 Tem 2026 arandı). Dosyalar ulaşınca `calisma-alanlari.html`/
-    kartlara işlenecek.
+12. ⏳ **Hukuk alanlarına görseller — ÜRETİM AŞAMASINDA (11 Tem 2026):** Sinem'in docx'indeki
+    mokaplar stil onayı sayıldı (açık tema: krem/altın; koyu tema CSS overlay ile, ayrı set yok).
+    Üretim scripti hazır: `gorsel-uretim/uret-alan-gorselleri.bat` (A1111 API, 6 görsel,
+    1152x832 → `assets/alanlar/alan-<slug>.png`; klasör .gitignore'da, optimize JPG'ler repoya
+    girecek). Kerem çalıştıracak → sonra optimize (~60-80KB JPG) + `calisma-alanlari.html`
+    akordeon/kartlara ve/veya index kartlarına entegrasyon.
+13. ✅ **11 Tem 2026 sohbet kararları:** "Hakkımızda" nav 10 sayfada güncellendi; "sicilli" →
+    "sicile kayıtlı" (index hero-trust, marka-tescili meta+gövde, hakkinda bio) her yerde düzeltildi.
