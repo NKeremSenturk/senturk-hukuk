@@ -341,8 +341,7 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 - Çalışma alanları listesinin gözden geçirilmesi (ekleme olacak mı?)
 
 **Kerem'den beklenenler (WhatsApp hatırlatma botu BU listeyi de okur — temiz tut!):**
-- Görsel üretimini çalıştırmak: gorsel-uretim\uret-alan-gorselleri.bat (6 alan görseli, ~1-1.5 saat)
-- Değişiklikleri commit'leyip terminalden push etmek (yayına almak)
+- Alan görselleri değişikliğini commit'leyip terminalden push etmek (yayına almak)
 - Web3Forms anahtarını alıp iletişim formuna bağlamak (mesajlar e-postaya düşecek)
 - Cloudflare Analytics kurulumu (gizli ziyaretçi sayacı)
 - KVKK Word dosyasını Sinem'e iletmek
@@ -354,7 +353,7 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 - Yeni yasal adres (No:4/20) sitede ve kartvizit dosyasında güncellendi
 - "Hakkında" her yerde "Hakkımızda" oldu
 - "Neden Biz" bölümüne Ulaşılabilirlik (İstanbul & Balıkesir, Türkiye geneli) eklendi
-- Alan görselleri onayladığın stile göre üretilecek; sonra kartlara eklenecek
+- 6 çalışma alanı görseli üretildi ve ana sayfa kartlarına eklendi (onayladığın açık stil; koyu temada otomatik karartma)
 
 > **Bot sözleşmesi:** `sinem-whatsapp-hatirlatma/mesaj-uret.js`, `config.json`'daki üç anahtar
 > ifadeyi ("Sinem'den beklenenler", "Kerem'den beklenenler", "Yeni eklenenler") CLAUDE.md'de
@@ -385,11 +384,14 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 11. ⏳ **3 yeni makale bu hafta:** Türk vatandaşlığının kazanılması · Anlaşmalı boşanma süreci ·
     Telif hakları ve eser sahibinin korunması. (Not: bunlar Temmuz'da kaldırılan 3 örnek kartın
     konuları — geldiklerinde mevcut `makale-*.html` şablonuyla eklenir, kartlar geri gelir.)
-12. ⏳ **Hukuk alanlarına görseller — ÜRETİM AŞAMASINDA (11 Tem 2026):** Sinem'in docx'indeki
-    mokaplar stil onayı sayıldı (açık tema: krem/altın; koyu tema CSS overlay ile, ayrı set yok).
-    Üretim scripti hazır: `gorsel-uretim/uret-alan-gorselleri.bat` (A1111 API, 6 görsel,
-    1152x832 → `assets/alanlar/alan-<slug>.png`; klasör .gitignore'da, optimize JPG'ler repoya
-    girecek). Kerem çalıştıracak → sonra optimize (~60-80KB JPG) + `calisma-alanlari.html`
-    akordeon/kartlara ve/veya index kartlarına entegrasyon.
+12. ✅ **Hukuk alanlarına görseller TAMAM (13 Tem 2026):** 6 görsel üretildi (A1111,
+    `gorsel-uretim/` scriptleri; yabancilar+gayrimenkul 2. turda düzeltilen prompt'larla).
+    Optimize JPG'ler repoda: `assets/alanlar/alan-<slug>.jpg` (880x636, 58-84KB; ham PNG'ler
+    .gitignore'da). **index.html 6 alan kartına `.card-media` ile entegre edildi**; CSS'te
+    `.card-media` stilleri (hover zoom, `prefers-reduced-motion` saygısı, koyu temada
+    `brightness(0.78)` filtresi — ayrı koyu set YOK). Alt metinler iki dilli (`data-alt-tr/en`,
+    main.js çeviriyor). NOT: `calisma-alanlari.html` akordeonuna görsel EKLENMEDİ (bilinçli;
+    istenirse aynı JPG'ler kullanılır). Yabancilar görselindeki küçük yapay pasaport yazısı
+    kabul edildi; rahatsız ederse tek başına yeniden üretilebilir.
 13. ✅ **11 Tem 2026 sohbet kararları:** "Hakkımızda" nav 10 sayfada güncellendi; "sicilli" →
     "sicile kayıtlı" (index hero-trust, marka-tescili meta+gövde, hakkinda bio) her yerde düzeltildi.
