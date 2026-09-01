@@ -19,6 +19,7 @@
   <meta name="twitter:image" content="https://nkeremsenturk.github.io/senturk-hukuk/assets/hero-1.jpg" />
   <script>try{var t=localStorage.getItem('ssh-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
   <link rel="stylesheet" href="css/style.css" />
+  <link rel="preload" as="image" href="assets/hero/hero-hakkimizda-1600.jpg" imagesrcset="assets/hero/hero-hakkimizda-960.jpg 960w, assets/hero/hero-hakkimizda-1600.jpg 1600w" imagesizes="100vw" fetchpriority="high" />
   <link rel="icon" href="assets/logo/e5-icon-dark.svg" />
 </head>
 <body>
@@ -57,8 +58,8 @@
   </header>
 
   <!-- PAGE HERO -->
-  <section class="page-hero" id="main-content" tabindex="-1">
-    <div class="hero-bg"></div>
+  <section class="page-hero page-hero--photo" id="main-content" tabindex="-1" style="--hero-pos: 64% 42%">
+    <div class="hero-bg"><img class="hero-photo" src="assets/hero/hero-hakkimizda-1600.jpg" srcset="assets/hero/hero-hakkimizda-960.jpg 960w, assets/hero/hero-hakkimizda-1600.jpg 1600w" sizes="100vw" width="1600" height="900" alt="" fetchpriority="high" decoding="async" /></div>
     <div class="container">
       <div class="breadcrumb">
         <a href="index.html"><span data-lang-tr>Ana Sayfa</span><span data-lang-en>Home</span></a>

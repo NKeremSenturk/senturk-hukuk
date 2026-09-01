@@ -1,5 +1,11 @@
 # Sinem'in "WEB SAYFAM İÇİN NOTLARIM.docx" Analizi — 11 Temmuz 2026
 
+> ✅ **DURUM (13 Tem 2026): TAMAMI UYGULANDI VE YAYINDA.** A–E maddeleri 11 Tem'de,
+> F (alan görselleri) 13 Tem'de tamamlandı (6 görsel üretildi; ceza + iş-sosyal konuya
+> özel 2. turda yenilendi; ana sayfa kartlarına entegre). Tek açık nokta: ana sayfadaki
+> imza adı satırının kalıp kalmayacağı — Sinem'in cevabı bekleniyor (bkz. C.2 ⚠️).
+> Bu dosya tarihsel kayıt olarak durur; proje bitiminde repodan kaldırılabilir.
+
 Kaynak: Sinem'in ilettiği Word dosyası (proje kökünde, 18 gömülü görsel içeriyor).
 Tüm maddeler mevcut kodla eşleştirildi; dosya/satır konumları aşağıda.
 **Not:** Her metin değişikliği çift dilli sistemde hem `data-lang-tr` hem `data-lang-en` güncellemesi gerektirir (EN çevirilerini biz yapacağız).

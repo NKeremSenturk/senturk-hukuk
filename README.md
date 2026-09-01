@@ -5,17 +5,18 @@ Av. & Marka Vekili Sinem Şentürk ve kurucu ortağı Av. Yasin Emre Özbaş iç
 Saf HTML + CSS + JavaScript ile geliştirilmiştir — çerçeve yok, derleme yok,
 GitHub Pages'te ücretsiz yayınlanır. Fikri ve sınai haklar / marka tescili öne çıkar.
 
-> İçerik Sinem'in bilgi formuyla dolduruldu. Logo, portre ve sosyal medya bağlantıları
-> geldiğinde işlenecektir. Ayrıntılar için **[CLAUDE.md](CLAUDE.md)** dosyasına bakın.
+> İçerik Sinem'in bilgi formu ve değişiklik notlarıyla dolduruldu; logo, portreler ve
+> alan görselleri işlendi. Bekleyenler (sosyal medya, domain, kurumsal e-posta vb.) için
+> **[CLAUDE.md](CLAUDE.md)** dosyasına bakın.
 
 ---
 
 ## Özellikler
 
-- **7 sayfa:** Ana Sayfa · Hakkında · Çalışma Alanları · Marka Tescili · Makaleler · İletişim · KVKK
-- **İki dil:** Tek tıkla TR/EN geçişi (tercih hatırlanır)
-- **Modern & sade tasarım:** Lacivert + beyaz paleti, çelik mavisi vurgu, sans-serif tipografi
-- **Dinamik:** Saf-CSS scroll animasyonları, akordeon, yapışkan menü, WhatsApp butonu, mobil uyumlu
+- **10 sayfa:** Ana Sayfa · Hakkımızda · Çalışma Alanları · Marka Tescili · Makaleler (+3 makale sayfası) · İletişim · KVKK
+- **İki dil:** Tek tıkla TR/EN geçişi (tercih hatırlanır) · **Karanlık mod** (tercih hatırlanır)
+- **Modern & sade tasarım:** Lacivert + beyaz paleti, çelik mavisi vurgu, sans-serif tipografi, self-host fontlar
+- **Dinamik:** Saf-CSS scroll animasyonları, akordeon, yapışkan menü, WhatsApp butonu, çalışan iletişim formları (KVKK onaylı), vCard+QR, mobil uyumlu
 - **8 çalışma alanı + marka tescili:** Fikri/sınai haklar, yabancılar, aile, iş, ceza, gayrimenkul,
   icra-iflas, sözleşmeler; ayrı marka/tasarım/coğrafi işaret tescili sayfası ve başvuru formu
 - **SEO dostu:** İstanbul/Balıkesir vurgusu, LegalService JSON-LD, erişilebilir işaretleme
@@ -87,10 +88,10 @@ Detaylı kurallar ve "yapılacaklar" listesi: **[CLAUDE.md](CLAUDE.md)**
 
 ```
 index.html · hakkinda.html · calisma-alanlari.html · marka-tescili.html
-makaleler.html · iletisim.html · kvkk.html
+makaleler.html · makale-*.html (3) · iletisim.html · kvkk.html
 css/style.css        → tüm stiller (tasarım sistemi :root değişkenlerinde)
-js/main.js           → tüm etkileşimler
-assets/              → görseller (portre, logo)
+js/main.js           → tüm etkileşimler (dil, tema, form, slider, sihirbaz)
+assets/              → görseller (team/, alanlar/, about/, logo/, fonts/)
 .github/workflows/   → GitHub Pages otomatik yayın
 ```
 

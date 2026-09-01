@@ -39,3 +39,21 @@ Yasin.jpeg
 # Görsel üretim iç araçları (yayına girmesin) + ham PNG çıktıları (optimize JPG'ler girer)
 gorsel-uretim/
 assets/alanlar/*.png
+
+# Sinem'in ham istek dosyaları (zip + açılan PNG'ler ~35 MB — repoya girmesin;
+# optimize edilmiş çıktılar assets/ altına girer)
+Sinem İstekler/*.zip
+Sinem İstekler/_acilan/
+Sinem İstekler/_secenekler/
+
+# Yerel yedek kopyalar (repoya girmez)
+_yedek/
+
+# İç çalışma raporları ve yardımcı komutlar (depo PUBLIC — yayına girmesin)
+SINEM-ISTEKLER-ANALIZ-*.md
+SINEM-SORULAR-*.md
+DEGISIKLIK-RAPORU-*.md
+GERI-DONUS-PLANI.md
+CANLIYA-ALMA-ADIMLARI.md
+git-etiketle-ve-commit.cmd
+SITEYI-AC.cmd

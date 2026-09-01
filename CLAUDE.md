@@ -24,7 +24,7 @@ iş, ceza, gayrimenkul, icra-iflas ve sözleşmeler hukuku alanlarında da hizme
 
 ```
 .
-├── index.html              # Ana sayfa (4 slaytlı hero slider, intro+Sinem imzası, hizmetler, marka şeridi, neden biz, makale önizleme, alıntı, inline iletişim formu) — istatistik YOK
+├── index.html              # Ana sayfa (4 slaytlı hero slider, intro+Sinem imzası, görselli 6 alan kartı, marka şeridi, neden biz, makale önizleme, alıntı, inline iletişim formu) — istatistik YOK
 ├── hakkinda.html           # Hakkında (Sinem profili, eğitim, değerler, kurucu ortaklar/ekip)
 ├── calisma-alanlari.html   # Çalışma alanları (8 alan akordeon + marka tescili vurgusu)
 ├── marka-tescili.html      # Marka/tasarım/coğrafi işaret: aşamalar, alt hizmetler, bilgi notları, başvuru formu
@@ -38,10 +38,13 @@ iş, ceza, gayrimenkul, icra-iflas ve sözleşmeler hukuku alanlarında da hizme
 │   └── style.css           # TÜM stiller + tasarım sistemi (tek dosya)
 ├── js/
 │   └── main.js             # TÜM etkileşimler (menü, dil, animasyon, form)
-├── assets/                 # Görseller buraya (portre, büro foto, logo)
+├── assets/                 # Görseller: team/ (portreler), alanlar/ (6 alan kartı JPG), about/ (slider), logo/, fonts/ + vCard & QR
+├── gorsel-uretim/          # AI görsel üretim scriptleri (.bat + py) — .gitignore'da, repoya GİRMEZ
 ├── .github/workflows/
 │   └── pages.yml           # GitHub Pages otomatik yayın
 ├── README.md               # GitHub vitrini + kurulum
+├── BAKIM_RAPORU.md         # 26 Haz 2026 çoklu-ajan bakım turu raporu (arşiv)
+├── SINEM-NOTLAR-ANALIZ-11-TEM-2026.md  # Sinem'in değişiklik dokümanının analizi (uygulandı, arşiv)
 └── CLAUDE.md               # (bu dosya)
 ```
 
@@ -341,7 +344,6 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 - Çalışma alanları listesinin gözden geçirilmesi (ekleme olacak mı?)
 
 **Kerem'den beklenenler (WhatsApp hatırlatma botu BU listeyi de okur — temiz tut!):**
-- Alan görselleri değişikliğini commit'leyip terminalden push etmek (yayına almak)
 - Web3Forms anahtarını alıp iletişim formuna bağlamak (mesajlar e-postaya düşecek)
 - Cloudflare Analytics kurulumu (gizli ziyaretçi sayacı)
 - KVKK Word dosyasını Sinem'e iletmek
@@ -385,7 +387,8 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
     Telif hakları ve eser sahibinin korunması. (Not: bunlar Temmuz'da kaldırılan 3 örnek kartın
     konuları — geldiklerinde mevcut `makale-*.html` şablonuyla eklenir, kartlar geri gelir.)
 12. ✅ **Hukuk alanlarına görseller TAMAM (13 Tem 2026):** 6 görsel üretildi (A1111,
-    `gorsel-uretim/` scriptleri; yabancilar+gayrimenkul 2. turda düzeltilen prompt'larla).
+    `gorsel-uretim/` scriptleri; yabancilar+gayrimenkul 2. turda, ceza+is-sosyal 3. turda
+    konuya özel yenilendi: tokmak+flu mahkeme kürsüsü, lacivert baret — Kerem talebi).
     Optimize JPG'ler repoda: `assets/alanlar/alan-<slug>.jpg` (880x636, 58-84KB; ham PNG'ler
     .gitignore'da). **index.html 6 alan kartına `.card-media` ile entegre edildi**; CSS'te
     `.card-media` stilleri (hover zoom, `prefers-reduced-motion` saygısı, koyu temada
@@ -395,3 +398,22 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
     kabul edildi; rahatsız ederse tek başına yeniden üretilebilir.
 13. ✅ **11 Tem 2026 sohbet kararları:** "Hakkımızda" nav 10 sayfada güncellendi; "sicilli" →
     "sicile kayıtlı" (index hero-trust, marka-tescili meta+gövde, hakkinda bio) her yerde düzeltildi.
+
+## 13. Eylül 2026 — Sinem'in banner/görsel/metin istekleri (UYGULANDI, yayın onayı bekliyor)
+
+Kaynak: `Sinem İstekler/` (e-posta ekleri; zip'ler + `_acilan/` + `_secenekler/` gitignore'da).
+Rapor: `DEGISIKLIK-RAPORU-01-EYL-2026.md` · Geri dönüş: `GERI-DONUS-PLANI.md` · Öncesi kopya: `_yedek/2026-09-01-oncesi/`.
+
+**Fotoğraflı sayfa başlığı sistemi (`.page-hero--photo`, CSS Bölüm 16b):**
+- Yapı: `<section class="page-hero page-hero--photo" style="--hero-pos: X% Y%">` → `<div class="hero-bg"><img class="hero-photo" src=".../hero-<ad>-1600.jpg" srcset="...-960.jpg 960w, ...-1600.jpg 1600w" sizes="100vw" width height alt="" fetchpriority="high" decoding="async"></div>`; `<head>`'de `<link rel="preload" as="image" imagesrcset imagesizes>`.
+- Görseller `assets/hero/hero-{hakkimizda,calisma-alanlari,marka-tescili,makaleler,iletisim}-{1600,960}.jpg` (Sinem'in YAZISIZ banner'larından, 60-140 KB). 8 sayfada kullanılıyor: 5 ana iç sayfa + 3 `makale-*.html` (Makaleler görseli). `kvkk.html` bilinçli olarak düz gradyan.
+- Metin HTML'de kalır (iki dil/SEO/erişilebilirlik); overlay `::after` lacivert gradyan. **YAZILI banner sürümleri asla kullanılmaz** (çevrilemez, h1 kaybolur, "vekilli.iiğiyle" render hatası, altın+serif palet sapması).
+- Yeni sayfaya fotoğraf eklemek = yukarıdaki 3 satır; kaldırmak = sınıfı ve img/preload satırlarını silmek.
+
+**Alan kartları (`assets/alanlar/`):** aile, yabancilar, fikri-sinai görselleri yenilendi (880×636, parlaklık/kontrast ton düzeltmeli). **KURAL: sitede kullanılan hiçbir görselde kurum/marka logosu, resmî belge görüntüsü veya belge numarası bulunmaz** — yapay üretim görsellerde bu tür öğeler çıkarılır (fikri-sinai görselinde uygulandı). Gerekçe ve kullanılmayan sürümler repo dışındaki iç raporda. Alt metinler (`data-alt-tr/en`) yenilendi.
+
+**Metin:** `makaleler.html` h1 "Makaleler"/"Articles" + yeni lead (TR Sinem'in, EN bizim); `iletisim.html` yeni lead (TR Sinem'in, EN bizim). Sinem'in onayı bekleniyor (`SINEM-SORULAR-01-EYL-2026.md`, 8 madde).
+
+**Yapılmayanlar (bilinçli):** İletişim'e "Bizimle İletişime Geçin" ara satırı; ana sayfa makaleler bölüm başlığı; akordeona görsel; KVKK'ya fotoğraf. Gerekçeler raporda.
+
+**Yayın akışı:** Kerem `git-etiketle-ve-commit.cmd` ile `v1.0-eylul-oncesi` etiketi + tek commit + isteğe bağlı push. Geri alma: `git revert HEAD`.
