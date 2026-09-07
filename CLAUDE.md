@@ -417,3 +417,52 @@ Rapor: `DEGISIKLIK-RAPORU-01-EYL-2026.md` · Geri dönüş: `GERI-DONUS-PLANI.md
 **Yapılmayanlar (bilinçli):** İletişim'e "Bizimle İletişime Geçin" ara satırı; ana sayfa makaleler bölüm başlığı; akordeona görsel; KVKK'ya fotoğraf. Gerekçeler raporda.
 
 **Yayın akışı:** Kerem `git-etiketle-ve-commit.cmd` ile `v1.0-eylul-oncesi` etiketi + tek commit + isteğe bağlı push. Geri alma: `git revert HEAD`.
+
+## 14. Eylül 2026 (2. tur) — Sinem'in "YENİ DÜZELTİLECEKLER" listesi (UYGULANDI)
+
+Kaynak: `Sinem İstekler/web sitesi YENİ DÜZELTİLECEKLER.docx` (6 madde + ekran görüntüleri).
+Öncesi kopya: `_yedek/2026-09-07-oncesi/` (GIT-HEAD `2da997a`).
+
+**1) Logo — küre + Ş amblemi kaldırıldı.** `.logo-mark` SVG'si 10 sayfanın hem header hem
+footer'ından silindi (20 blok). Kelime markası büyütüldü ve sola dayandı:
+`.logo-name` header `clamp(1.85rem, 2.3vw, 2.15rem)` / footer `2.3rem`, `.logo-sub` `0.66rem`
++ `white-space: nowrap`. Mobilde (≤760px) bir tık küçültülür.
+**KURAL: sitede küre/amblem yok — marka yalnızca kelime markasıdır (serif ŞENTÜRK + alt satır).**
+Sinem'in gönderdiği "küreli" referans denenmedi; kendi ifadesiyle "küre içindeki Ş kesinlikle kalksın".
+
+**2) Footer alt barı.** İsimler `&nbsp;` ile yapıştırıldığı için dar ekranda kırpılıyordu
+(Sinem: "Yasin Emre Özbaş'ta Ş eksik kalmış" — aslında taşma). Ayırıcılar `<span class="fb-dot">`
+oldu, `.footer-bottom > span { min-width:0; overflow-wrap:break-word }` eklendi. 390px'te sarıyor,
+1024px+'ta tek satır.
+
+**3) Hakkımızda başlığı.** `Av. & Marka Vekili<br />Sinem Şentürk` (TR ve EN aynı düzende) —
+"Şentürk" tek başına alt satıra kaymıyor.
+
+**4) "Mesleki birikim" bölümü kaldırıldı** (hakkinda.html, EĞİTİM & UNVAN section'ı komple).
+`.credential*` CSS'i geride bırakıldı (geri istenirse hazır, kullanılmıyor).
+
+**5) Kurucu ortaklar kartı — foto metnin üstüne biniyordu.** Sebep: `.founder-photo` hem
+`aspect-ratio: 4/5` hem `height: 100%` alıyordu; Yasin'in uzun biyografisi kartı uzatınca
+genişlik de (yükseklik × 0,8) büyüyüp sütunu aşıyordu. Satır düzeninde oran kaldırıldı
+(`width:100%; height:100%; min-height:340px`), oran yalnızca mobil tek sütunda uygulanıyor.
+`.founder-body`'ye `min-width: 0`. **Yeni bir kurucu eklenirse bu kuralı bozmayın.**
+
+**6) Çalışma alanları kapanış metni** Sinem'in yeni metniyle değiştirildi (TR onun, EN bizim).
+
+**7) Ana sayfa "Neden Biz" yer tutucusu** → `assets/about/neden-biz-kutuphane.jpg`
+(900×900, `assets/hero-2.jpg`'nin kare kadrajı). `.frame-placeholder` artık hiçbir sayfada
+kullanılmıyor. Sinem "ne koyacağımı bilemedim, sana bırakıyorum" dedi — değiştirilebilir.
+
+**8) Karanlık mod okunabilirliği.** `.chip` metni sabit `--navy-800` olduğu için koyu zeminde
+kayboluyordu. Koyu tema bloğuna eklenenler: `.chip` (+hover, +svg), `.feature-item h4`,
+`.step h4`, `.credential .det h4`, `.vcard-block h4`, `.info-card h3`, `.wiz-result h3`,
+`.wiz-q`, `.intro-signature-line`, `.contact-info-item p`, `.field-consent .consent`.
+**KURAL: bileşen metnine sabit `--navy-*` verirseniz koyu tema bloğuna karşılığını da yazın.**
+
+**9) (Sinem istemedi, biz bulduk) Yatay menü ~1150px altında taşıyordu** — bağlantılar
+"ANA / SAYFA" gibi ikiye bölünüyor, tema butonu kırpılıyordu. `.nav-links a { white-space: nowrap }`
+eklendi ve hamburger eşiği **760px → 1150px**'e çekildi (yeni `@media (max-width: 1150px)` bloğu;
+760px bloğunda yalnızca diğer düzen kuralları kaldı). 1040px bloğundaki ölü menü kuralları silindi.
+
+**Doğrulama:** 10 sayfa × 4 genişlik (1440/1160/1024/390) × açık+koyu tema × TR+EN
+başsız Chromium ile tarandı: yatay taşma yok, kırık görsel yok, JS konsol hatası yok.

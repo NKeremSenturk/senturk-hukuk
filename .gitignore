@@ -45,6 +45,7 @@ assets/alanlar/*.png
 Sinem İstekler/*.zip
 Sinem İstekler/_acilan/
 Sinem İstekler/_secenekler/
+Sinem İstekler/_yeni_acilan/
 
 # Yerel yedek kopyalar (repoya girmez)
 _yedek/
@@ -55,5 +56,7 @@ SINEM-SORULAR-*.md
 DEGISIKLIK-RAPORU-*.md
 GERI-DONUS-PLANI.md
 CANLIYA-ALMA-ADIMLARI.md
+SEO-DENETIM-*.md
 git-etiketle-ve-commit.cmd
+git-commit-07-EYL.cmd
 SITEYI-AC.cmd
