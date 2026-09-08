@@ -505,3 +505,34 @@ Masaüstü tarafında değişiklik yok (≥1160 px yatay menü aynı; ≤1150 px
 
 **Bilinen, düzeltilmemiş:** ana sayfa mobil LCP ~8 sn (bkz. `SEO-DENETIM-RAPORU-02-EYL-2026.md`,
 Dalga 1). Telefonda "yavaş açılıyor" hissinin kaynağı bu; ayrı bir iş olarak duruyor.
+
+## 16. Eylül 2026 — Görsel kalite denetimi (Sinem'in görselleri bozuldu mu?)
+
+Rapor: `GORSEL-KALITE-DENETIMI-07-EYL-2026.md`. **Sonuç: Sinem'in görselleri bozulmadı.**
+Kaynak PNG ↔ site JPG karşılaştırması PSNR **38,9–46,3 dB** (40+ = gözle ayırt edilemez).
+Büyütme yok, en-boy oranları birebir, kadraj korunmuş.
+
+**Keskinlik tavanı kaynak çözünürlüğü.** Sinem'in banner'ları 1672–1915 px genişlikte.
+Tam ekran hero, 1440 px retina ekranda 2880 px ister → o ekranda yumuşak görünür.
+Bu işlemeden değil kaynaktan gelir. **Daha net hero isteniyorsa Sinem'in banner'ları
+≥2400 px genişlikte yeniden üretilmeli; büyütmek çözüm değil (sahte piksel).**
+Not: sitedeki en bulanık görseller Sinem'inkiler değil, BİZİM `assets/hero-1…4.jpg`
+(1344×768; retinada 0,41 telefonda 0,27 yeterlilik).
+
+**Denetimde çıkan ve düzeltilen 2 kusur:**
+1. `assets/about/neden-biz-kutuphane.jpg` 768×768 kırpımdan 900×900'e **büyütülmüştü**
+   (7 Eyl'de ben yapmıştım) → gerçek ölçüye döndürüldü, 119→100 KB.
+2. `assets/team/yasin.jpg` ham `Yasin.jpeg` 1122×1402 iken **760×950'ye küçültülmüştü**
+   (kırpma değil düz küçültme, PSNR 43,1 dB) → 1100×1374, kadraj aynı.
+   Telefonda keskinlik 0,73 → 1,05. `sinem.jpg` DEĞİŞTİRİLMEDİ (hamı zaten 738 px + rötuşlu).
+3. Portrelere ve neden-biz görseline `width`/`height` nitelikleri eklendi (CLS azaltır).
+
+**Bilinçli dokunulmayan:** alan kartları (aile/yabancılar/fikri-sinai) 880 px'te kalıyor.
+Kaynakları 1503–1536 px ama bu 3 dosyaya 880 px'te işlem yapılmış (aile +6, yabancılar +23
+ortalama RGB ton düzeltmesi; fikri-sinai'den logo silinmiş). Yüksek çözünürlüklü sürüm
+üretmek bu işlemleri baştan yapmayı gerektirir → Sinem'in onayladığı görüntü değişebilir.
+Sitedeki 3 dosya `Sinem İstekler/_secenekler/*-2-sitede-kullanilan-*` ile birebir aynı (99 dB).
+
+**KURAL: siteye görsel eklerken (a) asla büyütme, (b) ham dosyanın tam çözünürlüğünü kullan,
+(c) `width`/`height` niteliklerini gerçek ölçüyle yaz, (d) telefonda (DPR3) keskinlik
+yeterliliğini kontrol et: dosya genişliği ÷ (CSS genişliği × 3) ≥ 1 olmalı.**
