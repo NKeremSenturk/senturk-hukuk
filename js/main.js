@@ -22,6 +22,16 @@
   window.addEventListener("scroll", onScroll, { passive: true });
   onScroll();
 
+  /* "Yukarı çık" Eylül 2026'da <a href="#"> yerine <button> oldu (adres çubuğuna # eklemesin,
+     gezinme değil kontrol olduğu için doğru semantik). Kaydırmayı JS yapıyor. */
+  const toTopBtn = document.querySelector(".to-top");
+  if (toTopBtn) {
+    toTopBtn.addEventListener("click", () => {
+      const azalt = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      window.scrollTo({ top: 0, behavior: azalt ? "auto" : "smooth" });
+    });
+  }
+
   /* ---------- 2. Mobil menü ---------- */
   const navToggle = document.querySelector(".nav-toggle");
   if (navToggle) {

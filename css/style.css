@@ -756,14 +756,8 @@ p:last-child { margin-bottom: 0; }
   pointer-events: none;
 }
 .frame img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
-.frame-placeholder {
-  position: absolute; inset: 0;
-  display: flex; flex-direction: column;
-  align-items: center; justify-content: center;
-  color: var(--accent-300); gap: 1rem; text-align: center; padding: 2rem;
-}
-.frame-placeholder svg { width: 60px; height: 60px; opacity: 0.55; }
-.frame-placeholder p { font-size: 0.8rem; letter-spacing: 0.08em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+/* .frame-placeholder kaldirildi (Eylul 2026): son kullanimi index.html'deki
+   "Buro/Istanbul gorseli" kutusuydu, yerine gercek gorsel kondu. Geri gerekirse: commit 2dccdba^ */
 
 /* ---------- 10b. Çerçeve slider (ana sayfa: İstanbul & global akan görseller) ---------- */
 .frame-slider { display: block; }
@@ -1027,8 +1021,9 @@ p:last-child { margin-bottom: 0; }
    Yapı: .page-hero.page-hero--photo > .hero-bg > img.hero-photo
    Görsel arka planda (object-fit: cover), üstüne lacivert gradyan overlay (::after) biner;
    başlık/açıklama HTML metni olarak kalır (iki dil, SEO, erişilebilirlik). Sayfa bazında
-   kadraj: style="--hero-pos: 50% 40%". Overlay yoğunluğu Sinem'in "%75-80 lacivert" isteğinin
-   CSS karşılığıdır; görseller zaten lacivert tonlu geldiği için toplam etki o seviyeye çıkar. */
+   kadraj: style="--hero-pos: 50% 40%", telefonda ayrica --hero-pos-m.
+   GUNCEL DEGIL: "%75-80 lacivert" yogunlugu Eylul 2026'da olculerek acildi — banner'lar
+   goruntulenemiyordu. Guncel yaklasim ve kontrast kurallari icin CLAUDE.md Bolum 17. */
 .page-hero--photo .hero-bg { background: var(--navy-900); }
 .page-hero--photo .hero-photo {
   position: absolute; inset: 0; width: 100%; height: 100%;
@@ -1068,17 +1063,8 @@ p:last-child { margin-bottom: 0; }
 
 /* ---------- 17. Profil (Hakkında) ---------- */
 .profile-grid { display: grid; grid-template-columns: 0.85fr 1.15fr; gap: clamp(2rem, 6vw, 5rem); align-items: start; }
-.credential-list { display: grid; gap: 1rem; margin-top: 1.5rem; }
-.credential {
-  display: flex; gap: 1rem; align-items: flex-start;
-  padding: 1.2rem 1.4rem; background: var(--surface);
-  border-radius: var(--radius); border: 1px solid var(--line);
-  border-left: 3px solid var(--accent);
-}
-.credential .yr { color: var(--accent); flex-shrink: 0; display: flex; align-items: center; }
-.credential .yr svg { width: 26px; height: 26px; }
-.credential .det h4 { font-family: var(--font-body); font-size: 1rem; font-weight: 700; color: var(--navy-900); margin-bottom: 0.2rem; }
-.credential .det p { font-size: 0.9rem; color: var(--muted); margin: 0; }
+/* .credential* kaldirildi (Eylul 2026): "Mesleki birikim" bolumu Sinem'in istegiyle
+   silindi. Geri gerekirse: _yedek/2026-09-07-oncesi/hakkinda.html + commit 2dccdba^ */
 
 /* Ekip / Kurucu ortaklar */
 /* Kurucu ortaklar ALT ALTA satırlar — foto solda, bilgi sağda (Temmuz 2026, Sinem talebi:
@@ -1187,6 +1173,7 @@ p:last-child { margin-bottom: 0; }
 /* ---------- 19. Yüzen butonlar (yukarı çık + WhatsApp) ---------- */
 .to-top {
   position: fixed; bottom: 28px; right: 28px; z-index: 900;
+  border: 0; padding: 0; cursor: pointer; font: inherit;   /* <button> oldu (Eylul 2026) */
   width: 48px; height: 48px; border-radius: 50%;
   background: var(--navy-900); color: #fff;
   display: flex; align-items: center; justify-content: center;

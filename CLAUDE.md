@@ -100,6 +100,9 @@ telefon/WhatsApp (+90 534 242 80 81), e-posta (info@senturklawfirm.com), çalı�
 (favicon/WhatsApp/mobil), ayrıca alternatif yatay lockup `senturk-{en,tr}-{dark,light}.svg`
 ve `icon-{dark,light}.svg` (E3). Wordmark fontu = Cormorant Garamond (serif); proje
 sans kararına çekilmesi opsiyonu açık. `onizleme.html` tüm logoları gösterir.
+> ⚠ **GÜNCEL DEĞİL (Eylül 2026):** Küre amblemi siteden tamamen kaldırıldı; marka artık
+> yalnızca kelime markası (serif ŞENTÜRK + iki dilli alt satır). Bkz. **Bölüm 14, madde 1**.
+> `assets/logo/` içindeki küreli SVG'ler envanterde duruyor ama sitede KULLANILMIYOR.
 
 **SİTEYE GÖMÜLDÜ (Haziran 2026, Kerem tercihi = SERİF):** Tüm 7 sayfanın header
 ve footer `.logo`'su artık **inline SVG ikon (beyaz, şeffaf bölünmüş küre + Ş) +
@@ -109,11 +112,16 @@ ve footer `.logo`'su artık **inline SVG ikon (beyaz, şeffaf bölünmüş küre
 Header'da dikey E5 yerine **ikon+wordmark** kullanıldı (slim header + mobil uyumu).
 Serif yalnız logoda; gövde metni hâlâ sans (Plus Jakarta + Inter). Sans logo dosyaları
 (`e5-*-sans.svg`) envanterde duruyor; font kararı değişirse `--font-logo` tek satırda döner.
+> ⚠ **GÜNCEL DEĞİL (Eylül 2026):** `.logo-mark` (inline SVG küre+Ş) 10 sayfanın header ve
+> footer'ından silindi, kelime markası büyütüldü. Favicon hâlâ `e5-icon-dark.svg`.
+> Ayrıca alt satırın rengi accent-300 → **accent-200** oldu (kontrast, Bölüm 17).
 
 **Portre fotoğrafları EKLENDİ (Haziran 2026, Kerem):** Sinem ve Yasin'in gerçek
 portreleri geldi. Kaynaklar kök dizinde (`Sinem.jpg`, `Yasin.jpeg` — repoya GİRMEZ);
 işlenmiş web sürümleri `assets/team/sinem.jpg` ve `assets/team/yasin.jpg` (siyah bant
-kırpıldı, 4/5'e yakın portre, ~760px, ~60KB). `hakkinda.html`'de: (a) Sinem spotlight
+kırpıldı, 4/5'e yakın portre, ~760px, ~60KB). **Eylül 2026 güncellemesi:** `yasin.jpg`
+ham dosyanın tam çözünürlüğüne çıkarıldı — **1100×1374, ~112 KB** (bkz. Bölüm 16).
+`sinem.jpg` 738×950 kalıyor (ham dosyası zaten 738 px genişlikte).) `hakkinda.html`'de: (a) Sinem spotlight
 `.frame-placeholder` → gerçek `<img>`; (b) eski küçük avatarlı **"Kurucu Ortaklar"**
 bölümü, solda Sinem / sağda Yasin, **büyük portre üstte + bilgi altta** olan 50/50
 `.founders-grid`/`.founder-card` düzenine çevrildi (760px altında tek sütun, hover zoom).
@@ -153,7 +161,8 @@ hâliyle "Av. Yasin Emre Özbaş" korundu.
 - "Çalışma alanlarına 'KVKK ve Bilişim Hukuku' ekle" → calisma-alanlari.html akordeon + index.html kart
 - "Makaleler sayfasına şu yeni yazıyı ekle" → makaleler.html'e yeni `.article-card`
 - "Renk paletini biraz daha koyu/açık yap" → sadece css `:root` değişkenleri
-- "Portre fotoğrafını ekledim, yerine koy" → `.frame-placeholder` → `<img src="assets/...">`
+- "Portre fotoğrafını ekledim, yerine koy" → ilgili `.frame` içine `<img src="assets/..." width height loading="lazy" decoding="async" alt="" data-alt-tr data-alt-en>`
+  (Not: `.frame-placeholder` sınıfı Eylül 2026'da kaldırıldı — sitede yer tutucu kutu kalmadı.)
 
 ---
 
@@ -407,7 +416,8 @@ Rapor: `DEGISIKLIK-RAPORU-01-EYL-2026.md` · Geri dönüş: `GERI-DONUS-PLANI.md
 **Fotoğraflı sayfa başlığı sistemi (`.page-hero--photo`, CSS Bölüm 16b):**
 - Yapı: `<section class="page-hero page-hero--photo" style="--hero-pos: X% Y%">` → `<div class="hero-bg"><img class="hero-photo" src=".../hero-<ad>-1600.jpg" srcset="...-960.jpg 960w, ...-1600.jpg 1600w" sizes="100vw" width height alt="" fetchpriority="high" decoding="async"></div>`; `<head>`'de `<link rel="preload" as="image" imagesrcset imagesizes>`.
 - Görseller `assets/hero/hero-{hakkimizda,calisma-alanlari,marka-tescili,makaleler,iletisim}-{1600,960}.jpg` (Sinem'in YAZISIZ banner'larından, 60-140 KB). 8 sayfada kullanılıyor: 5 ana iç sayfa + 3 `makale-*.html` (Makaleler görseli). `kvkk.html` bilinçli olarak düz gradyan.
-- Metin HTML'de kalır (iki dil/SEO/erişilebilirlik); overlay `::after` lacivert gradyan. **YAZILI banner sürümleri asla kullanılmaz** (çevrilemez, h1 kaybolur, "vekilli.iiğiyle" render hatası, altın+serif palet sapması).
+- Metin HTML'de kalır (iki dil/SEO/erişilebilirlik); overlay `::after` lacivert gradyan
+  (⚠ overlay yoğunluğu **Bölüm 17**'de ölçülerek açıldı — oradaki değerler geçerlidir). **YAZILI banner sürümleri asla kullanılmaz** (çevrilemez, h1 kaybolur, "vekilli.iiğiyle" render hatası, altın+serif palet sapması).
 - Yeni sayfaya fotoğraf eklemek = yukarıdaki 3 satır; kaldırmak = sınıfı ve img/preload satırlarını silmek.
 
 **Alan kartları (`assets/alanlar/`):** aile, yabancilar, fikri-sinai görselleri yenilendi (880×636, parlaklık/kontrast ton düzeltmeli). **KURAL: sitede kullanılan hiçbir görselde kurum/marka logosu, resmî belge görüntüsü veya belge numarası bulunmaz** — yapay üretim görsellerde bu tür öğeler çıkarılır (fikri-sinai görselinde uygulandı). Gerekçe ve kullanılmayan sürümler repo dışındaki iç raporda. Alt metinler (`data-alt-tr/en`) yenilendi.
@@ -576,3 +586,36 @@ ile **AA'nın ALTINDAYDI**. Yani site artık hem görselleri gösteriyor hem dah
 
 **KURAL: overlay değerlerine dokunmadan önce glif maskeli kontrast ölçümünü çalıştırın; en düşük
 değer 4,5:1'in altına inmemeli. Overlay'i açmak istiyorsanız önce radyal scrim'i güçlendirin.**
+
+## 18. Eylül 2026 — Bakım turu: ölü kod, ölü bağlantı, doküman tazeleme
+
+7 Eylül'deki dört turdan (Bölüm 14-17) sonra yapılan temizlik. Rapor:
+`BAKIM-TURU-07-EYL-2026.md`. Açık işler tek dosyada: **`ACIK-ISLER.md`**.
+
+**1) Ölü sosyal medya bağlantıları kaldırıldı.** Footer'daki LinkedIn ve Instagram
+simgeleri `href="#"` idi — tıklanınca hiçbir şey olmuyordu (10 sayfa × 2 = 20 ölü bağlantı;
+2 Eylül SEO denetiminin bulgusuydu). Kaldırıldı. Footer'da yalnızca çalışan iki bağlantı
+kaldı: WhatsApp ve e-posta. **Sinem hesap adreslerini verince** `.footer-social` içine şu
+kalıpla geri eklenir (10 sayfada):
+```html
+<a href="https://www.linkedin.com/in/KULLANICI" target="_blank" rel="noopener" aria-label="LinkedIn"><svg …></svg></a>
+```
+Simge SVG'leri commit `6ddcf62`'de duruyor.
+
+**2) "Yukarı çık" `<a href="#">` yerine `<button>` oldu.** Gezinme değil kontrol; adres
+çubuğuna `#` eklemiyor, geri tuşunu kirletmiyor. Kaydırmayı `js/main.js` yapıyor ve
+`prefers-reduced-motion` saygılı. CSS'te `.to-top`'a `border:0; padding:0; cursor:pointer; font:inherit`
+eklendi (buton varsayılanlarını sıfırlamak için).
+
+**3) Ölü CSS silindi.** `.frame-placeholder` (son kullanımı Bölüm 14'te gerçek görselle
+değişti) ve `.credential*` (Bölüm 14'te "Mesleki birikim" bölümü silindi). Yerlerine geri
+dönüş adresini söyleyen yorum satırı bırakıldı.
+
+**4) Eskiyen doküman ifadeleri işaretlendi.** Bölüm 5'teki logo/amblem anlatımı, portre
+çözünürlüğü, Bölüm 6'daki `.frame-placeholder` rehberi ve Bölüm 13'teki overlay cümlesi
+artık geçerli bölüme yönlendiriyor. `css/style.css` içindeki "%75-80 lacivert" yorumu da
+güncellendi.
+
+**KURAL: bir bölümü geçersiz kılan bir değişiklik yaptığınızda eski bölümü SİLMEYİN —
+altına `> ⚠ GÜNCEL DEĞİL (tarih): … Bkz. Bölüm N` satırı ekleyin. Bu dosya kronolojik
+bir kayıt; silmek geçmişi kaybettirir, düzeltmemek yanlış yönlendirir.**
