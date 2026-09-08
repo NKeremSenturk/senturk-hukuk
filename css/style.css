@@ -1264,16 +1264,77 @@ html[lang="en"] [data-lang-en] { display: revert; }
   }
   .nav-open .nav-links { transform: translateX(0); }
   .nav-links a { font-size: 1.15rem; }
-  .nav { gap: 1rem; }
-  .header .lang-switch { margin-right: 50px; }
+  .nav { gap: 0.85rem; }
 }
+/* ============================================================
+   Telefon ust bari — Eylul 2026 (2. tur) DUZELTMESI
+   SORUN: .header .container satiri ~446px genislik istiyordu; 320-430px
+   telefonlarda tasiyor, body{overflow-x:hidden} bunu kirpiyor ve HAMBURGER
+   MENU BUTONU EKRAN DISINDA kaliyordu -> menuye hic ulasilamiyordu.
+   COZUM: kenar boslugu, logo, dil anahtari ve tema butonu telefonda kucultuldu;
+   .lang-switch'teki gereksiz 50px sag bosluk kaldirildi.
+   KURAL: bu bloktaki olculeri buyutmeden once 320px'te hamburger'in
+   ekran icinde kaldigini dogrulayin.
+   ============================================================ */
+@media (max-width: 760px) {
+  .container { padding: 0 20px; }
+  .logo .logo-name { font-size: 1.5rem; letter-spacing: 1.5px; }
+  .logo .logo-sub { font-size: 0.52rem; letter-spacing: 0.16em; margin-top: 5px; }
+  .nav { gap: 0.6rem; }
+  .lang-switch button { padding: 5px 10px; font-size: 0.7rem; }
+  .nav-toggle { width: 26px; }
+}
+@media (max-width: 380px) {
+  .container { padding: 0 15px; }
+  .logo .logo-name { font-size: 1.3rem; letter-spacing: 1px; }
+  .logo .logo-sub { font-size: 0.46rem; letter-spacing: 0.12em; }
+  .lang-switch button { padding: 4px 8px; font-size: 0.66rem; }
+  .nav { gap: 0.45rem; }
+}
+
+/* ------------------------------------------------------------
+   Telefonda dokunma hedefleri — Eylul 2026 (2. tur)
+   Olculen sorun: footer baglantilari 16-20 px, kart "Incele" baglantilari 21 px,
+   TR/EN butonlari 24 px, hero noktalari 4 px yuksekligindeydi; parmakla
+   isabet ettirmek zordu. Gorunum degismiyor, yalnizca dokunma alani buyuyor
+   (::after ile seffaf alan, ya da dikey ic bosluk).
+   ------------------------------------------------------------ */
+@media (max-width: 760px) {
+  /* Hamburger: gorsel 26x22 kaliyor, dokunma alani 50x46 oluyor */
+  .nav-toggle::after { content: ""; position: absolute; inset: -12px; }
+  /* Dil anahtari: yalnizca dikey ic bosluk artiyor, genislik degismiyor */
+  .lang-switch button { padding-top: 9px; padding-bottom: 9px; }
+  /* Kart baglantilari ve footer baglantilari */
+  .card-link { padding: 9px 0; }
+  .footer-links li { margin-bottom: 0.15rem; }
+  .footer-links a { display: inline-block; padding: 8px 0; }
+  .footer-contact-item a { display: inline-block; padding: 5px 0; }
+  .footer-bottom a { display: inline-block; padding: 5px 0; }
+  .article-back, .breadcrumb a { display: inline-block; padding: 6px 0; }
+  /* Hero ve cerceve slayt noktalari */
+  .hero-dot::after { content: ""; position: absolute; inset: -16px -4px; }
+  .frame-dots button { position: relative; }
+  .frame-dots button::after { content: ""; position: absolute; inset: -12px; }
+  /* KVKK onay kutusu */
+  .field-consent .consent input[type="checkbox"] { width: 1.25rem; height: 1.25rem; }
+
+  /* iOS Safari, yazi boyutu 16px'in ALTINDA olan bir form alanina dokunuldugunda
+     sayfayi otomatik yakinlastirir ve geri uzaklastirmaz -> kullanici siteyi
+     "yanlis boyutta" gorur. 0.96rem = 15.4px idi; telefonda 16px'e sabitlendi.
+     KURAL: telefonda hicbir input/select/textarea 16px'in altina inmemeli. */
+  .field input, .field textarea, .field select,
+  .wiz-form input, .wiz-form select, .wiz-form textarea,
+  input, select, textarea { font-size: 16px; }
+
+  /* Yuzen WhatsApp / yukari-cik butonlari footer'in son satirini kapatiyordu */
+  .footer-bottom { padding-bottom: 84px; }
+}
+
 @media (max-width: 760px) {
   body { font-size: 16px; }
   .founders-grid { max-width: 460px; }
   .founder-card { grid-template-columns: 1fr; }
   .founder-photo { aspect-ratio: 4 / 5; height: auto; min-height: 0; }
-  .logo .logo-name { font-size: 1.6rem; letter-spacing: 2px; }
-  .logo .logo-sub { font-size: 0.55rem; letter-spacing: 0.2em; margin-top: 5px; }
   .footer .logo-name { font-size: 1.9rem; }
   .footer .logo-sub { font-size: 0.62rem; }
   .hero-trust { position: static; backdrop-filter: none; margin-top: 2.5rem; }

@@ -466,3 +466,42 @@ eklendi ve hamburger eşiği **760px → 1150px**'e çekildi (yeni `@media (max-
 
 **Doğrulama:** 10 sayfa × 4 genişlik (1440/1160/1024/390) × açık+koyu tema × TR+EN
 başsız Chromium ile tarandı: yatay taşma yok, kırık görsel yok, JS konsol hatası yok.
+
+## 15. Eylül 2026 (3. tur) — TELEFON GÖRÜNÜMÜ düzeltmeleri (UYGULANDI)
+
+Kerem "telefonda ekran okunur değil, doğru boyut vermiyor" dedi. Gerçek cihaz emülasyonuyla
+(Chromium, `is_mobile`, dokunma, 320/360/375/390/412/430 px) tarandı. Bulunan 4 sorunun
+**hepsi bu turdan önce de vardı**, hiçbiri 7 Eylül değişikliklerinden kaynaklanmıyordu.
+
+**1) ⚠ EN KRİTİK — Hamburger menü butonu telefonda EKRAN DIŞINDAYDI.**
+`.header .container` satırı ~446 px genişlik istiyordu (logo + TR/EN + tema + hamburger +
+`.lang-switch`'e verilmiş gereksiz `margin-right: 50px` + 28 px kenar boşluğu × 2).
+430 px'ten dar HER telefonda bu satır taşıyor, `body { overflow-x: hidden }` taşan kısmı
+kırpıyor ve menü butonu erişilemez hale geliyordu. **Yani sitenin menüsü hiçbir telefonda
+açılamıyordu.** Playwright "element is outside of the viewport" diyerek tıklayamadı.
+Düzeltme: `margin-right: 50px` kaldırıldı; telefonda kenar boşluğu 28→20 px (≤380 px'te 15 px),
+logo 1.5rem (≤380 px'te 1.3rem), `.lang-switch` düğme dolgusu ve `.nav` boşluğu küçültüldü.
+Sonuç: 320 px'te bile hamburger ekran içinde, sağda 15 px pay var.
+**KURAL: bu bloktaki ölçüleri büyütmeden önce 320 px'te hamburger'in ekranda kaldığını doğrulayın.**
+
+**2) iOS'ta form alanına dokununca sayfa kendiliğinden yakınlaşıyordu.**
+`.field input/textarea/select` yazı boyutu `0.96rem` = 15,4 px idi. iOS Safari, 16 px'in
+ALTINDAKİ bir alana odaklanınca sayfayı otomatik yakınlaştırır ve geri uzaklaştırmaz —
+kullanıcı siteyi "yanlış boyutta" görür. Telefonda tüm form alanları 16 px'e sabitlendi.
+**KURAL: telefonda hiçbir input/select/textarea 16 px'in altına inmemeli.**
+
+**3) Dokunma hedefleri çok küçüktü.** Ölçülen: footer bağlantıları 16-20 px, kart "İncele"
+bağlantıları 21 px, TR/EN düğmeleri 24 px, hero slayt noktaları 4 px, çerçeve noktaları 11 px,
+hamburger 26×22 px. Görünüm değiştirilmeden dokunma alanları büyütüldü (şeffaf `::after`
+alanı veya dikey iç boşluk): footer 41 px, kart bağlantıları 39 px, TR/EN 32 px,
+hamburger 50×46 px, hero noktaları 36 px.
+
+**4) Yüzen WhatsApp / yukarı-çık butonları footer'ın son satırını kapatıyordu**
+("Av. Yasin Emre Özbaş" görünmüyordu). `.footer-bottom`'a telefonda `padding-bottom: 84px`.
+
+**Doğrulama:** 10 sayfa × 6 genişlik (1440/1160/1024/768/390/320) × açık+koyu tema × TR+EN.
+Yatay taşma 0, kırık görsel 0, JS hatası 0. Menü 320/360/390 px'te açılıp kapanıyor.
+Masaüstü tarafında değişiklik yok (≥1160 px yatay menü aynı; ≤1150 px'te 44 px pay kazanıldı).
+
+**Bilinen, düzeltilmemiş:** ana sayfa mobil LCP ~8 sn (bkz. `SEO-DENETIM-RAPORU-02-EYL-2026.md`,
+Dalga 1). Telefonda "yavaş açılıyor" hissinin kaynağı bu; ayrı bir iş olarak duruyor.
