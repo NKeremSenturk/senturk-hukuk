@@ -69,6 +69,7 @@
   --accent-600: #255a82;
   --accent-300: #5b97c2;
   --accent-200: #9bc1dd;
+  --accent-100: #c9deee;   /* Eylul 2026: fotograf uzerindeki kucuk metinler icin (WCAG AA) */
 
   /* Nötrler & zemin */
   --white:    #ffffff;
@@ -218,6 +219,8 @@ p:last-child { margin-bottom: 0; }
 .narrow { max-width: var(--container-narrow); }
 .section { padding: clamp(64px, 9vw, 124px) 0; position: relative; }
 .section-dark { background: var(--navy-900); color: rgba(255,255,255,0.82); }
+.section-dark .eyebrow { color: var(--accent-200); }   /* Eylul 2026: accent lacivert uzerinde 3,1:1 idi */
+.section-dark .eyebrow::before, .section-dark .eyebrow.center::after { background: var(--accent-300); }
 .section-dark h1, .section-dark h2, .section-dark h3 { color: var(--white); }
 .section-cream { background: var(--bg); }
 .section-alt { background: var(--bg-alt); }
@@ -315,6 +318,16 @@ p:last-child { margin-bottom: 0; }
   transition: opacity var(--transition);
   border-bottom: 1px solid rgba(255,255,255,0.08);
 }
+/* Eylul 2026: hero overlay'i acildigi icin header kendi ince koruma katmanini tasiyor.
+   Sayfa kaydirilinca .scrolled devreye girip ::before'u opaklastirdigindan bu katman kalkar.
+   KURAL: hero overlay'ini daha da acmadan once bu katmanla birlikte kontrast olcun. */
+.header::after {
+  content: "";
+  position: absolute; inset: 0; z-index: 1; pointer-events: none;
+  background: linear-gradient(180deg, rgba(9,22,42,0.62) 0%, rgba(9,22,42,0.34) 55%, rgba(9,22,42,0) 100%);
+  transition: opacity var(--transition);
+}
+.header.scrolled::after { opacity: 0; }
 .header.scrolled { height: 70px; }
 .header.scrolled::before { opacity: 0.98; }
 
@@ -343,7 +356,7 @@ p:last-child { margin-bottom: 0; }
   font-size: 0.66rem;
   letter-spacing: 0.28em;
   text-transform: uppercase;
-  color: var(--accent-300);
+  color: var(--accent-200);   /* Eylul 2026: fotograflı hero uzerinde accent-300 kontrasti dusuktu */
   margin-top: 7px;
   white-space: nowrap;
 }
@@ -447,8 +460,10 @@ p:last-child { margin-bottom: 0; }
 }
 .hero .container { position: relative; z-index: 2; }
 .hero-content { max-width: 780px; padding-bottom: clamp(80px, 14vw, 140px); }
-.hero .eyebrow { color: var(--accent-300); }
-.hero .eyebrow::before { background: var(--accent-300); }
+/* Eylul 2026: accent-300 kucuk metin olarak fotograf uzerinde 2,4:1 kaliyordu (AA=4,5).
+   Yalnizca fotografli hero'larda daha acik tona gecildi; cizgiler dekoratif kalir. */
+.hero .eyebrow { color: var(--accent-100); }
+.hero .eyebrow::before { background: var(--accent-200); }
 .hero h1, .hero .hero-title { color: var(--white); margin-bottom: 1.5rem; }
 .hero h1 .accent, .hero .hero-title .accent { color: var(--accent-300); }
 .hero-desc {
@@ -470,11 +485,15 @@ p:last-child { margin-bottom: 0; }
   background-position: center;
   transition: opacity 1.1s var(--ease-soft);
 }
+/* Eylul 2026 (3. tur) — ana sayfa hero overlay'i de acildi.
+   ONCEKI 120deg 0.88/0.66/0.58 gorseli neredeyse tamamen orttuyordu. Sol taraf logo ve
+   menu icin koyu birakildi (0.72), sag/orta acildi; baslik merkezde radyal scrim ile korunur. */
 .hero-media-slide::after {
   content: ""; position: absolute; inset: 0;
   background:
-    linear-gradient(120deg, rgba(8,20,38,0.88) 0%, rgba(11,31,58,0.66) 55%, rgba(16,42,76,0.58) 100%),
-    linear-gradient(0deg, rgba(8,20,38,0.45) 0%, transparent 45%);
+    radial-gradient(ellipse 76% 66% at 50% 44%, rgba(8,20,38,0.62), transparent 100%),
+    linear-gradient(120deg, rgba(8,20,38,0.72) 0%, rgba(11,31,58,0.34) 52%, rgba(16,42,76,0.26) 100%),
+    linear-gradient(0deg, rgba(8,20,38,0.52) 0%, transparent 42%);
 }
 .hero-media-slide.is-active { opacity: 1; animation: kenburns 12s ease-out both; }
 @keyframes kenburns { from { transform: scale(1.001); } to { transform: scale(1.09); } }
@@ -997,11 +1016,11 @@ p:last-child { margin-bottom: 0; }
 .page-hero .hero-bg { opacity: 1; }
 .page-hero .container { position: relative; z-index: 2; }
 .page-hero h1 { color: var(--white); margin-bottom: 1rem; }
-.page-hero .breadcrumb { font-size: 0.82rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.62); }
+.page-hero .breadcrumb { font-size: 0.82rem; letter-spacing: 0.04em; color: rgba(255,255,255,0.82); }
 .page-hero .breadcrumb a:hover { color: #fff; }
 .page-hero .breadcrumb .sep { color: var(--accent-300); margin: 0 0.5rem; }
-.page-hero .eyebrow { color: var(--accent-300); }
-.page-hero .eyebrow::before, .page-hero .eyebrow.center::after { background: var(--accent-300); }
+.page-hero .eyebrow { color: var(--accent-100); }
+.page-hero .eyebrow::before, .page-hero .eyebrow.center::after { background: var(--accent-200); }
 .page-hero .lead { color: rgba(255,255,255,0.8); max-width: 680px; margin: 1.2rem auto 0; }
 
 /* ---------- 16b. Fotoğraflı sayfa başlığı (Eylül 2026 — Sinem'in banner görselleri) ----------
@@ -1014,13 +1033,28 @@ p:last-child { margin-bottom: 0; }
 .page-hero--photo .hero-photo {
   position: absolute; inset: 0; width: 100%; height: 100%;
   object-fit: cover; object-position: var(--hero-pos, 50% 50%);
+  /* Telefonda yatay banner dar-uzun kutuya oturunca yalnizca ortadan bir serit gorunur;
+     sayfa bazli --hero-pos-m ile o seridi banner'in anlamli kismina kaydiriyoruz. */
   display: block;
   animation: heroPhotoIn 1.4s var(--ease-soft) both;
 }
+/* Eylul 2026 (3. tur) — overlay acildi.
+   ONCEKI: duz 0.70/0.52/0.56/0.78 + radyal 0.34 -> ortada ~%70 opaklik; Sinem'in
+   banner'larinin parlakliginin yalnizca %22-30'u geciyordu, Marka Tescili ve Makaleler
+   sayfalarinda gorsel neredeyse kayboluyordu.
+   YENI YAKLASIM: ust ve alt seritler METNI ve HEADER'i korumak icin koyu kalir; ortadaki
+   genis bant acilir; basligin oturdugu merkez ayrica radyal "scrim" ile korunur.
+   Olculen en dusuk metin kontrasti: masaustu 5.4:1, telefon 5.0:1 (WCAG AA esigi 4.5:1).
+   KURAL: bu degerleri degistirirsen kontrasti yeniden olc (glif maskeli olcum, bkz. rapor). */
 .page-hero--photo .hero-bg::after {
   background:
-    radial-gradient(ellipse 58% 68% at 50% 56%, rgba(8,20,38,0.34), transparent 100%),
-    linear-gradient(180deg, rgba(8,20,38,0.70) 0%, rgba(11,31,58,0.52) 42%, rgba(11,31,58,0.56) 72%, rgba(8,20,38,0.78) 100%);
+    radial-gradient(ellipse 60% 72% at 50% 54%, rgba(9,22,42,0.46), transparent 100%),
+    linear-gradient(180deg,
+      rgba(9,22,42,0.58) 0%,
+      rgba(9,22,42,0.42) 14%,
+      rgba(9,22,42,0.18) 40%,
+      rgba(9,22,42,0.22) 72%,
+      rgba(9,22,42,0.48) 100%);
   opacity: 1;
 }
 @keyframes heroPhotoIn {
@@ -1283,6 +1317,18 @@ html[lang="en"] [data-lang-en] { display: revert; }
   .nav { gap: 0.6rem; }
   .lang-switch button { padding: 5px 10px; font-size: 0.7rem; }
   .nav-toggle { width: 26px; }
+}
+/* ------------------------------------------------------------
+   Telefonda hero — Eylul 2026 (3. tur)
+   1) Dolgu kucultuldu: hero kutusu kisaldi -> yatay banner daha az buyutuluyor,
+      banner'in gorunen orani %30-42'den %38-49'a cikti ve hero ekranin %62'sini
+      kaplamiyor artik.
+   2) --hero-pos-m: telefonda yatay kadraj sayfa bazinda kaydirilabiliyor
+      (or. Marka Tescili'nde "R" tescil muhrunu kadraja almak icin).
+   ------------------------------------------------------------ */
+@media (max-width: 760px) {
+  .page-hero { padding: calc(var(--header-h) + 38px) 0 60px; }
+  .page-hero--photo .hero-photo { object-position: var(--hero-pos-m, var(--hero-pos, 50% 50%)); }
 }
 @media (max-width: 380px) {
   .container { padding: 0 15px; }

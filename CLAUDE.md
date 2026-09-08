@@ -536,3 +536,43 @@ Sitedeki 3 dosya `Sinem İstekler/_secenekler/*-2-sitede-kullanilan-*` ile bireb
 **KURAL: siteye görsel eklerken (a) asla büyütme, (b) ham dosyanın tam çözünürlüğünü kullan,
 (c) `width`/`height` niteliklerini gerçek ölçüyle yaz, (d) telefonda (DPR3) keskinlik
 yeterliliğini kontrol et: dosya genişliği ÷ (CSS genişliği × 3) ≥ 1 olmalı.**
+
+## 17. Eylül 2026 — HERO/BANNER yeniden dengelenmesi (UYGULANDI, Sinem'e sorulmadı)
+
+Kerem'in kararı: "Sinem'den dönüş almayalım, en iyisini yapalım." Rapor:
+`HERO-DUZENLEME-RAPORU-07-EYL-2026.md`. Yedek: `_yedek/2026-09-07-oncesi/css/style-hero-oncesi.css`.
+
+**Sorun (ölçüldü):** overlay opaklığı ortada ~%70, kenarlarda ~%78 idi; Sinem'in banner'larının
+parlaklığının yalnızca %22-30'u geçiyordu. Marka Tescili ve Makaleler sayfalarında görsel
+neredeyse tamamen kayboluyordu. Telefonda ayrıca banner'ın yalnızca %30-42'si görünüyordu.
+
+**Yapılan 6 değişiklik:**
+1. **İç sayfa hero overlay'i açıldı** (`.page-hero--photo .hero-bg::after`). Yeni yaklaşım:
+   üst ve alt şeritler header'ı ve metni korumak için koyu kalır (0,58 / 0,48), ORTA bant açılır
+   (0,18-0,22), başlığın oturduğu merkez ayrıca radyal scrim ile korunur (0,46).
+2. **Ana sayfa hero overlay'i açıldı** (`.hero-media-slide::after`). Sol taraf logo/menü için
+   koyu bırakıldı (120deg 0,72), sağ ve orta açıldı; merkeze radyal scrim (0,62).
+3. **Header kendi koruma katmanını kazandı** (`.header::after`, `.scrolled` olunca kalkar).
+   Overlay açıldığı için menü/logo artık hero fotoğrafına doğrudan oturuyordu.
+4. **Telefonda sayfa bazlı yatay kadraj:** `--hero-pos-m` değişkeni. Marka Tescili 88%
+   ("R" tescil mührü kadraja girsin), Makaleler 60%, Çalışma 55%, İletişim 52%, Hakkımızda 64%.
+5. **Telefonda hero dolgusu küçültüldü** (üst +38px, alt 60px). Hero ekranı daha az kaplıyor ve
+   banner'ın görünen oranı %30-42'den **%33-47**'ye çıktı.
+6. **Kontrast düzeltmeleri** (overlay açılınca gerekli oldu, ama zaten AA altındaydılar):
+   `--accent-100 (#c9deee)` eklendi; `.hero .eyebrow` ve `.page-hero .eyebrow` accent-300 →
+   accent-100 (2,4:1 → 4,6:1); `.logo-sub` accent-300 → accent-200 (3,3:1 → 5,0:1);
+   `.page-hero .breadcrumb` 0,62 → 0,82 opaklık; `.section-dark .eyebrow` accent → accent-200.
+
+**Ölçüm yöntemi — GLİF MASKELİ KONTRAST (bunu kullanın):** sayfayı iki kez ekran görüntüsü al —
+biri normal, biri metin rengi `transparent` yapılmış hâliyle. İkisinin farkı glif maskesini verir;
+dekoratif çizgiler (`.eyebrow::before/::after`, `.divider-gold`) ÖNCEDEN gizlenmeli. Maskeli
+piksellerde arka planı boş görüntüden, metin rengini CSS'ten al, piksel bazlı kontrastın 5.
+yüzdeliğini raporla. Kutu ortalaması ya da yüzdelik-renk yöntemi YANILTIR (parlak tekil pikseller
+ve anti-aliasing kenarları sonucu bozar).
+
+**Doğrulanan kontrast (WCAG AA = 4,5:1) — en düşük değerler:**
+masaüstü 1440 **4,6:1**, telefon 390 **4,6:1**. Önceki durum: eyebrow 2,4/2,8 ve logo-alt 3,3/3,4
+ile **AA'nın ALTINDAYDI**. Yani site artık hem görselleri gösteriyor hem daha erişilebilir.
+
+**KURAL: overlay değerlerine dokunmadan önce glif maskeli kontrast ölçümünü çalıştırın; en düşük
+değer 4,5:1'in altına inmemeli. Overlay'i açmak istiyorsanız önce radyal scrim'i güçlendirin.**
