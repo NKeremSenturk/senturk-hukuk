@@ -1,5 +1,10 @@
 # CLAUDE.md — Proje Rehberi
 
+> ⚠ **BU DOSYA PUBLIC DEPODA — `raw.githubusercontent.com`'dan herkes okuyabilir.**
+> Kişisel e-posta adresi, anahtar, token ya da kişisel veri **yazılmaz**; erişim bilgileri
+> `ERISIM-HARITASI.md` (gitignore'da) dosyasına gider. Kapı K1 + K2b bunu mekanik denetler.
+> *(M6 temizliği 18.09.2026 — öncesinde 2 kişisel Gmail adresi 5 yerde yayındaydı.)*
+
 Bu dosya, **Claude Code**, **Cowork** ve **Claude chat** için projenin tek referans noktasıdır.
 Hangi ortamda çalışırsan çalış, önce bu dosyayı oku; proje yapısı, kurallar ve yapılacaklar burada.
 
@@ -43,9 +48,16 @@ iş, ceza, gayrimenkul, icra-iflas ve sözleşmeler hukuku alanlarında da hizme
 ├── .github/workflows/
 │   └── pages.yml           # GitHub Pages otomatik yayın
 ├── README.md               # GitHub vitrini + kurulum
-├── BAKIM_RAPORU.md         # 26 Haz 2026 çoklu-ajan bakım turu raporu (arşiv)
-├── SINEM-NOTLAR-ANALIZ-11-TEM-2026.md  # Sinem'in değişiklik dokümanının analizi (uygulandı, arşiv)
-└── CLAUDE.md               # (bu dosya)
+├── CLAUDE.md               # (bu dosya)
+│
+│   # 18.09.2026 ARŞİV — çalışmayan/bitmiş belgeler kökten çıkarıldı (bkz. _arsiv/2026-09-18/OKU.md):
+├── _arsiv/2026-09-18/      # tamamlanan raporlar · devredilen listeler · kullanılmış commit betikleri
+├── _kaynak/                # Sinem'in ham .docx/.xlsx + Sinem.jpg / Yasin.jpeg (repoya GİRMEZ)
+│
+│   # Aşağıdakiler .gitignore'da — depoya ve yayına GİRMEZ (yalnız yerel diskte):
+├── 00_YOL_HARITASI.md      # Tek doğruluk kaynağı yol haritası (§0 kaldığımız yer, kulvarlar, K-bloklar)
+├── _bekci/yayin_kapisi.py  # Mekanik kapı: 8 kontrol, seviye 0/1/2, --kanarya (§19)
+└── _kuyruk/                # Dört oturumlu döngü kuyruğu — AYRI private depo (§19)
 ```
 
 ---
@@ -117,7 +129,7 @@ Serif yalnız logoda; gövde metni hâlâ sans (Plus Jakarta + Inter). Sans logo
 > Ayrıca alt satırın rengi accent-300 → **accent-200** oldu (kontrast, Bölüm 17).
 
 **Portre fotoğrafları EKLENDİ (Haziran 2026, Kerem):** Sinem ve Yasin'in gerçek
-portreleri geldi. Kaynaklar kök dizinde (`Sinem.jpg`, `Yasin.jpeg` — repoya GİRMEZ);
+portreleri geldi. Kaynaklar `_kaynak/` içinde (`_kaynak/Sinem.jpg`, `_kaynak/Yasin.jpeg` — repoya GİRMEZ; 18.09.2026'da kökten taşındı);
 işlenmiş web sürümleri `assets/team/sinem.jpg` ve `assets/team/yasin.jpg` (siyah bant
 kırpıldı, 4/5'e yakın portre, ~760px, ~60KB). **Eylül 2026 güncellemesi:** `yasin.jpg`
 ham dosyanın tam çözünürlüğüne çıkarıldı — **1100×1374, ~112 KB** (bkz. Bölüm 16).
@@ -135,7 +147,7 @@ hâliyle "Av. Yasin Emre Özbaş" korundu.
 - ~~Kesin renk/stil tercihi~~ ✅ **TAMAMLANDI (5 Tem 2026):** Sinem "koyu şık lacivert-beyaz"
   paletini kesin onayladı; mevcut `:root` değerleri korunuyor, ince ayar gerekmedi.
 - Sosyal medya `href="#"` (LinkedIn / Instagram) → gerçek bağlantılar. **(5 Tem 2026 notu:
-  hesaplar `av.sinemsenturk@gmail.com` ile açılacak; giriş Kerem'in bilgisayarından yapılacak,
+  hesaplar `ERISIM-HARITASI.md` → `KISISEL-2` adresiyle açılacak; giriş Kerem'in bilgisayarından yapılacak,
   doğrulama kodu Sinem'in mailine gelecek — Kerem+Sinem birlikte yapacak.)**
 - ~~Gerçek makale metinleri~~ ✅ **İŞLENDİ (Temmuz 2026):** Sinem 3 makale gönderdi (Word);
   her biri kendi sayfasına kondu (`makale-*.html`, TR + EN çeviri, BlogPosting JSON-LD,
@@ -197,9 +209,10 @@ python -m http.server 8000
 
 **Repo:** https://github.com/NKeremSenturk/senturk-hukuk.git (origin/main)
 
-> **Push yalnızca kullanıcının kendi terminalinden yapılır.** GitHub kimlik bilgileri
-> (credential) kullanıcının makinesindedir; Cowork/sandbox ortamından push edilemez.
-> Commit hazırlanabilir, ancak gönderimi (`git push`) kullanıcı terminalden yapar.
+> **Git yalnızca Claude Code oturumlarında koşar** (13.09.2026'dan itibaren `uretici-web`, bkz. §19).
+> Cowork bağlı klasörde `git` koşmaz (K49: köprü dosya silemez, `index.lock` kalır). Bulut konteynerden
+> git/HTTPS'in teknik olarak çalıştığı 12.09'da ölçüldü — engel politika, arıza değil.
+> **Kapı `KALDI` iken commit yok; `git add -A` YASAK** (depo public, Pages her dosyayı yayınlar; kapsam listesiyle `git add <dosya>`).
 
 > **Stale lock uyarısı:** Bir git işlemi yarıda kesilirse `.git/index.lock` kalıp
 > "another git process is running" hatası verebilir. Çözüm: kilidi sil
@@ -226,7 +239,7 @@ Bu kararlar bağlayıcıdır; aksini kullanıcı açıkça istemedikçe uyulur.
      satır kontrol JS'i), otomatik geçiş hover'da durur ve `prefers-reduced-motion`'da kapanır.
      `.hero-slide` / `.hero-dots` sınıfları + `main.js` §11. Terazi `.hero-ornament` korundu.
 
-3. **Bilgi toplama formu.** Proje kökündeki `Sinem-Bilgi-Formu.xlsx`, Sinem'den bilgi ve
+3. **Bilgi toplama formu.** `_kaynak/Sinem-Bilgi-Formu.xlsx`, Sinem'den bilgi ve
    tercih toplamak içindir (büro adı, iletişim, çalışma alanları, istatistik sayıları,
    ön yüz renk/stil tercihleri vb.). Sinem doldurup gönderince, **Bölüm 5'teki yer
    tutucular** bu cevaplarla doldurulur. Dosya `.gitignore`'da — **yayına/repoya girmez.**
@@ -277,7 +290,7 @@ Bu kararlar bağlayıcıdır. Kerem tek tek onayladı; sıra ve gerekçeler aşa
    - **Kanal 2 — Ücretsiz form servisi (Web3Forms/Formspree):** mesaj gerçek bir gelen kutusuna
      düşer + KVKK onay kutusu eklenir.
    - ⚠️ **GEÇİCİ ADRES NOTU (sonra değişecek):** Sinem'in henüz kurumsal maili YOK. Form ve
-     tüm bağlantılar **şimdilik kişisel adrese** gider: **e-posta `17ssenturk@gmail.com`**,
+     tüm bağlantılar **şimdilik kişisel adrese** gider: **e-posta: `ERISIM-HARITASI.md` → `KISISEL-1`**,
      **telefon/WhatsApp `+90 534 242 80 81` (905342428081)**. Kurumsal mail + kurumsal telefon
      alınınca bu iki değer TEK yerden güncellenecek (mümkünse bir sabit/`:root` benzeri tek kaynak).
 
@@ -295,7 +308,7 @@ Bu kararlar bağlayıcıdır. Kerem tek tek onayladı; sıra ve gerekçeler aşa
 
 **D. vCard + QR "Kişilerime Ekle" (iletişim sayfası) — imza hareketine yakın pratik özellik.**
    - `.vcf` indirme + önceden üretilmiş QR (SVG). Şimdilik mevcut numara `905342428081` ve
-     `17ssenturk@gmail.com` ile; kurumsal bilgiler gelince güncellenecek (bkz. A notu).
+     `ERISIM-HARITASI.md` → `KISISEL-1` ile; kurumsal bilgiler gelince güncellenecek (bkz. A notu).
 
 **E. "Markanız tescile uygun mu?" 5 soruluk mini sihirbaz (saf JS) + TÜRKPATENT sorgu bağlantısı.**
    - `marka-tescili.html`'e; söz/garanti vermeden bilgilendirici, sonunda iletişime yönlendirir
@@ -311,7 +324,7 @@ Bu kararlar bağlayıcıdır. Kerem tek tek onayladı; sıra ve gerekçeler aşa
 - **A. Form ✅ ÇALIŞIYOR.** `js/main.js` §7 forma-bağımsız handler (etiket okur, 3 formun farklı
   alan adlarına rağmen çalışır). Her formda KVKK onay kutusu + "WhatsApp'tan Gönder" butonu
   (`iletisim/index/marka-tescili`). Anahtar yoksa mailto ile açılır (mesaj kaybolmaz).
-  → **BEKLEYEN (Kerem):** web3forms.com'dan `17ssenturk@gmail.com` ile Access Key al →
+  → **BEKLEYEN (Kerem):** web3forms.com'dan `ERISIM-HARITASI.md` → `KISISEL-1` ile Access Key al →
   `main.js` `CONTACT.web3formsKey` satırına yapıştır. `CONTACT` = tek kaynak (mail+telefon).
 - **C. Fontlar ✅ HOST EDİLDİ.** `assets/fonts/` içinde 6 variable woff2 (latin+latin-ext, 247KB).
   `style.css` başında `@font-face`. 7 HTML'den Google Fonts `<link>`'leri kaldırıldı. Türkçe tam.
@@ -329,7 +342,7 @@ Bu kararlar bağlayıcıdır. Kerem tek tek onayladı; sıra ve gerekçeler aşa
 
 **Ayrıca gözden geçirilecek:** İletişim sayfasında **görünen** e-posta hâlâ `info@senturklawfirm.com`
 (vCard'da da bu). Bu kutu aktif değilse gelen mail'ler kaybolur — Sinem bu adresi açacak mı, yoksa
-şimdilik `17ssenturk@gmail.com` mı gösterilsin, karara bağlı.
+şimdilik `KISISEL-1` (bkz. `ERISIM-HARITASI.md`) mı gösterilsin, karara bağlı.
 
 ---
 
@@ -375,11 +388,11 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 > ifadeleri CLAUDE.md'nin daha üst kısımlarında KULLANMA (ilk eşleşme kazanır).
 
 **Teknik bekleyenler — geldiğinde ne güncellenecek (Claude için):**
-4. ✅ **Yasin tanıtım yazısı İŞLENDİ (11 Tem 2026):** "WEB SAYFAM İÇİN NOTLARIM.docx" ile geldi;
+4. ✅ **Yasin tanıtım yazısı İŞLENDİ (11 Tem 2026):** `_kaynak/WEB SAYFAM İÇİN NOTLARIM.docx` ile geldi;
    `hakkinda.html` founder kartına 3 paragraf TR+EN eklendi.
 5. ✅ **"Genel değişiklikler" dosyası GELDİ ve İŞLENDİ (11 Tem 2026):** "WEB SAYFAM İÇİN
    NOTLARIM.docx" (kökte, .gitignore'da). Tüm metin/yazım değişiklikleri uygulandı; analiz
-   `SINEM-NOTLAR-ANALIZ-11-TEM-2026.md`. ⚠️ İmza adı satırı (`.intro-signature-name`) Sinem'in
+   `_arsiv/2026-09-18/raporlar-tamamlanan/SINEM-NOTLAR-ANALIZ-11-TEM-2026.md`. ⚠️ İmza adı satırı (`.intro-signature-name`) Sinem'in
    cevabına göre kalacak/kaldırılacak (alıntı cümlesi kaldırıldı).
 6. ✅ **Adres güncellendi (11 Tem 2026):** "Küçükbakkalköy Mahallesi Selvili Sokak No:4/20,
    Ataşehir/İstanbul" — index (JSON-LD+footer), iletisim, kvkk, vCard. Harita embed'i bina
@@ -411,7 +424,7 @@ Sinem'den gelen kararlar ve hatırlatmalar; her maddenin durumu işaretli.
 ## 13. Eylül 2026 — Sinem'in banner/görsel/metin istekleri (UYGULANDI, yayın onayı bekliyor)
 
 Kaynak: `Sinem İstekler/` (e-posta ekleri; zip'ler + `_acilan/` + `_secenekler/` gitignore'da).
-Rapor: `DEGISIKLIK-RAPORU-01-EYL-2026.md` · Geri dönüş: `GERI-DONUS-PLANI.md` · Öncesi kopya: `_yedek/2026-09-01-oncesi/`.
+Rapor: `_arsiv/2026-09-18/raporlar-tamamlanan/DEGISIKLIK-RAPORU-01-EYL-2026.md` · Geri dönüş: `_arsiv/2026-09-18/raporlar-tamamlanan/GERI-DONUS-PLANI.md` · Öncesi kopya: `_yedek/2026-09-01-oncesi/`.
 
 **Fotoğraflı sayfa başlığı sistemi (`.page-hero--photo`, CSS Bölüm 16b):**
 - Yapı: `<section class="page-hero page-hero--photo" style="--hero-pos: X% Y%">` → `<div class="hero-bg"><img class="hero-photo" src=".../hero-<ad>-1600.jpg" srcset="...-960.jpg 960w, ...-1600.jpg 1600w" sizes="100vw" width height alt="" fetchpriority="high" decoding="async"></div>`; `<head>`'de `<link rel="preload" as="image" imagesrcset imagesizes>`.
@@ -422,7 +435,7 @@ Rapor: `DEGISIKLIK-RAPORU-01-EYL-2026.md` · Geri dönüş: `GERI-DONUS-PLANI.md
 
 **Alan kartları (`assets/alanlar/`):** aile, yabancilar, fikri-sinai görselleri yenilendi (880×636, parlaklık/kontrast ton düzeltmeli). **KURAL: sitede kullanılan hiçbir görselde kurum/marka logosu, resmî belge görüntüsü veya belge numarası bulunmaz** — yapay üretim görsellerde bu tür öğeler çıkarılır (fikri-sinai görselinde uygulandı). Gerekçe ve kullanılmayan sürümler repo dışındaki iç raporda. Alt metinler (`data-alt-tr/en`) yenilendi.
 
-**Metin:** `makaleler.html` h1 "Makaleler"/"Articles" + yeni lead (TR Sinem'in, EN bizim); `iletisim.html` yeni lead (TR Sinem'in, EN bizim). Sinem'in onayı bekleniyor (`SINEM-SORULAR-01-EYL-2026.md`, 8 madde).
+**Metin:** `makaleler.html` h1 "Makaleler"/"Articles" + yeni lead (TR Sinem'in, EN bizim); `iletisim.html` yeni lead (TR Sinem'in, EN bizim). Sinem'in onayı bekleniyor (00_YOL_HARITASI.md S8; eski kopya `_arsiv/2026-09-18/devredilen-listeler/SINEM-SORULAR-01-EYL-2026.md`).
 
 **Yapılmayanlar (bilinçli):** İletişim'e "Bizimle İletişime Geçin" ara satırı; ana sayfa makaleler bölüm başlığı; akordeona görsel; KVKK'ya fotoğraf. Gerekçeler raporda.
 
@@ -518,7 +531,7 @@ Dalga 1). Telefonda "yavaş açılıyor" hissinin kaynağı bu; ayrı bir iş ol
 
 ## 16. Eylül 2026 — Görsel kalite denetimi (Sinem'in görselleri bozuldu mu?)
 
-Rapor: `GORSEL-KALITE-DENETIMI-07-EYL-2026.md`. **Sonuç: Sinem'in görselleri bozulmadı.**
+Rapor: `_arsiv/2026-09-18/raporlar-tamamlanan/GORSEL-KALITE-DENETIMI-07-EYL-2026.md`. **Sonuç: Sinem'in görselleri bozulmadı.**
 Kaynak PNG ↔ site JPG karşılaştırması PSNR **38,9–46,3 dB** (40+ = gözle ayırt edilemez).
 Büyütme yok, en-boy oranları birebir, kadraj korunmuş.
 
@@ -532,7 +545,7 @@ Not: sitedeki en bulanık görseller Sinem'inkiler değil, BİZİM `assets/hero-
 **Denetimde çıkan ve düzeltilen 2 kusur:**
 1. `assets/about/neden-biz-kutuphane.jpg` 768×768 kırpımdan 900×900'e **büyütülmüştü**
    (7 Eyl'de ben yapmıştım) → gerçek ölçüye döndürüldü, 119→100 KB.
-2. `assets/team/yasin.jpg` ham `Yasin.jpeg` 1122×1402 iken **760×950'ye küçültülmüştü**
+2. `assets/team/yasin.jpg` ham `_kaynak/Yasin.jpeg` 1122×1402 iken **760×950'ye küçültülmüştü**
    (kırpma değil düz küçültme, PSNR 43,1 dB) → 1100×1374, kadraj aynı.
    Telefonda keskinlik 0,73 → 1,05. `sinem.jpg` DEĞİŞTİRİLMEDİ (hamı zaten 738 px + rötuşlu).
 3. Portrelere ve neden-biz görseline `width`/`height` nitelikleri eklendi (CLS azaltır).
@@ -550,7 +563,7 @@ yeterliliğini kontrol et: dosya genişliği ÷ (CSS genişliği × 3) ≥ 1 olm
 ## 17. Eylül 2026 — HERO/BANNER yeniden dengelenmesi (UYGULANDI, Sinem'e sorulmadı)
 
 Kerem'in kararı: "Sinem'den dönüş almayalım, en iyisini yapalım." Rapor:
-`HERO-DUZENLEME-RAPORU-07-EYL-2026.md`. Yedek: `_yedek/2026-09-07-oncesi/css/style-hero-oncesi.css`.
+`_arsiv/2026-09-18/raporlar-tamamlanan/HERO-DUZENLEME-RAPORU-07-EYL-2026.md`. Yedek: `_yedek/2026-09-07-oncesi/css/style-hero-oncesi.css`.
 
 **Sorun (ölçüldü):** overlay opaklığı ortada ~%70, kenarlarda ~%78 idi; Sinem'in banner'larının
 parlaklığının yalnızca %22-30'u geçiyordu. Marka Tescili ve Makaleler sayfalarında görsel
@@ -590,7 +603,7 @@ değer 4,5:1'in altına inmemeli. Overlay'i açmak istiyorsanız önce radyal sc
 ## 18. Eylül 2026 — Bakım turu: ölü kod, ölü bağlantı, doküman tazeleme
 
 7 Eylül'deki dört turdan (Bölüm 14-17) sonra yapılan temizlik. Rapor:
-`BAKIM-TURU-07-EYL-2026.md`. Açık işler tek dosyada: **`ACIK-ISLER.md`**.
+`_arsiv/2026-09-18/raporlar-tamamlanan/BAKIM-TURU-07-EYL-2026.md`. Açık işler tek dosyada: **`00_YOL_HARITASI.md`** (11.09'dan beri; `ACIK-ISLER.md` arşivde: `_arsiv/2026-09-18/devredilen-listeler/`).
 
 **1) Ölü sosyal medya bağlantıları kaldırıldı.** Footer'daki LinkedIn ve Instagram
 simgeleri `href="#"` idi — tıklanınca hiçbir şey olmuyordu (10 sayfa × 2 = 20 ölü bağlantı;
@@ -619,3 +632,23 @@ güncellendi.
 **KURAL: bir bölümü geçersiz kılan bir değişiklik yaptığınızda eski bölümü SİLMEYİN —
 altına `> ⚠ GÜNCEL DEĞİL (tarih): … Bkz. Bölüm N` satırı ekleyin. Bu dosya kronolojik
 bir kayıt; silmek geçmişi kaybettirir, düzeltmemek yanlış yönlendirir.**
+
+---
+
+## 19. Eylül 2026 (13.09) — Dört oturumlu üretim döngüsü
+
+Proje, Claude Code'da birbirine `SendMessage` ile bağlı **dört oturumla** yürür (kalıp: `calisma-metodu:uc-oturum`, bir rol eklendi):
+
+| Oturum | İş | Yazma yetkisi |
+|---|---|---|
+| `uretici-web` | Maddeyi yapar, kapıyı koşar, commit + push (iki depo), denetçiyi çağırır, `ders:` yazar | Site dosyaları + `_kuyruk/` (KUYRUK `durum:`/`plan:`, K-B, GUNLUK) |
+| `denetci-web` | Biten maddeyi bağımsız ölçer, **çürütür** | **Hiçbiri** (salt okur) |
+| `iletisimci-web` | Kerem ↔ ağ; karar paketi; her madde adayını ÖNCE planlayıcıya sorar | Yalnız Kerem'in kalemi olarak: `KARAR-ILETIM-LISTESI-*.md`, dikte edilen madde, DEVİR satırı |
+| `planlayici-web` | Her maddeye plan görüşü (`UYGUN` / `UYGUN DEĞİL` / `+ REVİZE ÖNERİSİ`); **tek muhatabı iletişimci** | `00_YOL_HARITASI.md` + `_kuyruk/PLAN-GORUSU.md` |
+
+- Kurallar `_kuyruk/PROTOKOL.md`'de; brifingler `_kuyruk/BRIFINGLER.md`'de; sıra `_kuyruk/KUYRUK.md` başındaki `SIRA:` satırında.
+- **Kapı:** `python _bekci/yayin_kapisi.py` → `GEÇTİ` olmadan commit yok. `--kanarya` bekçinin bekçisidir (12 bozma).
+  Seviye `_bekci/seviye.txt`: 0 hijyen · 1 SEO (0.3 sonrası) · 2 alan adı taşıma sonrası.
+- **Depo PUBLIC, Pages `path: "."`** → repodaki her dosya yayınlanır. `_kuyruk/`, `_bekci/`, `00_YOL_HARITASI.md` `.gitignore`'dadır ve
+  kapı K2 bunu denetler. `_kuyruk/` kendi `.git`'iyle ayrı **private** depoya (`senturk-hukuk-kuyruk`) push eder.
+- Bu dosyaya **kişisel veri yazılmaz** (public; 13.09'da içinde bulunan kişisel e-posta adresleri M6 ile kaldırılıyor). Sinem/Kerem'e özel bilgi `00_YOL_HARITASI.md` ya da `_kuyruk/`'a yazılır.

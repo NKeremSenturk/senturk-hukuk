@@ -60,6 +60,9 @@ SEO-DENETIM-*.md
 GORSEL-KALITE-DENETIMI-*.md
 BAKIM-TURU-*.md
 ACIK-ISLER.md
+YAYINA-ALMA-PLANI.md
+YAYINA-ADIMLARI.md
+OLCUM-VE-OPERASYON-MIMARISI.md
 HERO-DUZENLEME-RAPORU-*.md
 git-etiketle-ve-commit.cmd
 git-commit-07-EYL.cmd
@@ -68,3 +71,29 @@ git-commit-07-EYL-GORSEL.cmd
 git-commit-07-EYL-HERO.cmd
 git-commit-07-EYL-BAKIM.cmd
 SITEYI-AC.cmd
+
+# 11.09.2026 — yol haritası ve bekçi (depo PUBLIC — yayına girmesin)
+00_YOL_HARITASI.md
+SINEM-KARAR-PAKETI.md
+ERISIM-HARITASI.md
+_bekci/
+_PLUGIN-TASLAK-*.md
+
+# 13.09.2026 — dört oturumlu üretim döngüsü (KARAR Kerem 13.09): depo PUBLIC kalır,
+# Pages repodaki HER dosyayı yayınlar → kuyruk ana depoya GİRMEZ. _kuyruk/ kendi
+# .git'iyle ayrı PRIVATE depoya (senturk-hukuk-kuyruk) push eder; ana depo onu görmez.
+# Kapı (_bekci/yayin_kapisi.py K2) bu satırın varlığını ve git'in bu dosyaları
+# izlemediğini denetler.
+_kuyruk/
+
+# 18.09.2026 — arşiv ve kaynak malzeme (depo PUBLIC — yayına girmesin)
+_arsiv/
+_kaynak/
+
+# 18.09.2026 — public depoda YAYINDA olan iç belgeler (K2b bulgusu). Arşive taşındı;
+# `git rm --cached` ile depodan da çıkarılacak. Satırlar yeniden oluşturulmalarına karşı kalır.
+BAKIM_RAPORU.md
+SINEM-NOTLAR-ANALIZ-*.md
+
+# 18.09.2026 — bugünün operasyon listesi (iç belge)
+YAYIN-BUGUN.md
