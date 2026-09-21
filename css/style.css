@@ -1268,6 +1268,17 @@ p:last-child { margin-bottom: 0; }
   .hero-dot.is-active .hero-dot-fill { animation: none; width: 100%; }
 }
 
+
+/* S3.8 (21.09.2026) — makale kunye satiri (gorunur byline + <time>) */
+.article-byline {
+  margin-top: 1.1rem;
+  font-size: 0.9rem;
+  color: rgba(255, 255, 255, 0.82);
+  display: flex; align-items: center; justify-content: center;
+  gap: 0.55rem; flex-wrap: wrap;
+}
+.article-byline time { color: inherit; }
+
 /* Dil görünürlüğü */
 [data-lang-en] { display: none; }
 html[lang="en"] [data-lang-tr] { display: none; }
