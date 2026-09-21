@@ -730,6 +730,7 @@ p:last-child { margin-bottom: 0; }
   border: 1px solid var(--line);
 }
 .feature-item-icon svg { width: 22px; height: 22px; }
+.feature-item h3,
 .feature-item h4 { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: var(--navy-900); margin-bottom: 0.3rem; }
 .feature-item p { font-size: 0.95rem; color: var(--muted); margin: 0; }
 
@@ -837,8 +838,11 @@ p:last-child { margin-bottom: 0; }
   text-align: left;
   transition: color var(--transition);
 }
+.acc-head h2,
 .acc-head h3 { font-size: 1.28rem; transition: color var(--transition); display: inline-flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; }
+.acc-head:hover h2,
 .acc-head:hover h3 { color: var(--accent); }
+.acc-title { display: inline-flex; align-items: center; gap: 0.7rem; flex-wrap: wrap; min-width: 0; }
 .acc-flag {
   font-size: 0.58rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase;
   color: var(--accent); background: var(--bg-alt);
@@ -920,6 +924,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: 12px; background: var(--navy-900); color: #fff;
 }
 .contact-info-icon svg { width: 23px; height: 23px; }
+.contact-info-item h3,
 .contact-info-item h4 { font-family: var(--font-body); font-size: 0.76rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--muted); margin-bottom: 0.3rem; }
 .contact-info-item p { font-size: 1.04rem; color: var(--navy-900); font-weight: 500; margin: 0; }
 .contact-info-item a:hover { color: var(--accent); }
@@ -975,6 +980,7 @@ p:last-child { margin-bottom: 0; }
   border-radius: var(--radius-lg); padding: 1.5rem 1.6rem; margin: 2rem 0; flex-wrap: wrap;
 }
 .vcard-block .vcard-text { flex: 1 1 260px; }
+.vcard-block h3,
 .vcard-block h4 { margin-bottom: 0.4rem; color: var(--navy-900); }
 .vcard-block .vcard-text p { font-size: 0.9rem; color: var(--muted); margin-bottom: 1rem; }
 .vcard-qr { flex: 0 0 auto; text-align: center; margin: 0; }
@@ -1113,6 +1119,7 @@ p:last-child { margin-bottom: 0; }
   font-family: var(--font-display); font-weight: 700; font-size: 1.05rem;
 }
 .step-num::before { content: counter(step, decimal-leading-zero); }
+.step h3,
 .step h4 { font-family: var(--font-body); font-size: 1.05rem; font-weight: 700; color: var(--navy-900); margin-bottom: 0.25rem; }
 .step p { font-size: 0.92rem; color: var(--muted); margin: 0; }
 
@@ -1479,9 +1486,12 @@ html[data-theme="dark"] .vcard-qr img { background: #fff; }   /* QR okunabilirli
 html[data-theme="dark"] .chip { color: var(--ink); background: var(--bg-alt); }
 html[data-theme="dark"] .chip:hover { background: var(--bg-alt2); border-color: var(--accent-300); }
 html[data-theme="dark"] .chip svg { color: var(--accent-300); }
+html[data-theme="dark"] .feature-item h3,
 html[data-theme="dark"] .feature-item h4,
+html[data-theme="dark"] .step h3,
 html[data-theme="dark"] .step h4,
 html[data-theme="dark"] .credential .det h4,
+html[data-theme="dark"] .vcard-block h3,
 html[data-theme="dark"] .vcard-block h4,
 html[data-theme="dark"] .info-card h3,
 html[data-theme="dark"] .wiz-result h3,
