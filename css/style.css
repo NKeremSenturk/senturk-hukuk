@@ -1225,8 +1225,11 @@ p:last-child { margin-bottom: 0; }
 
 .hero-reveal .hero-ornament { animation: heroOrnIn 1.4s var(--ease-soft) both; }
 .hero-reveal .eyebrow       { opacity: 0; animation: heroUpSm 0.7s var(--ease-soft) 0.15s forwards; }
-.hero-reveal h1,
-.hero-reveal .hero-title    { opacity: 0; animation: heroUp   1.0s var(--ease-soft) 0.30s forwards; }
+/* S2.1 (21.09.2026) — LCP ögesi animasyonsuz boyanır.
+   h1/.hero-title'dan `opacity: 0` + 0.30s gecikmeli heroUp KALDIRILDI: metin ilk
+   boyamada görünür olmalı, yoksa Largest Contentful Paint animasyon bitene kadar
+   ertelenir. Giriş animasyonu diğer ögelerde (eyebrow, hero-desc, butonlar,
+   trust-item, scroll-cue) aynen duruyor — hero'nun hissi korunur. */
 .hero-reveal .hero-desc     { opacity: 0; animation: heroUp   0.8s var(--ease-soft) 0.55s forwards; }
 .hero-reveal .btn-gold,
 .hero-reveal .btn-light     { opacity: 0; animation: heroPop  0.6s var(--ease-back) 0.80s forwards; }
@@ -1240,8 +1243,6 @@ p:last-child { margin-bottom: 0; }
 @media (prefers-reduced-motion: reduce) {
   .hero-reveal .hero-ornament,
   .hero-reveal .eyebrow,
-  .hero-reveal h1,
-  .hero-reveal .hero-title,
   .hero-reveal .hero-desc,
   .hero-reveal .btn-gold,
   .hero-reveal .btn-light,
