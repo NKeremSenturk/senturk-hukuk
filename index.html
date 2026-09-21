@@ -18,6 +18,16 @@
   <meta name="twitter:description" content="Şentürk Marka ve Hukuk Bürosu (Şentürk Law &amp; IP): marka, tasarım ve coğrafi işaret tescili, fikri ve sınai haklar, yabancılar, aile, iş, ceza ve gayrimenkul hukuku. İstanbul ve Balıkesir başta olmak üzere Türkiye geneli." />
   <meta name="twitter:image" content="https://senturklawfirm.com/assets/hero-1.jpg" />
   <script>try{var t=localStorage.getItem('ssh-theme')||((window.matchMedia&&matchMedia('(prefers-color-scheme:dark)').matches)?'dark':'light');document.documentElement.setAttribute('data-theme',t);}catch(e){}</script>
+  <!-- S2.4 (21.09.2026) — kritik yol on yuklemeleri.
+       1) LCP gorseli: hero'nun 1. slaydi. type="image/webp" sayesinde WebP
+          desteklemeyen tarayici bunu indirmez, <picture> JPG yedegine duser.
+       2) Ilk ekranda goruunen iki yazi tipinin latin-ext dilimi: Turkce
+          glifleri (S, G, I, U) bu dilimde. Fontlar font-display:swap oldugu
+          icin bu on yukleme LCP'yi degil, yedek fonttan gercek fonta gecis
+          sicramasini (gorsel kararlilik) iyilestirir. -->
+  <link rel="preload" as="image" href="assets/hero-1.webp" type="image/webp" fetchpriority="high" />
+  <link rel="preload" as="font" href="assets/fonts/jakarta-latin-ext.woff2" type="font/woff2" crossorigin />
+  <link rel="preload" as="font" href="assets/fonts/cormorant-latin-ext.woff2" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="css/style.css" />
   <link rel="icon" href="assets/logo/e5-icon-dark.svg" />
   <script type="application/ld+json">
