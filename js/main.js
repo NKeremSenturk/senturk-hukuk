@@ -317,6 +317,18 @@
   if (hero) {
     const slides = Array.prototype.slice.call(hero.querySelectorAll(".hero-slide"));
     const media = Array.prototype.slice.call(hero.querySelectorAll(".hero-media-slide"));
+
+    /* S2.2 — 2-4. hero slaytlari ilk boyamadan SONRA insin. 1. slayt HTML'de <img>
+       olarak oncelikli iniyor; digerlerini acilista indirmek LCP'yi geciktiriyordu. */
+    const gecGelenler = media.filter((m) => m.getAttribute("data-bg"));
+    if (gecGelenler.length) {
+      const yukle = () => gecGelenler.forEach((m) => {
+        m.style.backgroundImage = 'url("' + m.getAttribute("data-bg") + '")';
+        m.removeAttribute("data-bg");
+      });
+      if (document.readyState === "complete") setTimeout(yukle, 0);
+      else window.addEventListener("load", yukle, { once: true });
+    }
     const dots = Array.prototype.slice.call(hero.querySelectorAll(".hero-dot"));
     const prevBtn = hero.querySelector(".hero-arrow--prev");
     const nextBtn = hero.querySelector(".hero-arrow--next");

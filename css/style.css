@@ -497,11 +497,16 @@ p:last-child { margin-bottom: 0; }
 }
 .hero-media-slide.is-active { opacity: 1; animation: kenburns 12s ease-out both; }
 @keyframes kenburns { from { transform: scale(1.001); } to { transform: scale(1.09); } }
-/* Hero arka plan fotoğrafları (JuggernautXL ile üretildi, assets/ içinde) */
-.hero-media-1 { background-image: url('../assets/hero-1.jpg'); }
-.hero-media-2 { background-image: url('../assets/hero-2.jpg'); }
-.hero-media-3 { background-image: url('../assets/hero-3.jpg'); }
-.hero-media-4 { background-image: url('../assets/hero-4.jpg'); }
+/* Hero arka plan fotoğrafları (JuggernautXL ile üretildi, assets/ içinde)
+   S2.2 (21.09.2026): dört `background-image` kuralı KALDIRILDI. Dördü birden
+   açılışta iniyor ve ~601 KB'ı LCP yoluna koyuyordu. Artık 1. slayt HTML'de
+   <img fetchpriority="high">, 2-4. slaytlar `data-bg` ile main.js §11'de ilk
+   boyamadan sonra yükleniyor. Overlay (::after) ve kenburns aynen duruyor. */
+.hero-media-img {
+  position: absolute; inset: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center;
+}
 
 .hero-slides { display: grid; }
 .hero-slide {

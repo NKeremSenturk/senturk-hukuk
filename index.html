@@ -88,10 +88,13 @@
   <section class="hero hero-reveal hero--centered" id="main-content" tabindex="-1">
     <div class="hero-bg"></div>
     <div class="hero-media" aria-hidden="true">
-      <div class="hero-media-slide hero-media-1 is-active"></div>
-      <div class="hero-media-slide hero-media-2"></div>
-      <div class="hero-media-slide hero-media-3"></div>
-      <div class="hero-media-slide hero-media-4"></div>
+      <!-- S2.2 (21.09.2026): 1. slayt <img> olarak erken ve oncelikli iner (LCP yolu).
+           2-4. slaytlar CSS background yerine data-bg tasir; main.js §11 onlari ilk
+           boyamadan SONRA yukler. Onceden 4 hero JPG'sinin dordu de acilista iniyordu. -->
+      <div class="hero-media-slide hero-media-1 is-active"><img class="hero-media-img" src="assets/hero-1.jpg" width="1344" height="768" fetchpriority="high" decoding="async" alt="" /></div>
+      <div class="hero-media-slide hero-media-2" data-bg="assets/hero-2.jpg"></div>
+      <div class="hero-media-slide hero-media-3" data-bg="assets/hero-3.jpg"></div>
+      <div class="hero-media-slide hero-media-4" data-bg="assets/hero-4.jpg"></div>
     </div>
     <svg class="hero-ornament" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.6">
       <path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 006 0l-3-7zm10 0l-3 7a3 3 0 006 0l-3-7zM8 21h8" stroke-linecap="round" stroke-linejoin="round"/>
