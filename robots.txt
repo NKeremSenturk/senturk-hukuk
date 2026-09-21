@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nkeremsenturk.github.io/senturk-hukuk/sitemap.xml
+Sitemap: https://senturklawfirm.com/sitemap.xml

@@ -142,9 +142,9 @@
      GEÇİCİ iletişim hedefleri: kurumsal mail/telefon gelince TEK yerden güncellenecek
      (bkz. CLAUDE.md §11-A). Web3Forms anahtarı henüz yoksa mailto ile açılır, mesaj kaybolmaz. */
   const CONTACT = {
-    email: "17ssenturk@gmail.com",
+    email: "info@senturklawfirm.com",
     whatsapp: "905342428081",
-    // web3forms.com'dan 17ssenturk@gmail.com ile alınan ücretsiz anahtar buraya yapıştırılır:
+    // web3forms.com'dan alınan ücretsiz anahtar buraya yapıştırılır (hesap: ERISIM-HARITASI.md):
     web3formsKey: "WEB3FORMS_ACCESS_KEY"
   };
 
