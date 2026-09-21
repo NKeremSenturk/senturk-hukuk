@@ -322,9 +322,15 @@
        olarak oncelikli iniyor; digerlerini acilista indirmek LCP'yi geciktiriyordu. */
     const gecGelenler = media.filter((m) => m.getAttribute("data-bg"));
     if (gecGelenler.length) {
+      // S2.3 — WebP destegi yoksa JPG yedegine dus (<picture> arka planda kullanilamaz).
+      let webpVar = false;
+      try { webpVar = document.createElement("canvas").toDataURL("image/webp").indexOf("data:image/webp") === 0; } catch (e) {}
       const yukle = () => gecGelenler.forEach((m) => {
-        m.style.backgroundImage = 'url("' + m.getAttribute("data-bg") + '")';
+        const yedek = m.getAttribute("data-bg-jpg");
+        const kaynak = (webpVar || !yedek) ? m.getAttribute("data-bg") : yedek;
+        m.style.backgroundImage = 'url("' + kaynak + '")';
         m.removeAttribute("data-bg");
+        m.removeAttribute("data-bg-jpg");
       });
       if (document.readyState === "complete") setTimeout(yukle, 0);
       else window.addEventListener("load", yukle, { once: true });

@@ -91,10 +91,10 @@
       <!-- S2.2 (21.09.2026): 1. slayt <img> olarak erken ve oncelikli iner (LCP yolu).
            2-4. slaytlar CSS background yerine data-bg tasir; main.js §11 onlari ilk
            boyamadan SONRA yukler. Onceden 4 hero JPG'sinin dordu de acilista iniyordu. -->
-      <div class="hero-media-slide hero-media-1 is-active"><img class="hero-media-img" src="assets/hero-1.jpg" width="1344" height="768" fetchpriority="high" decoding="async" alt="" /></div>
-      <div class="hero-media-slide hero-media-2" data-bg="assets/hero-2.jpg"></div>
-      <div class="hero-media-slide hero-media-3" data-bg="assets/hero-3.jpg"></div>
-      <div class="hero-media-slide hero-media-4" data-bg="assets/hero-4.jpg"></div>
+      <div class="hero-media-slide hero-media-1 is-active"><picture><source srcset="assets/hero-1.webp" type="image/webp" /><img class="hero-media-img" src="assets/hero-1.jpg" width="1344" height="768" fetchpriority="high" decoding="async" alt="" /></picture></div>
+      <div class="hero-media-slide hero-media-2" data-bg="assets/hero-2.webp" data-bg-jpg="assets/hero-2.jpg"></div>
+      <div class="hero-media-slide hero-media-3" data-bg="assets/hero-3.webp" data-bg-jpg="assets/hero-3.jpg"></div>
+      <div class="hero-media-slide hero-media-4" data-bg="assets/hero-4.webp" data-bg-jpg="assets/hero-4.jpg"></div>
     </div>
     <svg class="hero-ornament" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.6">
       <path d="M12 3v18M5 7h14M7 7l-3 7a3 3 0 006 0l-3-7zm10 0l-3 7a3 3 0 006 0l-3-7zM8 21h8" stroke-linecap="round" stroke-linejoin="round"/>
@@ -262,16 +262,16 @@
             <div class="frame frame-slider" data-slider data-slider-interval="5000" aria-roledescription="carousel" aria-label="Büromuz görselleri">
               <div class="frame-track">
                 <figure class="frame-slide is-active">
-                  <img src="assets/about/about-1-istanbul-skyline.jpg" width="896" height="1152" loading="eager" decoding="async" alt="" data-alt-tr="İstanbul silüeti ve Boğaz, mavi saat" data-alt-en="Istanbul skyline and the Bosphorus at blue hour" />
+                  <picture><source srcset="assets/about/about-1-istanbul-skyline.webp" type="image/webp" /><img src="assets/about/about-1-istanbul-skyline.jpg" width="896" height="1152" loading="eager" decoding="async" alt="" data-alt-tr="İstanbul silüeti ve Boğaz, mavi saat" data-alt-en="Istanbul skyline and the Bosphorus at blue hour" /></picture>
                 </figure>
                 <figure class="frame-slide">
-                  <img src="assets/about/about-2-bosphorus-bridge.jpg" width="896" height="1152" loading="lazy" decoding="async" alt="" data-alt-tr="İki kıtayı birleştiren Boğaz köprüsü" data-alt-en="Bosphorus bridge connecting two continents" />
+                  <picture><source srcset="assets/about/about-2-bosphorus-bridge.webp" type="image/webp" /><img src="assets/about/about-2-bosphorus-bridge.jpg" width="896" height="1152" loading="lazy" decoding="async" alt="" data-alt-tr="İki kıtayı birleştiren Boğaz köprüsü" data-alt-en="Bosphorus bridge connecting two continents" /></picture>
                 </figure>
                 <figure class="frame-slide">
-                  <img src="assets/about/about-3-modern-office.jpg" width="896" height="1152" loading="lazy" decoding="async" alt="" data-alt-tr="Modern hukuk ofisi ve şehir manzarası" data-alt-en="Modern law office overlooking the city" />
+                  <picture><source srcset="assets/about/about-3-modern-office.webp" type="image/webp" /><img src="assets/about/about-3-modern-office.jpg" width="896" height="1152" loading="lazy" decoding="async" alt="" data-alt-tr="Modern hukuk ofisi ve şehir manzarası" data-alt-en="Modern law office overlooking the city" /></picture>
                 </figure>
                 <figure class="frame-slide">
-                  <img src="assets/about/about-4-colonnade.jpg" width="896" height="1152" loading="lazy" decoding="async" alt="" data-alt-tr="Klasik mermer sütun dizisi" data-alt-en="Classical marble colonnade" />
+                  <picture><source srcset="assets/about/about-4-colonnade.webp" type="image/webp" /><img src="assets/about/about-4-colonnade.jpg" width="896" height="1152" loading="lazy" decoding="async" alt="" data-alt-tr="Klasik mermer sütun dizisi" data-alt-en="Classical marble colonnade" /></picture>
                 </figure>
               </div>
               <div class="frame-dots" role="tablist" aria-label="Görsel seçimi"></div>
@@ -385,7 +385,7 @@
       <div class="feature-row">
         <div class="reveal reveal-delay-1" style="order:2">
           <div class="frame" style="aspect-ratio:1/1">
-            <img src="assets/about/neden-biz-kutuphane.jpg" width="768" height="768" loading="lazy" decoding="async" alt="" data-alt-tr="Hukuk kitaplarıyla dolu ahşap kütüphane rafları" data-alt-en="Wooden library shelves filled with law volumes" />
+            <picture><source srcset="assets/about/neden-biz-kutuphane.webp" type="image/webp" /><img src="assets/about/neden-biz-kutuphane.jpg" width="768" height="768" loading="lazy" decoding="async" alt="" data-alt-tr="Hukuk kitaplarıyla dolu ahşap kütüphane rafları" data-alt-en="Wooden library shelves filled with law volumes" /></picture>
           </div>
         </div>
         <div class="reveal" style="order:1">
