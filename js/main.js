@@ -145,7 +145,7 @@
     email: "info@senturklawfirm.com",
     whatsapp: "905342428081",
     // web3forms.com'dan alınan ücretsiz anahtar buraya yapıştırılır (hesap: ERISIM-HARITASI.md):
-    web3formsKey: "WEB3FORMS_ACCESS_KEY"
+    web3formsKey: "c8214233-b6b8-402e-a70d-9e61d9f4e005"
   };
 
   const contactForm = document.querySelector("#contact-form");
